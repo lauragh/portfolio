@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-
-const myFirstElement = <h1>Hello React!</h1>
+import App from './components/App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(myFirstElement);
+root.render(<App/>);
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(
