@@ -1,0 +1,11 @@
+#dark {
+    background-color: #323232;
+}
+
+#light {
+    background-color: white;
+}
+
+.colorText {
+    color: white !important;
+}

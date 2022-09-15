@@ -1,33 +1,30 @@
 import React from 'react';
-import {Container, Nav, Navbar} from 'react-bootstrap';
+import {Container, Nav, Navbar, NavDropdown} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import './NavBar.css';
 import {Link} from "react-router-dom";
 
-export default function NavBar() {
+export default function NavBar(props) {
+    const theme = props.id;
+
     return (
-        <Navbar style={{paddingTop: '50px'}} expand="lg">
-        <Container>
-        <Navbar.Brand href="/">Laura García Hernández</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-            <Link to="/portfolio/about" className="nav-link">Sobre mí</Link>
-            <Link to="/portfolio/contact" className="nav-link">Contacto</Link>
-            {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                Separated link
-                </NavDropdown.Item>
-            </NavDropdown> */}
-            </Nav>
-        </Navbar.Collapse>
-        </Container>
-    </Navbar>
+        <Navbar id={props.id} style={{paddingTop: '50px'}} expand="lg">
+            <Container>
+            <Navbar.Brand className="colorText" href="/portfolio">Laura García Hernández</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="me-auto">
+                {/* <NavDropdown style={theme==="light"?{color: 'white'}: {color: 'black'}} title="Proyectos" id="basic-nav-dropdown"> */}
+                <NavDropdown title="Proyectos" id="basic-nav-dropdown">
+                    <NavDropdown.Item href="/portfolio/projects/mobbler">Mobbler</NavDropdown.Item>
+                    {/* <NavDropdown.Divider /> */}
+                    <NavDropdown.Item href="#action/3.4">Rain of</NavDropdown.Item>
+                </NavDropdown>
+                <Link to="/portfolio/about" className="nav-link">Sobre mí</Link>
+                <Link to="/portfolio/contact" className="nav-link">Contacto</Link>
+                </Nav>
+            </Navbar.Collapse>
+            </Container>
+        </Navbar>
     )
 }
