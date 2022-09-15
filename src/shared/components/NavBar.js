@@ -5,23 +5,20 @@ import './NavBar.css';
 import {Link} from "react-router-dom";
 
 export default function NavBar(props) {
-    const theme = props.id;
-
     return (
         <Navbar id={props.id} style={{paddingTop: '50px'}} expand="lg">
             <Container>
-            <Navbar.Brand className="colorText" href="/portfolio">Laura García Hernández</Navbar.Brand>
+            <Navbar.Brand className={props.id === "light" ? "darkColorText" : "lightColorText"} href="/portfolio">Laura García Hernández</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
-                {/* <NavDropdown style={theme==="light"?{color: 'white'}: {color: 'black'}} title="Proyectos" id="basic-nav-dropdown"> */}
-                <NavDropdown title="Proyectos" id="basic-nav-dropdown">
+                <NavDropdown className={props.id === "light" ? "darkColorText" : "lightColorText"}  title="Proyectos" id="basic-nav-dropdown">
                     <NavDropdown.Item href="/portfolio/projects/mobbler">Mobbler</NavDropdown.Item>
                     {/* <NavDropdown.Divider /> */}
                     <NavDropdown.Item href="#action/3.4">Rain of</NavDropdown.Item>
                 </NavDropdown>
-                <Link to="/portfolio/about" className="nav-link">Sobre mí</Link>
-                <Link to="/portfolio/contact" className="nav-link">Contacto</Link>
+                <Link to="/portfolio/about" className={props.id === "light" ? "darkColorText nav-link " : "lightColorText nav-link"}>Sobre mí</Link>
+                <Link to="/portfolio/contact" className={props.id === "light" ? "darkColorText nav-link " : "lightColorText nav-link"}>Contacto</Link>
                 </Nav>
             </Navbar.Collapse>
             </Container>

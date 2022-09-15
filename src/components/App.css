@@ -6,6 +6,22 @@
     background-color: white;
 }
 
-.colorText {
+.lightColorText {
+    color: white ;
+}
+
+.lightColorText > a {
     color: white !important;
+}
+
+.darkColorText {
+    color: black ;
+}
+
+.darkColorText > a {
+    color: white !important;
+}
+
+#changeTheme {
+    float: right;
 }

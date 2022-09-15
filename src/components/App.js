@@ -6,6 +6,7 @@ import Mobbler from './Mobbler';
 import NotFoundPage from './NotFoundPage';
 import './App.css';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
+import BootstrapSwitchButton from 'bootstrap-switch-button-react'
 
 export const ThemeContext = createContext(null);
 
@@ -20,6 +21,13 @@ function App() {
         <ThemeContext.Provider value={{theme, toggleTheme}}>
             <BrowserRouter>
                     <NavBar id={theme} />
+                    {/* <BootstrapSwitchButton
+                    checked={theme === "dark"}
+                    onlabel='Dark'
+                    offlabel='Light'
+                    onChange={toggleTheme}
+                    style={{float: 'right'}}
+                    /> */}
                     <Routes>
                         <Route path="/portfolio" />
                         <Route path="/portfolio/projects/mobbler"  element={<Mobbler/>}/>
