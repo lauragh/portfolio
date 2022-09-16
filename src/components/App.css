@@ -1,5 +1,5 @@
 #dark {
-    background-color: #323232;
+    background-color: #212122;
 }
 
 #light {
@@ -7,7 +7,7 @@
 }
 
 .lightColorText {
-    color: white ;
+    color: white !important;
 }
 
 .lightColorText > a {
@@ -15,13 +15,115 @@
 }
 
 .darkColorText {
-    color: black ;
+    color: black !important;
 }
 
 .darkColorText > a {
-    color: white !important;
+    color: black !important;
 }
 
-#changeTheme {
-    float: right;
+.switchButtonDark {
+    background-color: black;
+    height: 35px;
+    width: 60px;
+    border: 2px solid white;
+    border-radius: 30px;
+    display: flex;
+    cursor: pointer;
+
+}
+
+.switchButtonLight {
+    background-color: #89B0FF;
+    height: 35px;
+    width: 60px;
+    border: 2px solid #89B0FF;
+    border-radius: 30px;
+    display: flex;
+    cursor: pointer;
+}
+
+
+.switchButtonLeft{
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    border-radius: 20px;
+    margin: 5px;
+}
+
+.switchButtonRight{
+    height: 20px;
+    width: 20px;
+    background-color: rgb(255, 255, 162);
+    border-radius: 20px;
+    margin: 5px 5px 5px 30px;
+}
+
+.moon{
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    background-color: black;
+    border-radius: 20px;
+    margin: 0px 10px;
+    z-index: 3;
+}
+
+.stars{
+    height: 3px;
+    width: 3px;
+    background-color: white;
+    border-radius: 20px;
+    margin: 5px 5px 5px 40px;
+}
+
+.four-pointed-star {
+    width: 5px;
+    font-size:12em;
+    margin: 5px 5px 5px 30px;
+
+}
+  
+.four-pointed-star:before {
+content:"";
+position:absolute;
+background-color: white;
+width:5px;
+height:5px;
+transform:rotate(-45deg) skewX(22.5deg) skewY(22.5deg);
+}
+
+.four-pointed-star:after {
+content:"";
+position:absolute;
+background-color: white;
+width:5px;
+height:5px;
+transform:rotate(45deg) skewX(22.5deg) skewY(22.5deg);
+}
+
+.icon {
+    width: 25px;
+    height: 25px;
+    filter: brightness(0) invert(1);
+    cursor: pointer;
+    align-self: center;
+}
+
+.iconsNavBar{
+    width: 130px;
+    display: flex;
+    justify-content: space-around;
+    align-self: center;
+}
+
+.navbar-collapse {
+    flex-basis: 100%;
+    flex-grow: 0 !important;
+    align-items: center;
+}
+
+.nav-link{
+    font-size: 18px ;
 }
