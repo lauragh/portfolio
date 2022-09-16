@@ -1,9 +1,15 @@
-#dark {
-    background-color: #212122;
+:root {
+    --dark-color: #343A40;
+    --darker-color: #212122;
+    --light-color: white;
 }
 
-#light {
-    background-color: white;
+.dark {
+    background-color: var(--dark-color);
+}
+
+.light {
+    background-color: var(--light-color);
 }
 
 .lightColorText {
@@ -23,7 +29,7 @@
 }
 
 .switchButtonDark {
-    background-color: black;
+    background-color: var(--dark-color);
     height: 35px;
     width: 60px;
     border: 2px solid white;
@@ -37,7 +43,7 @@
     background-color: #89B0FF;
     height: 35px;
     width: 60px;
-    border: 2px solid #89B0FF;
+    border: 2px solid #3c7cfa;
     border-radius: 30px;
     display: flex;
     cursor: pointer;
@@ -55,7 +61,8 @@
 .switchButtonRight{
     height: 20px;
     width: 20px;
-    background-color: rgb(255, 255, 162);
+    background-color: orange;
+    box-shadow: 0 0 15px 3px yellow,0 0 10px 5px yellow inset;
     border-radius: 20px;
     margin: 5px 5px 5px 30px;
 }
@@ -64,7 +71,7 @@
     position: absolute;
     height: 15px;
     width: 15px;
-    background-color: black;
+    background-color: var(--dark-color);
     border-radius: 20px;
     margin: 0px 10px;
     z-index: 3;
@@ -106,9 +113,12 @@ transform:rotate(45deg) skewX(22.5deg) skewY(22.5deg);
 .icon {
     width: 25px;
     height: 25px;
-    filter: brightness(0) invert(1);
     cursor: pointer;
     align-self: center;
+}
+
+.filterIcon{
+    filter: brightness(0) invert(1);
 }
 
 .iconsNavBar{
@@ -126,4 +136,16 @@ transform:rotate(45deg) skewX(22.5deg) skewY(22.5deg);
 
 .nav-link{
     font-size: 18px ;
+}
+
+#basic-navbar-nav > div > div.lightColorText.basic-nav-dropdown.nav-item.show.dropdown > div {
+    min-width: max-content !important;
+}
+
+.dropdown-toggle::after {
+    display: none !important; 
+}
+
+#basic-navbar-nav > div > div.iconsNavBar > div.nav-item.show.dropdown > div {
+    min-width: max-content !important;
 }
