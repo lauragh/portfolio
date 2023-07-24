@@ -5,9 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/shared/nav-bar/nav-bar.component';
 import { AboutComponent } from './pages/about/about.component';
-import { MobblerComponent } from './projects/mobbler/mobbler.component';
-import { CobliComponent } from './projects/cobli/cobli.component';
-import { GameComponent } from './projects/game/game.component';
+import { MobblerComponent } from './pages/projects/mobbler/mobbler.component';
+import { CobliComponent } from './pages/projects/cobli/cobli.component';
+import { GameComponent } from './pages/projects/game/game.component';
 import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
