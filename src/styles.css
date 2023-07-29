@@ -3,3 +3,11 @@
 .cursor-pointer {
     cursor: pointer;
 }
+
+.hidden {
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+}

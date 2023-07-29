@@ -9,6 +9,8 @@ import { MobblerComponent } from './pages/projects/mobbler/mobbler.component';
 import { CobliComponent } from './pages/projects/cobli/cobli.component';
 import { GameComponent } from './pages/projects/game/game.component';
 import { HomeComponent } from './pages/home/home.component';
+import { DataService } from './services/data.service';
+import { ResumeComponent } from './pages/resume/resume.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +21,14 @@ import { HomeComponent } from './pages/home/home.component';
     CobliComponent,
     GameComponent,
     HomeComponent,
+    ResumeComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

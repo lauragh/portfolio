@@ -1,0 +1,13 @@
+{
+    "icons": {
+        "cv": "Resume",
+        "projects": "Projects",
+        "linkedin": "LinkedIn",
+        "email": "Email"
+    },
+    "avatarText": "Hi, I'm Laura. I'm currently working as FullStack developer at BeXReal",
+    "languages": {
+        "en": "English",
+        "es": "Spanish"
+    }
+}

@@ -7,36 +7,36 @@
     </section>
     <section>
         <div class="icons d-flex row justify-content-around">
-            <div class="col">
-                <div class="cursor-pointer">
+            <div [ngClass]="hiddenIcons ? 'disappear-l' : ''" class="col">
+                <div (click)="hideIcons()" (mouseover)="show(0)" (mouseout)="hide(0)" class="icon cursor-pointer">
                     <img src="assets/img/cv.svg">
                 </div>
-                <div class="cursor-pointer mt-2 hidden">
-                    Resume
+                <div #title class="cursor-pointer mt-2 hidden title">
+                    {{translate.icons.cv}}
                 </div>
             </div>
-            <div class="col">
-                <div class="cursor-pointer">
+            <div [ngClass]="hiddenIcons ? 'disappear-l' : ''" class="col">
+                <div (mouseover)="show(1)" (mouseout)="hide(1)" class="icon cursor-pointer">
                     <img src="assets/img/projects.svg">
                 </div>
-                <div class="cursor-pointer mt-2 hidden">
-                    Resume
+                <div #title class="cursor-pointer mt-2 hidden title">
+                    {{translate.icons.projects}}
                 </div>
             </div>
-            <div class="col">
-                <div class="cursor-pointer">
+            <div [ngClass]="hiddenIcons ? 'disappear-r' : ''" class="col">
+                <div (mouseover)="show(2)" (mouseout)="hide(2)" class="icon cursor-pointer">
                     <img src="assets/img/linkedin.svg">
                 </div>
-                <div class="cursor-pointer mt-2 hidden">
-                    Resume
+                <div #title class="cursor-pointer mt-2 hidden title">
+                    {{translate.icons.linkedin}}
                 </div>
             </div>
-            <div class="col">
-                <div class="cursor-pointer">
+            <div [ngClass]="hiddenIcons ? 'disappear-r' : ''" class="col">
+                <div (mouseover)="show(3)" (mouseout)="hide(3)" class="icon cursor-pointer">
                     <img src="assets/img/email.svg">
                 </div>
-                <div class="cursor-pointer mt-2 hidden">
-                    Resume
+                <div #title class="cursor-pointer mt-2 hidden title">
+                    {{translate.icons.email}}
                 </div>
             </div>
         </div>
@@ -53,4 +53,6 @@
         <div></div>
         <div></div>
     </div>
+    <app-resume></app-resume>
+
 </main >
