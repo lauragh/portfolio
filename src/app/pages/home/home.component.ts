@@ -1,4 +1,4 @@
-import { Component,  OnInit, QueryList, Renderer2, ViewChildren } from '@angular/core';
+import { Component,  ElementRef,  OnInit, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
 import { tap } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 import * as english from '../../../assets/traduccion/en.json';
@@ -15,8 +15,10 @@ export class HomeComponent implements OnInit {
   idioma!: string;
   translate: any = spanish;
   hiddenIcons: boolean = false;
+  about: boolean = true;
 
   @ViewChildren('title') title!: QueryList<any>;
+  @ViewChild('email') email!: ElementRef;
 
   ngOnInit(): void {
     this.getLanguage();
@@ -45,15 +47,15 @@ export class HomeComponent implements OnInit {
 
   translateText(idioma: string){
     if(idioma === 'en'){
-
       this.translate = english;
     }
     else {
-      console.log('entro');
       this.translate = spanish;
     }
-    console.log('Data', this.translate.languages);
+  }
 
+  setText(action: boolean){
+    this.dataService.setText(action);
   }
 
 
@@ -114,9 +116,52 @@ export class HomeComponent implements OnInit {
     this.renderer2.addClass(this.title.get(position).nativeElement, 'hidden');
   }
   
-  hideIcons(){
-    this.hiddenIcons = true;
+  hideIcons(element: string, hide: boolean){
+    console.log('o');
+    if(element === 'projects'){
+      if(hide){
+
+      }
+    }
+    else{
+      if(hide){
+        this.about = false;
+        this.hiddenIcons = true;
+      }
+      else {
+        this.about = true;
+        this.hiddenIcons = false;
+      }
+    }
   }
 
+  openResume(){
+    window.open('assets/cv_laura.pdf', '_blank');
+  }
+
+  openLinkedin(){
+    window.open('https://www.linkedin.com/in/laura-garc%C3%ADa-hern%C3%A1ndez-4922251b0/', '_blank');
+  }
+
+  copyEmail(){
+    navigator.clipboard.writeText('garcia.hdez.laura@gmail.com');
+
+    const mensaje = document.createElement("div");
+    const elemento = this.email.nativeElement;
+
+    mensaje.innerText = "Email copiado al portapapeles";
+    mensaje.style.position = "absolute";
+    mensaje.style.top = `${elemento.getBoundingClientRect().top - 50}px`;
+    mensaje.style.left = `${elemento.getBoundingClientRect().left}px`;
+    mensaje.style.padding = "5px 10px";
+    mensaje.style.background = "rgba(0, 0, 0, 0.8)";
+    mensaje.style.color = "#fff";
+    mensaje.style.borderRadius = "5px";
+    mensaje.style.zIndex = "9999";
+    document.body.appendChild(mensaje);
+    setTimeout(() => {
+      mensaje.remove();
+    }, 2000);
+  }
 
 }

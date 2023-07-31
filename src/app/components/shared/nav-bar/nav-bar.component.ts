@@ -33,11 +33,14 @@ export class NavBarComponent implements OnInit {
 
     if (!storedLanguage || storedLanguage !== selectedLanguage) {
       localStorage.setItem('idioma', selectedLanguage);
-      const isHomePage = this.router.url === '/';
-
-      if(isHomePage){
-        location.reload();
-      }
+      // const isHomePage = this.router.url === '/';
+      
+      this.dataService.textG
+      .subscribe(text => {  
+        if(!text){
+          location.reload();
+        }
+      });
     }
 
     this.dataService.setIdioma(selectedLanguage);
