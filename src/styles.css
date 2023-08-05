@@ -11,3 +11,7 @@
 .visible {
     visibility: visible;
 }
+
+.max-content {
+    width: max-content;
+}

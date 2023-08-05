@@ -4,6 +4,7 @@ import { DataService } from 'src/app/services/data.service';
 import * as english from '../../../assets/traduccion/en.json';
 import * as spanish from '../../../assets/traduccion/es.json';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,6 @@ import { Location } from '@angular/common';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  words: string = 'Hola, me llamo Laura. Actualmente estoy trabajando como Programadora FullStack en BeXReal';
   idioma!: string;
   translate: any = spanish;
   hiddenIcons: boolean = false;
@@ -30,7 +30,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private dataService: DataService,
     private renderer2: Renderer2,
-    private location: Location
+    private location: Location,
+    private router: Router
   ){
   }
 
@@ -61,7 +62,6 @@ export class HomeComponent implements OnInit {
 
   typingEffect() {
     const div = document.getElementById("word")!;
-    console.log(this.translate.avatarText);
     const phrases = this.translate.avatarText.split('.');
     const delay = 50;
     let currentPhraseIndex = 0;
@@ -117,7 +117,6 @@ export class HomeComponent implements OnInit {
   }
   
   hideIcons(element: string, hide: boolean){
-    console.log('o');
     if(element === 'projects'){
       if(hide){
 
@@ -162,6 +161,10 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       mensaje.remove();
     }, 2000);
+  }
+
+  goTo(){
+    this.router.navigate(['/projects']);
   }
 
 }

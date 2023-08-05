@@ -7,8 +7,7 @@ select {
     border: none;
     outline: none;
     box-shadow: none;
-    padding: 5px 10px;
-    z-index: 2;
+    padding: 2px;
   }
   
 .selector {
@@ -21,4 +20,14 @@ select {
 
 option {
     padding: 10px !important;
+}
+
+nav {
+    height: 8vh;
+    justify-content: end;
+    display: flex;
+}
+
+img {
+    width: 24px;
 }

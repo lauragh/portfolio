@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div [ngClass]="hiddenIcons ? 'disappear-l' : ''" class="col">
-                <div (click)="hideIcons('projects', true)" (mouseover)="show(1)" (mouseout)="hide(1)" class="icon cursor-pointer">
+                <div (click)="goTo()" (mouseover)="show(1)" (mouseout)="hide(1)" class="icon cursor-pointer">
                     <img src="assets/img/projects.svg">
                 </div>
                 <div #title class="cursor-pointer mt-2 hidden title">

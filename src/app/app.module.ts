@@ -10,6 +10,7 @@ import { CobliComponent } from './pages/projects/cobli/cobli.component';
 import { GameComponent } from './pages/projects/game/game.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DataService } from './services/data.service';
+import { ProjectsComponent } from './pages/projects/projects.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { DataService } from './services/data.service';
     CobliComponent,
     GameComponent,
     HomeComponent,
+    ProjectsComponent,
   ],
   imports: [
     BrowserModule,
