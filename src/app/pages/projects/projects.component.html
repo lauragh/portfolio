@@ -1,26 +1,40 @@
-<div class="contenedor">
-    <div class="container cursor-pointer" (click)="goTo('cobli')">
-        <img src="assets/img/projects/cobli.png">
-        <div class="overlay">
-            <div class="text">
-                Aplicación web para daltónicos
+
+<div class="d-flex justify-content-center">
+    <section class="position-absolute">
+        <ng-container *ngIf="page === 'cobli'">
+            <app-cobli></app-cobli>
+        </ng-container>
+        <ng-container *ngIf="page === 'rains-of-rhodianur'">
+            <app-game></app-game>
+        </ng-container>
+        <ng-container *ngIf="page === 'mobbler'">
+            <app-mobbler></app-mobbler>
+        </ng-container>
+    </section>
+    <section #menu class="contenedor">
+        <div #op [ngClass]="{'selected': page === 'cobli'}" class="container cursor-pointer justify-content-center d-flex" (click)="goTo('cobli')">
+            <img [ngClass]="{'filterGray': page && page !== 'cobli'}" src="assets/img/projects/cobli.png">
+            <div class="overlay">
+                <div class="text">
+                    Aplicación web para daltónicos
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container cursor-pointer" (click)="goTo('rains-of-rhodianur')">
-        <img src="assets/img/projects/game.png">
-        <div class="overlay">
-            <div class="text">
-                2D Videogame
+        <div #op [ngClass]="{'selected': page === 'rains-of-rhodianur'}" class="container cursor-pointer justify-content-center d-flex" (click)="goTo('rains-of-rhodianur')">
+            <img [ngClass]="{'filterGray': page && page !== 'rains-of-rhodianur'}" src="assets/img/projects/game.png">
+            <div class="overlay">
+                <div class="text">
+                    2D Videogame
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container cursor-pointer" (click)="goTo('mobbler')">
-        <img src="assets/img/projects/mobbler.png">
-        <div class="overlay">
-            <div class="text">
-                Diseño de habitaciones 3D
+        <div #op [ngClass]="{'selected': page === 'mobbler'}" class="container cursor-pointer justify-content-center d-flex" (click)="goTo('mobbler')">
+            <img [ngClass]="{'filterGray': page && page !== 'mobbler'}" src="assets/img/projects/mobbler.png">
+            <div class="overlay">
+                <div class="text">
+                    Diseño de habitaciones 3D
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 </div>

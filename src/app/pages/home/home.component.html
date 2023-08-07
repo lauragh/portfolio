@@ -51,7 +51,7 @@
     </section>
 
     <section [hidden]="about" class="fadeInAnimation">
-        <img (click)="hideIcons('about', false)" class="position-absolute close cursor-pointer" src="assets/img/cruz.svg">
+        <img (click)="hideIcons('about', false); setText(false)" class="position-absolute close cursor-pointer" src="assets/img/cruz.svg">
         <app-about ></app-about>
     </section>
 </main>

@@ -1,0 +1,21 @@
+
+.contenedor {
+    background-color: white;
+    padding: 4em;
+}
+
+.images {
+    width: 800px;
+}
+
+.images > * {
+    display: block;
+    margin: auto;
+}
+
+.paragraph {
+    width: 800px;
+    margin: 0;
+    text-align: justify;
+    font-size: 18px;
+}
