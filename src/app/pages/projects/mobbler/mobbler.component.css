@@ -1,7 +1,7 @@
-
 .contenedor {
     background-color: white;
-    padding: 4em;
+    padding: 2em;
+    height: 70vh;
 }
 
 .images {
@@ -18,4 +18,8 @@
     margin: 0;
     text-align: justify;
     font-size: 18px;
+}
+
+.interface {
+    width: 90%;
 }

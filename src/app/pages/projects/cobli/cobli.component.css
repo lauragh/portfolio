@@ -5,12 +5,12 @@
 .contenedor {
     background-color: white;
     padding: 2em;
+    height: 70vh;
 }
 
 .logo {
     width: 250px;
     margin-bottom: 20px;
-
 }
 
 .images {
