@@ -17,6 +17,33 @@
         "p3": "Since I'm an art and technology lover, projects that incorporate 3D fascinates me. Participating in initiatives that combine creativity and technological innovation fills me with enthusiasm and satisfaction.",
         "p4": "One of my professional goals is to become a Team Leader. I aspire to lead and collaborate with other passionate professionals and create impactful solutions.",
         "p6": "I'm excited about the future opportunities that await me, and I continue to learn and grow in this thrilling field of technology and web development. Always in pursuit of new challenges and enriching experiences!"
+    },
+    "repository": "Repository",
+    "cobli": {
+        "p1": "Cobli is my Bachelor's Thesis project, and it's a web application designed to assist users with color blindness who are involved in the world of art. The aim of this app is to facilitate various processes such as color analysis, palette creation, and guidance on color tones, in a more accessible and straightforward way.",
+        "p2": "This tool is not limited to individuals with color blindness. Any user can utilize this platform to make the most of its features and benefits.",
+        "p3": "Documentation"
+    },
+    "game": {
+        "p1": "2D Metroidvania genre video game developed with SFML, C++.",
+        "p2": "Responsible for:",
+        "p3": "Art design: assets (GIMP) and maps (Tile)",
+        "p4": "HUD design and development",
+        "p5": "Game store design and development",
+        "p6": "Character movement and camera tracking"
+    },
+    "mobbler": {
+        "p1": "Project-based Learning (PBL) project carried out during my 4th year of college.",
+        "p2": "Application based on 3D interior design for companies engaged in furniture sales.",
+        "p3": "Role:",
+        "p4": "Design of high quality mockups (Figma)",
+        "p5": "Interface implementation",
+        "p6": "Development of a chatbot (RASA)",
+        "p7": "3D modeling (Blender)",
+        "p8": "Graphics engine (Three.js/WebGL)",
+        "p9": "Creation of a synthetic data generator script",
+        "p10": "Database and REST API connection",
+        "p11": "Development of dashboards (Power BI)"
     }
 
 }

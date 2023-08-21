@@ -17,5 +17,33 @@
         "p3": "Amante del arte y la tecnología, esto me ha llevado a sentirme atraída por proyectos que incorporan el impresionante mundo del 3D. Participar en iniciativas que combinan la creatividad y la innovación tecnológica me llena de entusiasmo y gratificación.",
         "p4": "Una de mis metas profesionales es convertirme en Team Leader. Anhelo liderar y colaborar con otros profesionales apasionados para lograr crear soluciones impactantes.",
         "p6": "Estoy emocionada por las futuras oportunidades que me esperan y sigo aprendiendo y creciendo en este apasionante campo de la tecnología y el desarrollo web. ¡En busca de nuevos desafíos y experiencias enriquecedoras!"
+    },
+    "repository": "Repositorio",
+    "tasks": "Tareas",
+    "cobli": {
+        "p1": "Cobli, es mi Trabajo de Fin de Grado, se trata de una aplicación web diseñada para para ayudar a usuarios con daltonismo que se dedican al mundo del arte. El objetivo de esta app es facilitar diversos procesos como el análisis de colores, la creación de paletas y la orientación sobre tonalidades, de una manera más accesible y sencilla.",
+        "p2": "Esta herramienta, no se limita solo a personas con daltonismo. Cualquier usuario puede utilizar esta plataforma para aprovechar al máximo sus características y beneficios.",
+        "p3": "Memoria"
+    },
+    "game": {
+        "p1": "Videojuego 2D de género metroidvania desarrollado con SFML, C++.",
+        "p2": "Responsable de:",
+        "p3": "Diseño del arte: assets (GIMP) y mapas (Tile)",
+        "p4": "Diseño y desarrollo del HUD",
+        "p5": "Diseño y desarrollo de la tienda del juego",
+        "p6": "Movimiento y seguimiento de la cámara"
+    },
+    "mobbler": {
+        "p1": "Proyecto ABP (aprendizaje basado en proyectos) realizado en 4º de carrera.",
+        "p2": "Aplicación basada en diseño de interiores 3D para empresas dedicadas a la venta de mobiliario.",
+        "p3": "Rol:",
+        "p4": "Diseño de interfaces de alta fidelidad (Figma)",
+        "p5": "Implementación de interfaces",
+        "p6": "Desarrollo de un chatbot (RASA)",
+        "p7": "Modelado 3D (Blender)",
+        "p8": "Motor gráfico (Threejs/WebGL)",
+        "p9": "Creación de script generador de datos sintéticos",
+        "p10": "Conexión de la base de datos y API REST",
+        "p11": "Desarrollo de dashboards (PowerBI)"
     }
 }
