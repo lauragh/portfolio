@@ -1,0 +1,22 @@
+{
+    "icons": {
+        "cv": "Resume",
+        "projects": "Projects",
+        "linkedin": "LinkedIn",
+        "email": "Email",
+        "about": "About me"
+    },
+    "avatarText": "Hi, I'm Laura. I'm currently working as FullStack developer at BeXReal",
+    "languages": {
+        "en": "English",
+        "es": "Spanish"
+    },
+    "about": {
+        "p1": "I'm a web developer, passionate about creating interactive and useful applications, always focusing on the user experience.",
+        "p2": "In my free time, I enjoy activities that feed my creativity and well-being. I love immersing myself in books and letting my imagination fly while drawing. Additionally, I maintain an active and healthy lifestyle by regularly going to the gym.",
+        "p3": "Since I'm an art and technology lover, projects that incorporate 3D fascinates me. Participating in initiatives that combine creativity and technological innovation fills me with enthusiasm and satisfaction.",
+        "p4": "One of my professional goals is to become a Team Leader. I aspire to lead and collaborate with other passionate professionals and create impactful solutions.",
+        "p6": "I'm excited about the future opportunities that await me, and I continue to learn and grow in this thrilling field of technology and web development. Always in pursuit of new challenges and enriching experiences!"
+    }
+
+}
