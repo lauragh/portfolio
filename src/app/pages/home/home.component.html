@@ -8,15 +8,20 @@
     <section>
         <div class="icons d-flex row justify-content-around">
             <div [ngClass]="hiddenIcons ? 'disappear-l' : ''" class="col">
-                <div (click)="openResume()" (mouseover)="show(0)" (mouseout)="hide(0)" class="icon cursor-pointer">
+                <div (click)="showOptions()" (mouseover)="show(0)" (mouseout)="hide(0)" class="iconImg icon cursor-pointer">
                     <img src="assets/img/cv.svg">
                 </div>
                 <div #title class="cursor-pointer mt-2 hidden title">
                     {{translate.icons.cv}}
                 </div>
+                <section #options class="opcionModal esconder">
+                    <div class="opcion">Inglés</div>
+                    <hr>
+                    <div class="opcion">Español</div>
+                </section>
             </div>
             <div [ngClass]="hiddenIcons ? 'disappear-l' : ''" class="col">
-                <div (click)="goTo()" (mouseover)="show(1)" (mouseout)="hide(1)" class="icon cursor-pointer">
+                <div (click)="goTo()" (mouseover)="show(1)" (mouseout)="hide(1)" class="iconImg icon cursor-pointer">
                     <img src="assets/img/projects.svg">
                 </div>
                 <div #title class="cursor-pointer mt-2 hidden title">
@@ -24,7 +29,7 @@
                 </div>
             </div>
             <div [ngClass]="hiddenIcons ? 'disappear-l' : ''" class="col">
-                <div (click)="hideIcons('about', true); setText(true)" (mouseover)="show(2)" (mouseout)="hide(2)" class="icon cursor-pointer">
+                <div (click)="hideIcons('about', true); setText(true)" (mouseover)="show(2)" (mouseout)="hide(2)" class="iconImg icon cursor-pointer">
                     <img src="assets/img/waving-hand.svg">
                 </div>
                 <div #title class="cursor-pointer mt-2 hidden title">
@@ -32,7 +37,7 @@
                 </div>
             </div>
             <div [ngClass]="hiddenIcons ? 'disappear-r' : ''" class="col">
-                <div (click)="openLinkedin()" (mouseover)="show(3)" (mouseout)="hide(3)" class="icon cursor-pointer">
+                <div (click)="openLinkedin()" (mouseover)="show(3)" (mouseout)="hide(3)" class="iconImg icon cursor-pointer">
                     <img src="assets/img/linkedin.svg">
                 </div>
                 <div #title class="cursor-pointer mt-2 hidden title">
@@ -40,7 +45,7 @@
                 </div>
             </div>
             <div [ngClass]="hiddenIcons ? 'disappear-r' : ''" class="col">
-                <div #email (click)="copyEmail()" (mouseover)="show(4)" (mouseout)="hide(4)" class="icon cursor-pointer">
+                <div #email (click)="copyEmail()" (mouseover)="show(4)" (mouseout)="hide(4)" class="iconImg icon cursor-pointer">
                     <img src="assets/img/email.svg">
                 </div>
                 <div #title class="cursor-pointer mt-2 hidden title">

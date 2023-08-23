@@ -62,7 +62,7 @@ main {
     font-weight: 500;
 }
 
-
+/* Menu icons */
 .icons {
     position: absolute;
     z-index: 1;
@@ -94,8 +94,7 @@ main {
     margin: auto;
 }
 
-
-.icons div div:hover:nth-child(1) {
+.iconImg:hover {
     background-color: rgb(255, 255, 255);
     border: 5px rgba(71, 50, 50, 0.7) solid;
 }
@@ -151,7 +150,6 @@ main {
       pointer-events: none;
     }
 }
-  
 
 .close {
     left: 50%;
@@ -160,4 +158,33 @@ main {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
+}
+
+/* language resume */
+.opcionModal {
+    background-color: white;
+    position: absolute;
+    left: 80px;
+    top: 60px;
+    box-shadow: 0px 3px 5px 0px rgb(0 0 0 / 35%);
+    border-radius: 5px;
+}
+
+.opcion {
+    padding: 8px 10px;
+    cursor: pointer;
+    background-clip: padding-box;
+}
+
+.opcion:hover {
+    background-color: var(--grayLight);
+}
+
+hr {
+    margin: 0;
+  }
+  
+  
+.esconder {
+    visibility: hidden;
 }

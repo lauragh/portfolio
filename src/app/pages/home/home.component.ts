@@ -16,9 +16,11 @@ export class HomeComponent implements OnInit {
   translate: any = spanish;
   hiddenIcons: boolean = false;
   about: boolean = true;
+  opVisible: any;
 
   @ViewChildren('title') title!: QueryList<any>;
   @ViewChild('email') email!: ElementRef;
+  @ViewChild('options') options!: ElementRef;
 
   ngOnInit(): void {
     this.getLanguage();
@@ -134,8 +136,13 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  openResume(){
-    window.open('assets/cv_laura.pdf', '_blank');
+  openResume(language: string){
+    if(language === 'es'){
+      window.open('assets/cv_lauragh.pdf', '_blank');
+    }
+    else{
+      window.open('assets/cv_lauragh_en.pdf', '_blank');
+    }
   }
 
   openLinkedin(){
@@ -166,5 +173,39 @@ export class HomeComponent implements OnInit {
   goTo(){
     this.router.navigate(['/projects']);
   }
+
+  showOptions(){
+    this.renderer2.removeClass(this.options.nativeElement, 'esconder');
+    this.renderer2.addClass(this.options.nativeElement, 'ver');
+
+    setTimeout(() =>{
+      this.checkInOut();
+    }, 200);
+  }
+
+  listenerFn!: () => void;
+
+  checkInOut(){
+    this.listenerFn = this.renderer2.listen('document', 'click', (e: Event) =>{
+      if (e.target === this.options.nativeElement.firstElementChild) {
+        this.openResume('en');
+        this.renderer2.removeClass(this.options.nativeElement, 'ver');
+        this.renderer2.addClass(this.options.nativeElement, 'esconder');
+        this.listenerFn();
+      }
+      else if(e.target === this.options.nativeElement.children[2]){
+        this.openResume('es');
+        this.renderer2.removeClass(this.options.nativeElement, 'ver');
+        this.renderer2.addClass(this.options.nativeElement, 'esconder');
+        this.listenerFn();
+      }
+      else {
+        this.renderer2.removeClass(this.options.nativeElement, 'ver');
+        this.renderer2.addClass(this.options.nativeElement, 'esconder');
+        this.listenerFn();
+      }
+    });
+  }
+
 
 }
