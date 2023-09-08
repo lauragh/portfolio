@@ -50,5 +50,6 @@
         "game": "2D Videogame",
         "mobbler": "3D Designing room"
     },
-    "back": "Go back"
+    "back": "Go back",
+    "code": "See source code"
 }

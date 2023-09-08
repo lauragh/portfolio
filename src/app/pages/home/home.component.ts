@@ -145,6 +145,10 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  openCode(){
+    window.open('https://github.com/lauragh/portfolio', '_blank');
+  }
+
   openLinkedin(){
     window.open('https://www.linkedin.com/in/laura-garc%C3%ADa-hern%C3%A1ndez-4922251b0/', '_blank');
   }

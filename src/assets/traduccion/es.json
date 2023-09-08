@@ -51,5 +51,6 @@
         "game": "Videojuego 2D",
         "mobbler": "Diseño de habitaciones 3D"
     },
-    "back": "Ir atrás"
+    "back": "Ir atrás",
+    "code": "Ver código fuente"
 }

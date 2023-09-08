@@ -182,9 +182,14 @@ main {
 
 hr {
     margin: 0;
-  }
-  
+}
   
 .esconder {
     visibility: hidden;
+}
+
+.code {
+    bottom: 20px;
+    right: 40px;
+    width: 35px;
 }
