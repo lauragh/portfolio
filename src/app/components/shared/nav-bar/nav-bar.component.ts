@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
+import * as english from '../../../../assets/traduccion/en.json';
+import * as spanish from '../../../../assets/traduccion/es.json';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,6 +11,7 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class NavBarComponent implements OnInit {
   @ViewChild('idioma', { static: true }) idioma!: ElementRef;
+  translate: any = spanish;
 
   ngOnInit(): void {
     const storedLanguage = localStorage.getItem('idioma');
@@ -16,7 +19,6 @@ export class NavBarComponent implements OnInit {
     if (storedLanguage) {
       this.idioma.nativeElement.value = storedLanguage;
     }
-
     this.cambioIdioma();
 
   }
@@ -33,6 +35,7 @@ export class NavBarComponent implements OnInit {
 
     if (!storedLanguage || storedLanguage !== selectedLanguage) {
       localStorage.setItem('idioma', selectedLanguage);
+      selectedLanguage === 'en' ? this.translate = english : this.translate = spanish;
       const isHomePage = this.router.url === '/';
       
       this.dataService.textG

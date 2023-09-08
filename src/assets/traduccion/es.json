@@ -45,5 +45,11 @@
         "p9": "Creación de script generador de datos sintéticos",
         "p10": "Conexión de la base de datos y API REST",
         "p11": "Desarrollo de dashboards (PowerBI)"
-    }
+    },
+    "projects": {
+        "cobli": "Aplicación web para daltónicos",
+        "game": "Videojuego 2D",
+        "mobbler": "Diseño de habitaciones 3D"
+    },
+    "back": "Ir atrás"
 }

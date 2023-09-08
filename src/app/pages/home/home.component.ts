@@ -80,7 +80,7 @@ export class HomeComponent implements OnInit {
         }
         else {
           setTimeout(() => {
-            console.log(currentLetterIndex);
+            // console.log(currentLetterIndex);
             if(currentLetterIndex === 20){
               div.textContent = '';
             }

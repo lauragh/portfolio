@@ -2,39 +2,41 @@
 <div class="d-flex justify-content-center">
     <section class="position-absolute">
         <ng-container *ngIf="page === 'cobli'">
-            <app-cobli></app-cobli>
+            <app-cobli [translate]="translate"></app-cobli>
         </ng-container>
         <ng-container *ngIf="page === 'rains-of-rhodianur'">
-            <app-game></app-game>
+            <app-game [translate]="translate"></app-game>
         </ng-container>
         <ng-container *ngIf="page === 'mobbler'">
-            <app-mobbler></app-mobbler>
+            <app-mobbler [translate]="translate"></app-mobbler>
         </ng-container>
     </section>
     <section #menu class="contenedor">
-        <div #op [ngClass]="{'selected': page === 'cobli'}" class="container cursor-pointer justify-content-center d-flex" (click)="goTo('cobli')">
+        <div #op [ngClass]="{'selected': page === 'cobli'}" class="container cursor-pointer justify-content-center d-flex" (click)="openContent('cobli')">
             <img [ngClass]="{'filterGray': page && page !== 'cobli'}" src="assets/img/projects/cobli.png">
             <div class="overlay">
                 <div class="text">
-                    Aplicación web para daltónicos
+                    {{translate.projects.cobli}}
                 </div>
             </div>
         </div>
-        <div #op [ngClass]="{'selected': page === 'rains-of-rhodianur'}" class="container cursor-pointer justify-content-center d-flex" (click)="goTo('rains-of-rhodianur')">
+        <div #op [ngClass]="{'selected': page === 'rains-of-rhodianur'}" class="container cursor-pointer justify-content-center d-flex" (click)="openContent('rains-of-rhodianur')">
             <img [ngClass]="{'filterGray': page && page !== 'rains-of-rhodianur'}" src="assets/img/projects/game.png">
             <div class="overlay">
                 <div class="text">
-                    2D Videogame
+                    {{translate.projects.game}}
                 </div>
             </div>
         </div>
-        <div #op [ngClass]="{'selected': page === 'mobbler'}" class="container cursor-pointer justify-content-center d-flex" (click)="goTo('mobbler')">
+        <div #op [ngClass]="{'selected': page === 'mobbler'}" class="container cursor-pointer justify-content-center d-flex" (click)="openContent('mobbler')">
             <img [ngClass]="{'filterGray': page && page !== 'mobbler'}" src="assets/img/projects/mobbler.png">
             <div class="overlay">
                 <div class="text">
-                    Diseño de habitaciones 3D
+                    {{translate.projects.mobbler}}
                 </div>
             </div>
         </div>
     </section>
+    <img (click)="goBack()" title="{{translate.back}}" class="cursor-pointer back position-absolute" src="assets/img/back.svg">
+
 </div>

@@ -44,6 +44,11 @@
         "p9": "Creation of a synthetic data generator script",
         "p10": "Database and REST API connection",
         "p11": "Development of dashboards (Power BI)"
-    }
-
+    },
+    "projects": {
+        "cobli": "Colorblindness Web Application",
+        "game": "2D Videogame",
+        "mobbler": "3D Designing room"
+    },
+    "back": "Go back"
 }
