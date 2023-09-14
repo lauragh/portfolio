@@ -7,12 +7,14 @@
     </section>
     <section>
         <div class="icons d-flex row justify-content-around">
-            <div [ngClass]="hiddenIcons ? 'disappear-l' : ''" class="col">
+            <div [ngClass]="hiddenIcons ? 'disappear-l' : ''" class="col position-relative">
                 <div (click)="showOptions()" (mouseover)="show(0)" (mouseout)="hide(0)" class="iconImg icon cursor-pointer">
                     <img src="assets/img/cv.svg">
                 </div>
-                <div #title class="cursor-pointer mt-2 hidden title">
-                    {{translate.icons.cv}}
+                <div [ngClass]="isMobile ? 'divEnd' : ''">
+                    <div [ngClass]="(!isMobile || (isMobile && hiddenIcons)) ? 'hidden' : ''" #title class="cursor-pointer mt-2 title">
+                        {{translate.icons.cv}}
+                    </div>
                 </div>
                 <section #options class="opcionModal esconder">
                     <div class="opcion">{{translate.languages.en}}</div>
@@ -20,36 +22,44 @@
                     <div class="opcion">{{translate.languages.es}}</div>
                 </section>
             </div>
-            <div [ngClass]="hiddenIcons ? 'disappear-l' : ''" class="col">
+            <div [ngClass]="hiddenIcons ? 'disappear-l' : ''" class="col position-relative">
                 <div (click)="goTo()" (mouseover)="show(1)" (mouseout)="hide(1)" class="iconImg icon cursor-pointer">
                     <img src="assets/img/projects.svg">
                 </div>
-                <div #title class="cursor-pointer mt-2 hidden title">
-                    {{translate.icons.projects}}
+                <div [ngClass]="isMobile ? 'divEnd' : ''">
+                    <div [ngClass]="(!isMobile || (isMobile && hiddenIcons)) ? 'hidden' : ''" #title class="cursor-pointer mt-2 title">
+                        {{translate.icons.projects}}
+                    </div>
                 </div>
             </div>
-            <div [ngClass]="hiddenIcons ? 'disappear-l' : ''" class="col">
+            <div [ngClass]="hiddenIcons ? 'disappear-l' : ''" class="col position-relative">
                 <div (click)="hideIcons('about', true); setText(true)" (mouseover)="show(2)" (mouseout)="hide(2)" class="iconImg icon cursor-pointer">
                     <img src="assets/img/waving-hand.svg">
                 </div>
-                <div #title class="cursor-pointer mt-2 hidden title">
-                    {{translate.icons.about}}
+                <div [ngClass]="isMobile ? 'divEnd' : ''">
+                    <div [ngClass]="(!isMobile || (isMobile && hiddenIcons)) ? 'hidden' : ''" #title class="cursor-pointer mt-2 title">
+                        {{translate.icons.about}}
+                    </div>
                 </div>
             </div>
-            <div [ngClass]="hiddenIcons ? 'disappear-r' : ''" class="col">
+            <div [ngClass]="hiddenIcons ? 'disappear-r' : ''" class="col position-relative">
                 <div (click)="openLinkedin()" (mouseover)="show(3)" (mouseout)="hide(3)" class="iconImg icon cursor-pointer">
                     <img src="assets/img/linkedin.svg">
                 </div>
-                <div #title class="cursor-pointer mt-2 hidden title">
-                    {{translate.icons.linkedin}}
+                <div [ngClass]="isMobile ? 'divEnd' : ''">
+                    <div [ngClass]="(!isMobile || (isMobile && hiddenIcons)) ? 'hidden' : ''" #title class="cursor-pointer mt-2 title">
+                        {{translate.icons.linkedin}}
+                    </div>
                 </div>
             </div>
-            <div [ngClass]="hiddenIcons ? 'disappear-r' : ''" class="col">
+            <div [ngClass]="hiddenIcons ? 'disappear-r' : ''" class="col position-relative">
                 <div #email (click)="copyEmail()" (mouseover)="show(4)" (mouseout)="hide(4)" class="iconImg icon cursor-pointer">
                     <img src="assets/img/email.svg">
                 </div>
-                <div #title class="cursor-pointer mt-2 hidden title">
-                    {{translate.icons.email}}
+                <div [ngClass]="isMobile ? 'divEnd' : ''">
+                    <div [ngClass]="(!isMobile || (isMobile && hiddenIcons)) ? 'hidden' : ''" #title class="cursor-pointer mt-2 title">
+                        {{translate.icons.email}}
+                    </div>
                 </div>
             </div>
         </div>

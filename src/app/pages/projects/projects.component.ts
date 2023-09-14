@@ -14,6 +14,7 @@ export class ProjectsComponent implements OnInit{
   page: string = '';
   idioma!: string;
   translate: any = spanish;
+  isMobile: boolean = false;
 
   ngOnInit(): void {
     this.getLanguage();
@@ -36,6 +37,12 @@ export class ProjectsComponent implements OnInit{
         this.renderer2.addClass(op.nativeElement, 'op');
       }
     }, 500);
+  }
+
+  checkDevice(){
+    if (window.innerWidth <= 768) {
+      this.isMobile = true;
+    }
   }
   
   getLanguage(){

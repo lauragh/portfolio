@@ -6,4 +6,14 @@ section {
     padding: 20px;
     border-radius: 10px;
     z-index: 6;
+    /* max-width: 600px; */
+}
+
+@media (max-width: 768px) {
+    section {
+        min-width: 375px;
+        height: 566px;
+        overflow-y: auto;
+        top: 43%;
+    }
 }

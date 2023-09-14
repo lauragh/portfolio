@@ -3,7 +3,7 @@
     position: absolute;
     background: #ffd6e2;  
     background: -webkit-linear-gradient(to left, #ffffff, #ffd6e2);  
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     z-index: -2;
 }

@@ -17,12 +17,14 @@ export class HomeComponent implements OnInit {
   hiddenIcons: boolean = false;
   about: boolean = true;
   opVisible: any;
+  isMobile: boolean = false;
 
   @ViewChildren('title') title!: QueryList<any>;
   @ViewChild('email') email!: ElementRef;
   @ViewChild('options') options!: ElementRef;
 
   ngOnInit(): void {
+    this.checkDevice();
     this.getLanguage();
     setTimeout(() => {
       this.typingEffect();
@@ -37,6 +39,11 @@ export class HomeComponent implements OnInit {
   ){
   }
 
+  checkDevice(){
+    if (window.innerWidth <= 768) {
+      this.isMobile = true;
+    }
+  }
 
   getLanguage(){
     this.dataService.idiomaG.pipe(
@@ -114,8 +121,10 @@ export class HomeComponent implements OnInit {
   }
 
   hide(position: number){
-    this.renderer2.removeClass(this.title.get(position).nativeElement, 'visible');
-    this.renderer2.addClass(this.title.get(position).nativeElement, 'hidden');
+    if(!this.isMobile){
+      this.renderer2.removeClass(this.title.get(position).nativeElement, 'visible');
+      this.renderer2.addClass(this.title.get(position).nativeElement, 'hidden');
+    }
   }
   
   hideIcons(element: string, hide: boolean){
@@ -128,6 +137,7 @@ export class HomeComponent implements OnInit {
       if(hide){
         this.about = false;
         this.hiddenIcons = true;
+        console.log(this.hiddenIcons, this.isMobile);
       }
       else {
         this.about = true;
@@ -159,10 +169,22 @@ export class HomeComponent implements OnInit {
     const mensaje = document.createElement("div");
     const elemento = this.email.nativeElement;
 
-    mensaje.innerText = "Email copiado al portapapeles";
+    if(this.idioma === 'es'){
+      mensaje.innerText = "Email copiado!";
+    }
+    else{
+      mensaje.innerText = "Email copied!";
+
+    }
     mensaje.style.position = "absolute";
-    mensaje.style.top = `${elemento.getBoundingClientRect().top - 50}px`;
-    mensaje.style.left = `${elemento.getBoundingClientRect().left}px`;
+    if(this.isMobile){
+      mensaje.style.top = `${elemento.getBoundingClientRect().top + 70}px`;
+      mensaje.style.left = `${elemento.getBoundingClientRect().left}px`;
+    }
+    else{
+      mensaje.style.top = `${elemento.getBoundingClientRect().top - 50}px`;
+      mensaje.style.left = `${elemento.getBoundingClientRect().left}px`;
+    }
     mensaje.style.padding = "5px 10px";
     mensaje.style.background = "rgba(0, 0, 0, 0.8)";
     mensaje.style.color = "#fff";

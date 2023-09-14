@@ -41,7 +41,7 @@ main {
 #wordSection {
     position: relative;
     background-color: white;
-    width: 500px;
+    max-width: 500px;
     border-radius: 15px;
     padding: 30px;
     position: absolute;
@@ -69,7 +69,7 @@ main {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 600px;
+    max-width: 600px;
 }
 
 .icon {
@@ -192,4 +192,64 @@ hr {
     bottom: 20px;
     right: 40px;
     width: 35px;
+}
+
+.divEnd {
+    width: 120px;
+    height: 50px;
+    justify-content: end;
+    display: flex;
+    left: -30%;
+    position: absolute;
+    top: 0;
+}
+
+
+/* Estilos para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .icons {
+        max-width: 600px;
+        min-height: 500px;
+        left: 65%;
+    }
+
+    .icons div div img {
+        width: 100%;
+    }
+
+    .icons div:nth-child(1) div:nth-child(1) img{
+        width: 100%;
+    }
+
+    .col {
+        max-height: 80px !important;
+        min-width: 200px;
+    }
+
+    #word {
+        font-size: 14px;
+    }
+
+    .code {
+        width: 25px;
+    }
+
+    #avatar {
+        width: 40%;
+    }
+
+    #wordSection {
+        left: 35%;
+    }
+
+    .opcionModal {
+        left: 70%;
+        top: 0;
+    }
+
+    .close {
+        bottom: 15%;
+    }
+
+
 }
