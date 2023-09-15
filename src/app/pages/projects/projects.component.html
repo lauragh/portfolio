@@ -11,7 +11,7 @@
             <app-mobbler [translate]="translate"></app-mobbler>
         </ng-container>
     </section>
-    <section [ngClass]="(isMobile && page) ? 'disappear-l' : 'reappear-l'" #menu class="contenedor">
+    <section [ngClass]="{'disappear-l': (isMobile && page), 'reappear-l': (!isMobile && !page)}" #menu class="contenedor">
         <div #op [ngClass]="{'selected': page === 'cobli'}" class="container cursor-pointer justify-content-center d-flex" (click)="openContent('cobli')">
             <img [ngClass]="{'filterGray': page && page !== 'cobli'}" src="assets/img/projects/cobli.png">
             <div class="overlay">
