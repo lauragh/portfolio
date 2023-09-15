@@ -30,16 +30,16 @@
                           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
                         </div>
                         <div class="carousel-inner">
-                          <div class="carousel-item active">
+                          <div (click)="zoomInPic('mobbler1')" class="carousel-item active">
                             <img src="assets/img/projects/mobbler1.JPG" class="d-block w-100" alt="interfaz Mobbler 1">
                           </div>
-                          <div class="carousel-item">
+                          <div (click)="zoomInPic('mobbler2')" class="carousel-item">
                             <img src="assets/img/projects/mobbler2.JPG" class="d-block w-100" alt="interfaz Mobbler 2">
                           </div>
-                          <div class="carousel-item">
+                          <div (click)="zoomInPic('mobbler3')" class="carousel-item">
                             <img src="assets/img/projects/mobbler3.JPG" class="d-block w-100" alt="interfaz Mobbler 3">
                           </div>
-                          <div class="carousel-item">
+                          <div (click)="zoomInPic('mobbler4')" class="carousel-item">
                             <img src="assets/img/projects/mobbler4.JPG" class="d-block w-100" alt="interfaz Mobbler 4">
                           </div>
                         </div>
@@ -55,6 +55,8 @@
                 </section>
             </div>
         </div>
-        
+        <!-- <section class="position-absolute zoom-container">
+          <img #picZoom id="zoom-image" src="assets/img/projects/mobbler1.JPG" alt="Imagen">
+        </section> -->
     </div>
 </section>

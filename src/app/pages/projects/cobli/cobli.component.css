@@ -39,10 +39,11 @@
 
 @media (max-width: 768px) {
     .contenedor {
-        max-height: 70vh;
         max-width: 390px;
         overflow-y: auto;
         overflow-x: auto;
+        height: 80vh;
+
     }
     .paragraph {
         width: 325px;

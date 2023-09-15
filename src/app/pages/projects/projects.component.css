@@ -64,8 +64,9 @@
 
 .menu {
     transform: scale(0.5) translateY(1200px);
-    /* margin-top: 600px; */
     height: max-content;
+    transition: transform 0.3s ease; 
+
 }
 
 .op {
@@ -91,6 +92,48 @@
 }
 
 
+/*Animation*/
+
+.disappear-l {
+    animation: disappearToLeft 2s forwards;
+}
+  
+@keyframes disappearToLeft {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    50% {
+        visibility: hidden;
+        pointer-events: none;
+    }
+    100% {
+        transform: translateX(-800%);
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+.reappear-l {
+    animation: reappearFromLeft 0.5s forwards;
+}
+
+@keyframes reappearFromLeft {
+    0% {
+        transform: translateX(-800%);
+        opacity: 0;
+    }
+    50% {
+        visibility: visible;
+        pointer-events: auto;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
 @media (max-width: 768px) {
     .container {
         width: 380px;
@@ -103,4 +146,5 @@
     .contenedor{
         gap: 0;
     }
+
 }

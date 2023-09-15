@@ -116,8 +116,10 @@ export class HomeComponent implements OnInit {
   }
 
   show(position: number){
-    this.renderer2.removeClass(this.title.get(position).nativeElement, 'hidden');
-    this.renderer2.addClass(this.title.get(position).nativeElement, 'visible');
+    if(!this.isMobile){
+      this.renderer2.removeClass(this.title.get(position).nativeElement, 'hidden');
+      this.renderer2.addClass(this.title.get(position).nativeElement, 'visible');
+    }
   }
 
   hide(position: number){

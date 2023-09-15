@@ -17,6 +17,7 @@ export class ProjectsComponent implements OnInit{
   isMobile: boolean = false;
 
   ngOnInit(): void {
+    this.checkDevice();
     this.getLanguage();
   }
 
@@ -31,12 +32,16 @@ export class ProjectsComponent implements OnInit{
 
   openContent(page: string){
     this.page = page;
-    this.renderer2.addClass(this.menu.nativeElement, 'menu');
-    setTimeout(() => {
-      for(let op of this.op){
-        this.renderer2.addClass(op.nativeElement, 'op');
-      }
-    }, 500);
+
+    console.log(this.page, this.isMobile);
+    if(!this.isMobile){
+      this.renderer2.addClass(this.menu.nativeElement, 'menu');
+      setTimeout(() => {
+        for(let op of this.op){
+          this.renderer2.addClass(op.nativeElement, 'op');
+        }
+      }, 500);
+    }
   }
 
   checkDevice(){
