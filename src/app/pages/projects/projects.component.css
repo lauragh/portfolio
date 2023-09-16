@@ -136,11 +136,12 @@
 
 @media (max-width: 768px) {
     .container {
-        width: 380px;
+        width: 305px;
     }
 
     .back {
         left: 5%;
+        bottom: 5%;
     }
 
     .contenedor{

@@ -31,3 +31,9 @@ nav {
 img {
     width: 24px;
 }
+
+@media (max-width: 768px) {
+    .selector {
+        height: 40px;
+    }
+}
