@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.max-content {
+    width: max-content;
+}

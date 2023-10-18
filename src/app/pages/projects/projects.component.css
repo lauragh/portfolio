@@ -66,7 +66,9 @@
 .menu {
     transform: scale(0.5) translateY(1200px);
     height: max-content;
-    transition: transform 0.3s ease; 
+    /* transition: transform 1s ease; */
+    justify-content: center;
+    display: flex;
 }
 
 .op {
@@ -115,7 +117,7 @@
 }
 
 .reappear-l {
-    animation: reappearFromLeft 0.5s forwards;
+    animation: reappearFromLeft 0.8s forwards;
 }
 
 @keyframes reappearFromLeft {

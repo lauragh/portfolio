@@ -211,29 +211,22 @@ export class HomeComponent implements OnInit {
     }, 200);
   }
 
-  listenerFn!: () => void;
-
-  checkInOut(){
-    this.listenerFn = this.renderer2.listen('document', 'click', (e: Event) =>{
-      if (e.target === this.options.nativeElement.firstElementChild) {
+  checkInOut() {
+    this.renderer2.listen(this.options.nativeElement, 'click', (e: Event) => {
+      if(e.target === this.options.nativeElement.firstElementChild) {
         this.openResume('en');
-        this.renderer2.removeClass(this.options.nativeElement, 'ver');
-        this.renderer2.addClass(this.options.nativeElement, 'esconder');
-        this.listenerFn();
       }
-      else if(e.target === this.options.nativeElement.children[2]){
+      else if (e.target === this.options.nativeElement.children[2]) {
         this.openResume('es');
-        this.renderer2.removeClass(this.options.nativeElement, 'ver');
-        this.renderer2.addClass(this.options.nativeElement, 'esconder');
-        this.listenerFn();
       }
-      else {
-        this.renderer2.removeClass(this.options.nativeElement, 'ver');
-        this.renderer2.addClass(this.options.nativeElement, 'esconder');
-        this.listenerFn();
-      }
+
+      this.renderer2.removeClass(this.options.nativeElement, 'ver');
+      this.renderer2.addClass(this.options.nativeElement, 'esconder');
+      
+      e.stopPropagation();
     });
   }
+  
 
 
 }

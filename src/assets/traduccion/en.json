@@ -46,9 +46,13 @@
         "p11": "Development of dashboards (Power BI)"
     },
     "projects": {
-        "cobli": "Colorblindness Web Application",
+        "cobli": "Colorblindness web app",
         "game": "2D Videogame",
-        "mobbler": "3D Designing room"
+        "mobbler": "3D Designing room",
+        "tiempo": "Forecast weather web app"
+    },
+    "tiempo": {
+        "p1": "Personal project, web app for checking the weather forecast. Provides detailed information about current weather conditions, as well as hourly and weekly forecasts."
     },
     "back": "Go back",
     "code": "See source code"
