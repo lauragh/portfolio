@@ -1,19 +1,15 @@
 section {
-    left: 50%;
-    top: 40%;
-    transform: translate(-50%, -50%);
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     z-index: 6;
-    /* max-width: 600px; */
+    max-width: 800px;
 }
 
 @media (max-width: 768px) {
     section {
-        min-width: 375px;
-        height: 566px;
+        max-width: 390px;
+        height: 580px;
         overflow-y: auto;
-        top: 43%;
     }
 }

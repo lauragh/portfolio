@@ -15,6 +15,14 @@
         </ng-container>
     </section>
     <section [ngClass]="{'disappear-l': (isMobile && page), 'reappear-l': (!isMobile && !page)}" #menu class="contenedor">
+        <div #op [ngClass]="{'selected': page === 'tiempo'}" class="container cursor-pointer justify-content-center d-flex" (click)="openContent('tiempo')">
+            <img [ngClass]="{'filterGray': page && page !== 'tiempo'}" src="assets/img/projects/tiempo.png">
+            <div class="overlay">
+                <div class="text">
+                    {{translate.projects.tiempo}}
+                </div>
+            </div>
+        </div>
         <div #op [ngClass]="{'selected': page === 'cobli'}" class="container cursor-pointer justify-content-center d-flex" (click)="openContent('cobli')">
             <img [ngClass]="{'filterGray': page && page !== 'cobli'}" src="assets/img/projects/cobli.png">
             <div class="overlay">
@@ -36,14 +44,6 @@
             <div class="overlay">
                 <div class="text">
                     {{translate.projects.mobbler}}
-                </div>
-            </div>
-        </div>
-        <div #op [ngClass]="{'selected': page === 'tiempo'}" class="container cursor-pointer justify-content-center d-flex" (click)="openContent('tiempo')">
-            <img [ngClass]="{'filterGray': page && page !== 'tiempo'}" src="assets/img/projects/tiempo.png">
-            <div class="overlay">
-                <div class="text">
-                    {{translate.projects.tiempo}}
                 </div>
             </div>
         </div>

@@ -33,7 +33,6 @@ export class ProjectsComponent implements OnInit{
   openContent(page: string){
     this.page = page;
 
-    console.log(this.page, this.isMobile);
     if(!this.isMobile){
       this.renderer2.addClass(this.menu.nativeElement, 'menu');
       setTimeout(() => {

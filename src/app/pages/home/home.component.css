@@ -125,7 +125,7 @@ main {
         pointer-events: none;
     }
     100% {
-        transform: translateX(-800%);
+        transform: translateX(-100%);
         opacity: 0;
         pointer-events: none;
     }
@@ -145,16 +145,13 @@ main {
         pointer-events: none;
     }
     100% {
-      transform: translateX(800%);
+      transform: translateX(100%);
       opacity: 0;
       pointer-events: none;
     }
 }
 
 .close {
-    left: 50%;
-    bottom: 20%;
-    transform: translate(-50%, -50%);
     background-color: white;
     padding: 20px;
     border-radius: 10px;
@@ -211,6 +208,7 @@ hr {
         max-width: 600px;
         min-height: 500px;
         left: 65%;
+        z-index: 0;
     }
 
     .icons div div img {
@@ -245,10 +243,6 @@ hr {
     .opcionModal {
         left: 70%;
         top: 0;
-    }
-
-    .close {
-        bottom: 15%;
     }
 
 

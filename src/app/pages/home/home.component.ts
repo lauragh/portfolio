@@ -130,16 +130,10 @@ export class HomeComponent implements OnInit {
   }
   
   hideIcons(element: string, hide: boolean){
-    if(element === 'projects'){
-      if(hide){
-
-      }
-    }
-    else{
+    if(element !== 'projects'){
       if(hide){
         this.about = false;
         this.hiddenIcons = true;
-        console.log(this.hiddenIcons, this.isMobile);
       }
       else {
         this.about = true;

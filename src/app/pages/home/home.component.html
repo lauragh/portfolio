@@ -66,8 +66,14 @@
     </section>
 
     <section [hidden]="about" class="fadeInAnimation">
-        <img (click)="hideIcons('about', false); setText(false)" class="position-absolute close cursor-pointer" src="assets/img/cruz.svg">
-        <app-about ></app-about>
+        <div class="justify-content-center d-flex">
+            <div>
+                <app-about></app-about>
+                <div class="d-flex justify-content-center align-items-center">
+                    <img (click)="hideIcons('about', false); setText(false)" class="close cursor-pointer mt-3" src="assets/img/cruz.svg">
+                </div>
+            </div>
+        </div>
     </section>
 
     <section>
