@@ -44,7 +44,8 @@
         "p8": "Motor gráfico (Threejs/WebGL)",
         "p9": "Creación de script generador de datos sintéticos",
         "p10": "Conexión de la base de datos y API REST",
-        "p11": "Desarrollo de dashboards (PowerBI)"
+        "p11": "Desarrollo de dashboards (PowerBI)",
+        "p12": "Hasta el minuto 12:10"
     },
     "tiempo": {
         "p1": "Proyecto personal, app web para consultar el pronóstico del tiempo. Proporciona información detallada sobre las condiciones climáticas actuales, así como pronósticos horarios y semanales."

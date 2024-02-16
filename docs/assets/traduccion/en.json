@@ -20,7 +20,7 @@
     },
     "repository": "Repository",
     "cobli": {
-        "p1": "Cobli is my Bachelor's Thesis project, and it's a web application designed to assist users with color blindness who are involved in the world of art. The aim of this app is to facilitate various processes such as color analysis, palette creation, and guidance on color tones, in a more accessible and straightforward way.",
+        "p1": "Cobli is my Degree's Thesis project and it's a web application designed to help colorblind users who are involved in the world of art. The goal of this app is to make processes easier such as color analysis, palette creation, and guidance on color shades, in a more accessible and handy way.",
         "p2": "This tool is not limited to individuals with color blindness. Any user can utilize this platform to make the most of its features and benefits.",
         "p3": "Documentation"
     },
@@ -43,7 +43,8 @@
         "p8": "Graphics engine (Three.js/WebGL)",
         "p9": "Creation of a synthetic data generator script",
         "p10": "Database and REST API connection",
-        "p11": "Development of dashboards (Power BI)"
+        "p11": "Development of dashboards (Power BI)",
+        "p12": "Until minute 12:10"
     },
     "projects": {
         "cobli": "Colorblindness web app",
