@@ -6,15 +6,13 @@ import { CobliComponent } from './pages/projects/cobli/cobli.component';
 import { GameComponent } from './pages/projects/game/game.component';
 import { MobblerComponent } from './pages/projects/mobbler/mobbler.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
+import { WeatherComponent } from './pages/projects/weather/weather.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'projects', component: ProjectsComponent },
-  { path: 'projects/cobli', component: CobliComponent },
-  { path: 'projects/rains-of-rhodianur', component: GameComponent },
-  { path: 'projects/cobli', component: CobliComponent },
-  { path: 'projects/mobbler', component: MobblerComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

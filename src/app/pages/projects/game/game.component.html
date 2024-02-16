@@ -1,8 +1,18 @@
 <section class="contenedor">
     <div>
-        <h1>Rains of Rhodianur</h1>
-        <div class="d-flex row justify-content-between mb-2">
-            <div class="max-content">
+        <div class="row align-items-baseline">
+            <div class="col">
+                <h1>Rains of Rhodianur</h1>
+            </div>
+            <div class="col-1 date">
+                2021
+            </div>
+        </div>
+        <iframe class="mb-2" src="https://www.youtube.com/embed/v_R6IdPCWVY" title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        <div [ngClass]="{'row': !isMobile}">
+            <div [ngClass]="{'col me-4': !isMobile}">
                 <p class="paragraph">{{translate.game.p1}}
                     <br>
                     {{translate.game.p2}}
@@ -13,10 +23,23 @@
                     <li>{{translate.game.p5}}</li>
                     <li>{{translate.game.p6}}</li>
                 </ul>
-                <a href="https://github.com/lauragh/Rains-of-Rhodianur">{{translate.repository}}</a>
             </div>
-            <div class="images">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/v_R6IdPCWVY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <div [ngClass]="{'col-4': !isMobile, 'mt-4': isMobile}">
+                <div>
+                    <strong>
+                        Tecnologías:
+                    </strong>
+                    SFML,
+                    C++,
+                    Tile,
+                    GIMP
+                </div>
+                <div>
+                    <strong>
+                        Repositorio:
+                    </strong>
+                    <a target="_blank" href="https://github.com/lauragh/Rains-of-Rhodianur">https://github.com/lauragh/Rains-of-Rhodianur</a>
+                </div>
             </div>
         </div>
     </div>

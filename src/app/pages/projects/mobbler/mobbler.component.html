@@ -1,62 +1,107 @@
 <section class="contenedor">
-    <div>
+  <div>
+    <div class="row align-items-baseline">
+      <div class="col">
         <h1>Mobbler</h1>
-        <div class="d-flex row justify-content-between mb-2">
-            <div class="max-content">
-                <p class="paragraph">{{translate.mobbler.p1}}
-                  {{translate.mobbler.p2}}                    
-                  <br>{{translate.mobbler.p3}} <strong>FullStack</strong>
-                    <br>{{translate.tasks}}
-                </p>
-                <ul>
-                    <li>{{translate.mobbler.p4}}</li>
-                    <li>{{translate.mobbler.p5}}</li>
-                    <li>{{translate.mobbler.p6}}</li>
-                    <li>{{translate.mobbler.p7}}</li>
-                    <li>{{translate.mobbler.p8}}</li>
-                    <li>{{translate.mobbler.p9}}</li>
-                    <li>{{translate.mobbler.p10}}</li>
-                    <li>{{translate.mobbler.p11}}</li>
-                </ul>
-                <a href="https://github.com/lauragh/mobbler_abp">{{translate.repository}}</a>
-            </div>
-            <div class="images">
-                <section title="Interfaces">
-                    <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="true">
-                        <div class="carousel-indicators">
-                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                        </div>
-                        <div class="carousel-inner">
-                          <div class="carousel-item active">
-                            <img src="assets/img/projects/mobbler1.JPG" class="d-block w-100" alt="interfaz Mobbler 1">
-                          </div>
-                          <div class="carousel-item">
-                            <img src="assets/img/projects/mobbler2.JPG" class="d-block w-100" alt="interfaz Mobbler 2">
-                          </div>
-                          <div class="carousel-item">
-                            <img src="assets/img/projects/mobbler3.JPG" class="d-block w-100" alt="interfaz Mobbler 3">
-                          </div>
-                          <div class="carousel-item">
-                            <img src="assets/img/projects/mobbler4.JPG" class="d-block w-100" alt="interfaz Mobbler 4">
-                          </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="visually-hidden">Next</span>
-                        </button>
-                      </div>
-                </section>
-            </div>
-        </div>
-        <!-- <section class="position-absolute zoom-container">
-          <img #picZoom id="zoom-image" src="assets/img/projects/mobbler1.JPG" alt="Imagen">
-        </section> -->
+      </div>
+      <div class="col-1 date">
+        2022
+      </div>
     </div>
+    <div>
+      <iframe class="mb-2" src="https://www.youtube.com/embed/JmGcxpHbcwo?si=732wyJ8TZEQVSJiV"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+        <p class="description"><small>* {{ translate.mobbler.p12 }}</small></p>
+    </div>
+    <div [ngClass]="{'row': !isMobile}">
+      <div [ngClass]="{'col me-4': !isMobile}">
+        <p class="paragraph">
+          {{ translate.mobbler.p1 }}
+          {{ translate.mobbler.p2 }}
+          <br />
+          <br />
+          {{ translate.mobbler.p3 }}
+          <strong>FullStack</strong>
+          <br />
+          {{translate.tasks}}
+        </p>
+        <ul>
+          <li>{{ translate.mobbler.p4 }}</li>
+          <li>{{ translate.mobbler.p5 }}</li>
+          <li>{{ translate.mobbler.p6 }}</li>
+          <li>{{ translate.mobbler.p7 }}</li>
+          <li>{{ translate.mobbler.p8 }}</li>
+          <li>{{ translate.mobbler.p9 }}</li>
+          <li>{{ translate.mobbler.p10 }}</li>
+          <li>{{ translate.mobbler.p11 }}</li>
+        </ul>
+
+        <div class="mt-3">
+          <div class="images mb-2">
+            <section title="Interfaces">
+              <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="true">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                    aria-label="Slide 4"></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="assets/img/projects/mobbler1.JPG" class="d-block w-100" alt="interfaz Mobbler 1" />
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/img/projects/mobbler2.JPG" class="d-block w-100" alt="interfaz Mobbler 2" />
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/img/projects/mobbler3.JPG" class="d-block w-100" alt="interfaz Mobbler 3" />
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/img/projects/mobbler4.JPG" class="d-block w-100" alt="interfaz Mobbler 4" />
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                  data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                  data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+      <div [ngClass]="{'col-4': !isMobile, 'mt-4': isMobile}">
+        <div>
+          <strong>
+            Tecnologías:
+          </strong>
+          Angular v14,
+          Bootstrap,
+          MongoDB,
+          Nodejs,
+          Expressjs,
+          Postman,
+          Ngix,
+          Threejs
+        </div>
+        <div>
+          <strong>
+            Repositorio:
+          </strong>
+          <a target="_blank" href="https://github.com/lauragh/mobbler_abp">https://github.com/lauragh/mobbler_abp</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

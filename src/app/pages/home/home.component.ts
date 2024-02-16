@@ -98,8 +98,10 @@ export class HomeComponent implements OnInit {
         }
       }
       else {
-        const div = document.getElementById("wordSection")!;
-        div.classList.add('fadeOutAnimation');
+        const div = document.getElementById("wordSection");
+        if(div){
+          div.classList.add('fadeOutAnimation');
+        }
         
         setTimeout(() => {
           this.pauseGif();
@@ -112,7 +114,9 @@ export class HomeComponent implements OnInit {
 
   pauseGif(){
     const gifImage = document.getElementById("avatar") as HTMLImageElement;
-    gifImage.src = 'assets/img/avatar.png';
+    if(gifImage){
+      gifImage.src = 'assets/img/avatar.png';
+    }
   }
 
   show(position: number){

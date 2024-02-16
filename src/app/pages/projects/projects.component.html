@@ -1,53 +1,53 @@
 
-<div class="d-flex justify-content-center">
-    <section class="position-absolute">
-        <ng-container *ngIf="page === 'cobli'">
-            <app-cobli [translate]="translate"></app-cobli>
-        </ng-container>
-        <ng-container *ngIf="page === 'rains-of-rhodianur'">
-            <app-game [translate]="translate"></app-game>
-        </ng-container>
-        <ng-container *ngIf="page === 'mobbler'">
-            <app-mobbler [translate]="translate"></app-mobbler>
-        </ng-container>
-        <ng-container *ngIf="page === 'tiempo'">
-            <app-weather [translate]="translate"></app-weather>
-        </ng-container>
-    </section>
-    <section [ngClass]="{'disappear-l': (isMobile && page), 'reappear-l': (!isMobile && !page)}" #menu class="contenedor">
-        <div #op [ngClass]="{'selected': page === 'tiempo'}" class="container cursor-pointer justify-content-center d-flex" (click)="openContent('tiempo')">
-            <img [ngClass]="{'filterGray': page && page !== 'tiempo'}" src="assets/img/projects/tiempo.png">
-            <div class="overlay">
-                <div class="text">
-                    {{translate.projects.tiempo}}
+<div>
+    <div>
+        <section class="position-absolute viewer">
+            <div *ngIf="page" (click)="closePage($event)" class="justify-content-center d-flex align-items-center">
+                <app-cobli *ngIf="page === 'cobli'" [translate]="translate"></app-cobli>
+                <app-game *ngIf="page === 'rains-of-rhodianur'" [translate]="translate"></app-game>
+                <app-mobbler *ngIf="page === 'mobbler'" [translate]="translate"></app-mobbler>
+                <app-weather *ngIf="page === 'tiempo'" [translate]="translate"></app-weather>
+            </div>
+        </section>
+        <section [ngClass]="{'disappear-l': (isMobile && page),  'reappear-l': (!isMobile && !page && menu.classList.contains('disappear-l'))}" #menu class="contenedor">
+            <div #op
+            [ngClass]="{'selected': page === 'tiempo'}"
+            class="container cursor-pointer justify-content-center d-flex"
+            (click)="openContent('tiempo')">
+                <img [ngClass]="{'filterGray': page && page !== 'tiempo'}" src="assets/img/projects/tiempo.png">
+                <div class="overlay">
+                    <div class="text">
+                        {{translate.projects.tiempo}}
+                    </div>
                 </div>
             </div>
-        </div>
-        <div #op [ngClass]="{'selected': page === 'cobli'}" class="container cursor-pointer justify-content-center d-flex" (click)="openContent('cobli')">
-            <img [ngClass]="{'filterGray': page && page !== 'cobli'}" src="assets/img/projects/cobli.png">
-            <div class="overlay">
-                <div class="text">
-                    {{translate.projects.cobli}}
+            <div #op [ngClass]="{'selected': page === 'cobli'}" class="container cursor-pointer justify-content-center d-flex" (click)="openContent('cobli')">
+                <img [ngClass]="{'filterGray': page && page !== 'cobli'}" src="assets/img/projects/cobli.png">
+                <div class="overlay">
+                    <div class="text">
+                        {{translate.projects.cobli}}
+                    </div>
                 </div>
             </div>
-        </div>
-        <div #op [ngClass]="{'selected': page === 'rains-of-rhodianur'}" class="container cursor-pointer justify-content-center d-flex" (click)="openContent('rains-of-rhodianur')">
-            <img [ngClass]="{'filterGray': page && page !== 'rains-of-rhodianur'}" src="assets/img/projects/game.png">
-            <div class="overlay">
-                <div class="text">
-                    {{translate.projects.game}}
+            <div #op [ngClass]="{'selected': page === 'mobbler'}" class="container cursor-pointer justify-content-center d-flex" (click)="openContent('mobbler')">
+                <img [ngClass]="{'filterGray': page && page !== 'mobbler'}" src="assets/img/projects/mobbler.png">
+                <div class="overlay">
+                    <div class="text">
+                        {{translate.projects.mobbler}}
+                    </div>
                 </div>
             </div>
-        </div>
-        <div #op [ngClass]="{'selected': page === 'mobbler'}" class="container cursor-pointer justify-content-center d-flex" (click)="openContent('mobbler')">
-            <img [ngClass]="{'filterGray': page && page !== 'mobbler'}" src="assets/img/projects/mobbler.png">
-            <div class="overlay">
-                <div class="text">
-                    {{translate.projects.mobbler}}
+            <div #op [ngClass]="{'selected': page === 'rains-of-rhodianur'}" class="container cursor-pointer justify-content-center d-flex" (click)="openContent('rains-of-rhodianur')">
+                <img [ngClass]="{'filterGray': page && page !== 'rains-of-rhodianur'}" src="assets/img/projects/game.png">
+                <div class="overlay">
+                    <div class="text">
+                        {{translate.projects.game}}
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <img (click)="goBack()" title="{{translate.back}}" class="cursor-pointer back position-absolute" src="assets/img/back.svg">
 
+        </section>
+    </div>
+    <img (click)="goBack()" title="{{translate.back}}" class="cursor-pointer back " src="assets/img/back.svg">
 </div>
+

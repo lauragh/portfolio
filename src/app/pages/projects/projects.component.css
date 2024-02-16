@@ -62,6 +62,20 @@
     text-align: center;
 }
 
+.viewer {
+    z-index: 2;
+}
+
+.viewer > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 85vh;
+    backdrop-filter: blur(4px); /* Ajusta el valor de desenfoque según tu preferencia */
+    z-index: -1;
+}
+
 
 .menu {
     transform: scale(0.5) translateY(1200px);
@@ -88,8 +102,7 @@
 }
 
 .back {
-    bottom: 50px;
-    left: 80px;
+    margin-left: 4vw;
     width: 35px;
 }
 

@@ -8,6 +8,7 @@ import { GameComponent } from './projects/game/game.component';
 import { HomeComponent } from './home/home.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { WeatherComponent } from './projects/weather/weather.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { WeatherComponent } from './projects/weather/weather.component';
     WeatherComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     AboutComponent,

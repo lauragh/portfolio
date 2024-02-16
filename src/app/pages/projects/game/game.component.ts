@@ -7,11 +7,19 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class GameComponent implements OnInit{
   @Input() translate: any;
-
+  isMobile: boolean = false;
+  
   ngOnInit(): void {
+    this.checkDevice()
   }
 
   constructor(
   ){ }
 
+  checkDevice(){
+    if (window.innerWidth <= 768) {
+      this.isMobile = true;
+      console.log('soy movil')
+    }
+  }
 }
