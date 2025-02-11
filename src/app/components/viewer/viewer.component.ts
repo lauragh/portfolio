@@ -1,7 +1,10 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import * as THREE from 'three';
+import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
+import { Tween, update } from '@tweenjs/tween.js';
 
 @Component({
   selector: 'app-viewer',
@@ -28,16 +31,18 @@ export class ViewerComponent implements OnInit{
 
   ngOnInit(): void {
     this.createScene();
+    this.initializeScrollControls()
   }
 
   private async createScene() {
-    const modelName = 'scene-2.glb';
+    const modelName = 'scene.glb';
 
     this.createBasicScene();
     this.loadModel(modelName);
     this.createLights();
     this.initializeRenderer();
     this.initializeCamera();
+    this.addEventListeners();
     this.animate();
     this.setupResizeListener();
   }
@@ -52,7 +57,7 @@ export class ViewerComponent implements OnInit{
     .setPath( 'assets/hdr/' )
     .load( 'prueba.hdr',  ( texture: THREE.Texture ) => {
       texture.mapping = THREE.EquirectangularReflectionMapping;
-      var toneMappingExposure = 0.7;
+      var toneMappingExposure = 0.5;
       texture.minFilter = THREE.LinearFilter;
       texture.magFilter = THREE.LinearFilter;
       texture.generateMipmaps = false;
@@ -97,7 +102,7 @@ export class ViewerComponent implements OnInit{
   private initializeRenderer(){
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setSize(window.innerWidth, window.innerHeight);
-    this.renderer.setClearColor('lightgray', 1);
+    this.renderer.setClearColor('#EEE6DD', 1);
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     this.renderer.toneMapping = THREE.CineonToneMapping;
@@ -116,7 +121,7 @@ export class ViewerComponent implements OnInit{
     this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
     this.camera.position.z = 50;
     this.camera.position.y = 20;
-    this.camera.lookAt(0, 4, 0);
+    this.camera.lookAt(0, 5, 0);
   }
 
   async createLights(){
@@ -125,8 +130,8 @@ export class ViewerComponent implements OnInit{
     ambientLight.name = 'AmbientLight';
     this.scene.add(ambientLight);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff);
-    directionalLight.position.set(-6, 2, 6);
+    const directionalLight = new THREE.DirectionalLight(0xffeaa0, 2);
+    directionalLight.position.set(5, 10, 5);
     directionalLight.name = 'DirectionalLight';
 
     directionalLight.castShadow = true;
@@ -138,6 +143,16 @@ export class ViewerComponent implements OnInit{
     this.scene.add(directionalLight);
   }
 
+  private addEventListeners() {
+    // this.controls.addEventListener('change', () => {
+      // console.log(`Posición de la cámara: x=${this.camera.position.x}, y=${this.camera.position.y}, z=${this.camera.position.z}`);
+      // console.log(`Target de los controles: x=${this.controls.target.x}, y=${this.controls.target.y}, z=${this.controls.target.z}`);
+    // });
+
+    document.addEventListener('click', () => {
+    });
+  }
+
   private animate() {
     const render = () => {
       this.renderer.render(this.scene, this.camera);
@@ -145,6 +160,7 @@ export class ViewerComponent implements OnInit{
 
     const animateLoop = () => {
       this.AFID = requestAnimationFrame(animateLoop);
+      update();
       render();
     };
 
@@ -159,6 +175,56 @@ export class ViewerComponent implements OnInit{
     };
 
     window.addEventListener('resize', onWindowResize, false);
+  }
+
+  private initializeScrollControls() {
+    let touchStartY = 0;
+    // Scroll en PC
+    window.addEventListener('wheel', (event) => {
+        event.preventDefault();
+        this.handleScroll(event.deltaY);
+    }, { passive: false });
+
+    // Scroll en móviles
+    window.addEventListener('touchstart', (event) => {
+        touchStartY = event.touches[0].clientY;
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (event) => {
+        event.preventDefault();
+        const touchEndY = event.touches[0].clientY;
+        const deltaY = touchStartY - touchEndY;
+        this.handleScroll(deltaY);
+        touchStartY = touchEndY;
+    }, { passive: false });
+
+    this.smoothTransform();
+  }
+
+  private handleScroll(deltaY: number) {
+    this.zoomTarget += deltaY * -0.001;
+    this.zoomTarget = Math.min(Math.max(1, this.zoomTarget), 1.7);
+
+    this.rotationTarget = -this.zoomTarget * 0.2;
+    this.rotationTarget = Math.min(Math.max(-1, this.rotationTarget), 1);
+  }
+
+  private smoothTransform() {
+    requestAnimationFrame(() => this.smoothTransform());
+
+    // Interpolación del zoom
+    this.camera.zoom = THREE.MathUtils.lerp(this.camera.zoom, this.zoomTarget, this.zoomSpeed);
+    if(Math.abs(this.camera.zoom - this.zoomTarget) < 0.001){
+      this.camera.zoom = this.zoomTarget;
+    }
+
+    // Interpolación de la rotación
+    this.camera.rotation.y = THREE.MathUtils.lerp(this.camera.rotation.y, this.rotationTarget, this.rotationSpeed);
+    if(Math.abs(this.camera.rotation.y - this.rotationTarget) < 0.001){
+      this.camera.rotation.y = this.rotationTarget;
+    }
+
+    this.camera.updateProjectionMatrix();
   }
 
 }
