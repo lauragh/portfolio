@@ -1,16 +1,162 @@
-@if(!cargaCompleta){
-  <div class="absolute center">
-    <img src="./assets/img/loader.svg" width="50" alt="">
+<section class="flex flex-col bg-salmon">
+  @if(!cargaCompleta){
+    <div class="absolute center" id="loader">
+      <img src="./assets/img/loader.svg" width="50" alt="loader">
+    </div>
+  }
+  <div class="relative">
+    <header class="fixed top-0 left-0 p-3">
+      <div class="flex pr-5 pl-5 pt-2 pb-2 gap-3 items-center">
+        <a class="p-2" [routerLink]="['']" routerLinkActive="router-link-active">Lgh</a>
+        <a class="p-2" [routerLink]="['']" routerLinkActive="router-link-active">Proyectos</a>
+        <a class="p-2" [routerLink]="['']" routerLinkActive="router-link-active">Sobre mí</a>
+      </div>
+    </header>
+
+    <div class="absolute clouds justify-between">
+      @for (cloud of cloudsSrc; track cloud; let i = $index) {
+        <img #clouds
+
+        alt="cloud" [src]="cloud">
+      }
+    </div>
+    <div id="three-container"></div>
   </div>
-}
-@else {
-  <section class="absolute clouds justify-between">
-    @for (cloud of cloudsSrc; track cloud; let i = $index) {
-      <img #clouds
-
-      alt="cloud" [src]="cloud">
-    }
-  </section>
-
-}
-<div id="three-container"></div>
+  <div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+    <div>
+      hola
+    </div>
+  </div>
+</section>

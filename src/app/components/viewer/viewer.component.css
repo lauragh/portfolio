@@ -1,20 +1,52 @@
-#three-container {
-  width: 100vw;
-  height: 100vh;
+
+section {
+  height: 100%;
 }
 
-.center {
-	display: grid;
+header {
+  width: 100%;
+  z-index: 1;
+}
+
+header div {
+  background-color: white;
+  border-radius: 30px;
+  width: max-content;
+}
+
+header div a {
+  transition: background-color 0.2s ease-in-out, border-radius 0.5s ease-in-out;
+  border-radius: 20px;
+}
+
+header div a:hover  {
+  background-color: rgb(221, 221, 221);
+}
+
+#three-container {
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+#loader {
+  display: grid;
 	place-content: center;
   height: 100%;
   width: 100%;
+  background-color: #FFBCA4;
+  z-index: 2;
+}
+
+.bg-salmon {
+  background-color: #FFBCA4;
 }
 
 .clouds {
   display: grid;
   grid-template-rows: repeat(3, auto);
   grid-template-columns: repeat(4, auto);
-  gap: 80px;
+  gap: 30px;
   height: 100%;
   width: 100%;
   align-items: center;
@@ -77,13 +109,18 @@
 }
 
 .move-right {
-  animation: moveRight 3s ease-in-out;
+  animation: moveRight 3s ease-in-out forwards;
 }
 
 .move-left {
-  animation: moveLeft 3s ease-in-out;
+  animation: moveLeft 3s ease-in-out forwards;
 }
 
+/* .itemMenuShadow {
+  background-color: rgb(192, 192, 192) !important;
+  position: absolute;
+  z-index: -1;
+} */
 
 @keyframes moveRight {
   from {

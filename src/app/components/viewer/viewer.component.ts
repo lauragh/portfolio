@@ -1,29 +1,28 @@
-import { Component, ElementRef, OnInit, QueryList, Renderer2, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, Renderer2, ViewChildren } from '@angular/core';
 import * as THREE from 'three';
-import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
-import { Tween, update } from '@tweenjs/tween.js';
 import { CommonModule } from '@angular/common';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 gsap.registerPlugin(ScrollTrigger);
 
 
 @Component({
   selector: 'app-viewer',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './viewer.component.html',
   styleUrl: './viewer.component.css'
 })
-export class ViewerComponent implements OnInit{
+export class ViewerComponent implements OnInit, AfterViewInit{
   private scene!: THREE.Scene;
   private camera!: THREE.PerspectiveCamera;
   private renderer!: THREE.WebGLRenderer;
   private AFID!: number;
   private raycaster: THREE.Raycaster = new THREE.Raycaster;
+  public divShadow?: HTMLElement;
 
   public cargaCompleta: boolean = false;
   public cloudsSrc = [
@@ -38,29 +37,36 @@ export class ViewerComponent implements OnInit{
   ]
 
   @ViewChildren('clouds') clouds: QueryList<ElementRef> | undefined;
+  @ViewChildren('itemMenu') itemMenu: QueryList<ElementRef> | undefined;
 
   constructor(
     private renderer2: Renderer2
   ){}
 
-  async ngOnInit(): Promise<void> {
+  async ngAfterViewInit(): Promise<void> {
     await this.createScene();
-    this.initializeScrollControls()
+    this.initializeScrollControls();
+  }
+
+  async ngOnInit(): Promise<void> {
+
   }
 
   private async createScene() {
     const modelName = 'plane.glb';
 
-    this.createBasicScene();
-    this.loadModel(modelName);
+    await this.createBasicScene();
+    await this.initializeRenderer();
+    await this.loadModel(modelName);
     this.createLights();
-    this.initializeRenderer();
     this.initializeCamera();
     this.animate();
     this.setupResizeListener();
+    this.clearSky();
+
   }
 
-  private createBasicScene() {
+  private async createBasicScene() {
     this.scene = new THREE.Scene();
     this.addHdrBg();
   }
@@ -69,34 +75,37 @@ export class ViewerComponent implements OnInit{
     new RGBELoader()
     .setPath( 'assets/hdr/' )
     .load( 'prueba.hdr',  ( texture: THREE.Texture ) => {
-      texture.mapping = THREE.EquirectangularReflectionMapping;
-      var toneMappingExposure = 0.5;
-      texture.minFilter = THREE.LinearFilter;
-      texture.magFilter = THREE.LinearFilter;
-      texture.generateMipmaps = false;
+      if(!texture){
+        console.error('HDR texture failed to load');
+      }
+      else {
+        texture.mapping = THREE.EquirectangularReflectionMapping;
+        var toneMappingExposure = 0.5;
+        texture.minFilter = THREE.LinearFilter;
+        texture.magFilter = THREE.LinearFilter;
+        texture.generateMipmaps = false;
 
-      var pmremGenerator = new THREE.PMREMGenerator(this.renderer);
-      pmremGenerator.compileEquirectangularShader();
+        var pmremGenerator = new THREE.PMREMGenerator(this.renderer);
+        pmremGenerator.compileEquirectangularShader();
 
-      var envMap = pmremGenerator.fromEquirectangular(texture).texture;
-      this.scene.environment = envMap;
+        var envMap = pmremGenerator.fromEquirectangular(texture).texture;
+        this.scene.environment = envMap;
 
-      this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      this.renderer.toneMappingExposure = toneMappingExposure;
-      this.renderer.render(this.scene, this.camera);
-
+        this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        this.renderer.toneMappingExposure = toneMappingExposure;
+        this.renderer.render(this.scene, this.camera);
+        texture.mapping = THREE.EquirectangularReflectionMapping;
+      }
+    }, undefined, (error) => {
+      console.error('Error loading HDR texture:', error);
     });
   }
 
-
-  private loadModel(modelName: string): void {
+  private async loadModel(modelName: string): Promise<void> {
     const manager = new THREE.LoadingManager();
-
-    const modelLoaded = new Promise<void>((resolve) => {
-      manager.onLoad = () => {
-        resolve();
-      };
-    });
+    manager.onLoad = () => {
+        console.log('modelo cargado')
+    };
 
     const loader = new GLTFLoader(manager);
     loader.load('assets/models/' + modelName, async (gltf: { scene: THREE.Object3D<THREE.Object3DEventMap>; }) => {
@@ -112,16 +121,11 @@ export class ViewerComponent implements OnInit{
       gltf.scene.position.set(0, 0, 0);
 
       this.scene.add(gltf.scene);
-    });
-
-    modelLoaded.then(() => {
-      if(this.renderer){
-        this.cargaCompleta = true;
-      }
+      this.initializeFlight();
     });
   }
 
-  private initializeRenderer(){
+  private async initializeRenderer() {
     this.renderer = new THREE.WebGLRenderer({ antialias: true });
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.setClearColor('#FFBCA4', 1);
@@ -131,13 +135,18 @@ export class ViewerComponent implements OnInit{
 
     const container = document.getElementById('three-container');
 
-    if(container){
+    if(container) {
       container.appendChild(this.renderer.domElement);
     }
-    else{
+    else {
       console.error("No se encontró el contenedor con id 'three-container'.");
     }
+
+    setTimeout(() => {
+      this.cargaCompleta = true;
+    }, 2000);
   }
+
 
   private initializeCamera() {
     this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -175,7 +184,6 @@ export class ViewerComponent implements OnInit{
 
     const animateLoop = () => {
       this.AFID = requestAnimationFrame(animateLoop);
-      update();
       render();
     };
 
@@ -196,9 +204,7 @@ export class ViewerComponent implements OnInit{
     let touchStartY = 0;
     // Scroll en PC
     window.addEventListener('wheel', (event) => {
-        this.clearSky();
-        this.initializeFlight();
-
+        // this.clearSky();
     }, { passive: false });
 
     // Scroll en móviles
@@ -215,55 +221,20 @@ export class ViewerComponent implements OnInit{
     }, { passive: false });
   }
 
-  private initializeFlight(){
-    const plane = this.scene.getObjectByName('plane');
-
-    console.log(this.scene);
-    if(plane){
-      gsap.to(plane.position, {
-        x: -10,
-        z: -20,
-        y: 0,
-        duration: 6,
-        ease: "power2.inOut"
-      });
-
-      gsap.to(plane.rotation, {
-        y: Math.PI / 4,
-        duration: 2,
-        ease: "power2.inOut"
-      });
-    }
-  }
-
-  // private initializeFlight() {
+  // private initializeFlight(){
   //   const plane = this.scene.getObjectByName('plane');
 
-  //   if (plane) {
-  //     // Movimiento del avión con el scroll
+  //   console.log(this.scene);
+  //   if(plane){
   //     gsap.to(plane.position, {
-  //       scrollTrigger: {
-  //         trigger: '.flight-trigger', // El trigger que activa el movimiento (puede ser cualquier elemento)
-  //         start: 'top bottom', // Inicia cuando el trigger está en la parte inferior de la pantalla
-  //         end: 'bottom top', // Termina cuando el trigger está en la parte superior de la pantalla
-  //         scrub: true, // Hace que la animación se sincronice con el scroll
-  //         markers: true, // (Opcional) Añade marcadores para ver dónde empieza y termina
-  //       },
   //       x: -10,
   //       z: -20,
   //       y: 0,
-  //       duration: 4,
+  //       duration: 6,
   //       ease: "power2.inOut"
   //     });
 
   //     gsap.to(plane.rotation, {
-  //       scrollTrigger: {
-  //         trigger: '.flight-trigger',
-  //         start: 'top bottom',
-  //         end: 'bottom top',
-  //         scrub: true,
-  //         markers: true,
-  //       },
   //       y: Math.PI / 4,
   //       duration: 2,
   //       ease: "power2.inOut"
@@ -271,18 +242,106 @@ export class ViewerComponent implements OnInit{
   //   }
   // }
 
-  private clearSky(){
-    if(this.clouds && this.clouds.length > 0){
-      this.moveCloud(0, 4, 'move-left');
-      this.moveCloud(4, 8, 'move-right');
+  private initializeFlight() {
+    const plane = this.scene.getObjectByName('plane');
+
+    console.log(plane);
+
+    if (plane) {
+      // Movimiento del avión con el scroll
+      gsap.to(plane.position, {
+        scrollTrigger: {
+          trigger: '.flight-trigger',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true,
+          markers: true,
+        },
+        x: -5,
+        z: -5,
+        y: 0,
+        duration: 8,
+        ease: "power2.inOut"
+      });
+
+      gsap.to(plane.rotation, {
+        scrollTrigger: {
+          trigger: '.flight-trigger',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true,
+          markers: true,
+        },
+        y: Math.PI / 4,
+        duration: 2,
+        ease: "power2.inOut"
+      });
     }
   }
 
-  private moveCloud(init: number, end: number, classMovement: string){
-    for(let i = init; i < end; i++){
-      const cloud = this.clouds?.get(i)?.nativeElement;
-      this.renderer2.addClass(cloud, classMovement);
+  private clearSky(){
+    if(this.clouds && this.clouds.length > 0){
+      this.moveCloud(0, 4, '-100%');
+      this.moveCloud(5, 8, '100%');
     }
   }
+
+  private moveCloud(init: number, end: number, movement: string){
+    for(let i = init; i < end; i++){
+      const cloudElement = this.clouds?.toArray()[i]?.nativeElement;
+      gsap.to(cloudElement, {
+        scrollTrigger: {
+          trigger: cloudElement, // Si quieres que cada nube sea un trigger individual
+          start: 'top 0%',   // Inicia cuando la nube entra en la vista
+          end: 'bottom top',     // Termina cuando la nube sale de la vista
+          scrub: true,           // Suaviza la animación con el scroll
+          markers: true,         // Marca las posiciones para depuración
+        },
+        x: movement,                  // Movimiento en el eje X
+        z: 0,                  // Movimiento en el eje Z
+        y: 0,                   // Movimiento en el eje Y (puedes ajustar según desees)
+        duration: 2,            // Duración de la animación
+        ease: 'power2.inOut',   // Easing para la animación
+      });
+    }
+  }
+
+  // private moveClouds(leftMovement: string, rightMovement: string){
+  //   const clouds = this.clouds?.toArray()!;
+
+  //   // Aplicar animación a todas las nubes de una vez, diferenciando el movimiento por índice
+  //   gsap.to(clouds, {
+  //     scrollTrigger: {
+  //       trigger: clouds[0]?.nativeElement, // El primer elemento como trigger general
+  //       start: 'top bottom',
+  //       end: 'bottom top',
+  //       scrub: true,
+  //       markers: true,
+  //     },
+  //     x: (index) => index < 4 ? leftMovement : rightMovement,  // Si el índice es menor que 4, mueve a la izquierda, de lo contrario a la derecha
+  //     z: 0,
+  //     y: 0,
+  //     duration: 2,
+  //     ease: 'power2.inOut',
+  //   });
+  // }
+
+  // public selectItem(index: number | 0){
+  //   const width = `${this.itemMenu?.get(index)?.nativeElement.offsetWidth}px`;
+  //   const height = `${this.itemMenu?.get(index)?.nativeElement.offsetHeight}px`;
+
+  //   console.log({width}, {height});
+
+  //   if(this.divShadow){
+  //     this.renderer2.removeChild(this.itemMenu?.get(index)?.nativeElement, this.divShadow);
+  //   }
+
+  //   this.divShadow = this.renderer2.createElement('div');
+  //   this.renderer2.addClass(this.divShadow, 'itemMenuShadow');
+  //   this.itemMenu?.get(index)?.nativeElement.prepend(this.divShadow!);
+  //   this.renderer2.setStyle(this.divShadow, 'width', width);
+  //   this.renderer2.setStyle(this.divShadow, 'height', height);
+
+  // }
 
 }
