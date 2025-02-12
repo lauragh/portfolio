@@ -5,6 +5,8 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
 import { Tween, update } from '@tweenjs/tween.js';
+import { gsap } from 'gsap';
+
 
 @Component({
   selector: 'app-viewer',
@@ -18,6 +20,7 @@ export class ViewerComponent implements OnInit{
   renderer!: THREE.WebGLRenderer;
   AFID!: number;
   raycaster: THREE.Raycaster = new THREE.Raycaster;
+  manager = new THREE.LoadingManager();
   cargaCompleta: boolean = false;
   zoomTarget: number = 1; // Valor objetivo del zoom
   zoomSpeed: number = 0.2;
@@ -29,20 +32,19 @@ export class ViewerComponent implements OnInit{
     private renderer2: Renderer2
   ){}
 
-  ngOnInit(): void {
-    this.createScene();
+  async ngOnInit(): Promise<void> {
+    await this.createScene();
     this.initializeScrollControls()
   }
 
   private async createScene() {
-    const modelName = 'scene.glb';
+    const modelName = 'plane.glb';
 
     this.createBasicScene();
     this.loadModel(modelName);
     this.createLights();
     this.initializeRenderer();
     this.initializeCamera();
-    this.addEventListeners();
     this.animate();
     this.setupResizeListener();
   }
@@ -75,53 +77,65 @@ export class ViewerComponent implements OnInit{
     });
   }
 
+
   private loadModel(modelName: string): void {
     const manager = new THREE.LoadingManager();
-    manager.onLoad = (() => {
-      this.cargaCompleta = true;
-    })
+
+    const modelLoaded = new Promise<void>((resolve) => {
+      manager.onLoad = () => {
+        resolve();
+      };
+    });
 
     const loader = new GLTFLoader(manager);
     loader.load('assets/models/' + modelName, async (gltf: { scene: THREE.Object3D<THREE.Object3DEventMap>; }) => {
       gltf.scene.traverse(n => {
-        if ((<THREE.Mesh>n).isMesh) {
+        if((<THREE.Mesh>n).isMesh){
           const mesh = n as THREE.Mesh;
           mesh.castShadow = true;
           mesh.receiveShadow = true;
         }
-      })
+      });
 
-      gltf.scene.position.set(0,0,0);
+      gltf.scene.scale.set(1.5, 1.5, 1.5);
+      gltf.scene.position.set(0, 0, 0);
+
       this.scene.add(gltf.scene);
-    },
-    );
+    });
 
-    console.log(this.scene);
+    modelLoaded.then(() => {
+      if(this.renderer){
+        this.cargaCompleta = true;
+      }
+    });
   }
 
   private initializeRenderer(){
-    this.renderer = new THREE.WebGLRenderer();
+    this.renderer = new THREE.WebGLRenderer({ antialias: true });
     this.renderer.setSize(window.innerWidth, window.innerHeight);
-    this.renderer.setClearColor('#EEE6DD', 1);
+    this.renderer.setClearColor('#FFBCA4', 1);
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     this.renderer.toneMapping = THREE.CineonToneMapping;
 
     const container = document.getElementById('three-container');
 
-    if(container) {
+    if(container){
       container.appendChild(this.renderer.domElement);
     }
-    else {
+    else{
       console.error("No se encontró el contenedor con id 'three-container'.");
     }
   }
 
   private initializeCamera() {
-    this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-    this.camera.position.z = 50;
-    this.camera.position.y = 20;
-    this.camera.lookAt(0, 5, 0);
+    this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+    this.camera.position.z = 0;
+    this.camera.position.y = 2;
+    this.camera.position.x = -5;
+
+    this.camera.lookAt(0, 0, 0);
   }
 
   async createLights(){
@@ -141,16 +155,6 @@ export class ViewerComponent implements OnInit{
     directionalLight.shadow.camera.near = 0.5;
     directionalLight.shadow.camera.far = 500;
     this.scene.add(directionalLight);
-  }
-
-  private addEventListeners() {
-    // this.controls.addEventListener('change', () => {
-      // console.log(`Posición de la cámara: x=${this.camera.position.x}, y=${this.camera.position.y}, z=${this.camera.position.z}`);
-      // console.log(`Target de los controles: x=${this.controls.target.x}, y=${this.controls.target.y}, z=${this.controls.target.z}`);
-    // });
-
-    document.addEventListener('click', () => {
-    });
   }
 
   private animate() {
@@ -181,50 +185,45 @@ export class ViewerComponent implements OnInit{
     let touchStartY = 0;
     // Scroll en PC
     window.addEventListener('wheel', (event) => {
-        event.preventDefault();
-        this.handleScroll(event.deltaY);
+        this.initializeFlight();
+
     }, { passive: false });
 
     // Scroll en móviles
     window.addEventListener('touchstart', (event) => {
         touchStartY = event.touches[0].clientY;
+        this.initializeFlight();
+
     }, { passive: true });
 
     window.addEventListener('touchmove', (event) => {
         event.preventDefault();
         const touchEndY = event.touches[0].clientY;
         const deltaY = touchStartY - touchEndY;
-        this.handleScroll(deltaY);
         touchStartY = touchEndY;
     }, { passive: false });
-
-    this.smoothTransform();
   }
 
-  private handleScroll(deltaY: number) {
-    this.zoomTarget += deltaY * -0.001;
-    this.zoomTarget = Math.min(Math.max(1, this.zoomTarget), 1.7);
+  private initializeFlight(){
+    const plane = this.scene.getObjectByName('plane');
 
-    this.rotationTarget = -this.zoomTarget * 0.2;
-    this.rotationTarget = Math.min(Math.max(-1, this.rotationTarget), 1);
-  }
+    console.log(this.scene);
+    if(plane){
+      gsap.to(plane.position, {
+        x: -10,
+        z: -20,
+        y: 0,
+        duration: 4,
+        ease: "power2.inOut"
+      });
 
-  private smoothTransform() {
-    requestAnimationFrame(() => this.smoothTransform());
-
-    // Interpolación del zoom
-    this.camera.zoom = THREE.MathUtils.lerp(this.camera.zoom, this.zoomTarget, this.zoomSpeed);
-    if(Math.abs(this.camera.zoom - this.zoomTarget) < 0.001){
-      this.camera.zoom = this.zoomTarget;
+      gsap.to(plane.rotation, {
+        y: Math.PI / 4,
+        duration: 2,
+        ease: "power2.inOut"
+      });
     }
-
-    // Interpolación de la rotación
-    this.camera.rotation.y = THREE.MathUtils.lerp(this.camera.rotation.y, this.rotationTarget, this.rotationSpeed);
-    if(Math.abs(this.camera.rotation.y - this.rotationTarget) < 0.001){
-      this.camera.rotation.y = this.rotationTarget;
-    }
-
-    this.camera.updateProjectionMatrix();
   }
+
 
 }
