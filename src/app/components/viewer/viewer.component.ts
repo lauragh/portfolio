@@ -1,32 +1,43 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, Renderer2, ViewChildren } from '@angular/core';
 import * as THREE from 'three';
 import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
 import { Tween, update } from '@tweenjs/tween.js';
+import { CommonModule } from '@angular/common';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 
 @Component({
   selector: 'app-viewer',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './viewer.component.html',
   styleUrl: './viewer.component.css'
 })
 export class ViewerComponent implements OnInit{
-  scene!: THREE.Scene;
-  camera!: THREE.PerspectiveCamera;
-  renderer!: THREE.WebGLRenderer;
-  AFID!: number;
-  raycaster: THREE.Raycaster = new THREE.Raycaster;
-  manager = new THREE.LoadingManager();
-  cargaCompleta: boolean = false;
-  zoomTarget: number = 1; // Valor objetivo del zoom
-  zoomSpeed: number = 0.2;
-  rotationTarget: number = 0; // Valor objetivo de la rotación en Y
-  rotationSpeed: number = 0.05;
-  scroll: number = 0;
+  private scene!: THREE.Scene;
+  private camera!: THREE.PerspectiveCamera;
+  private renderer!: THREE.WebGLRenderer;
+  private AFID!: number;
+  private raycaster: THREE.Raycaster = new THREE.Raycaster;
+
+  public cargaCompleta: boolean = false;
+  public cloudsSrc = [
+    'assets/img/cloud1.svg',
+    'assets/img/cloud2.svg',
+    'assets/img/cloud3.svg',
+    'assets/img/cloud4.svg',
+    'assets/img/cloud5.svg',
+    'assets/img/cloud6.svg',
+    'assets/img/cloud8.svg',
+    'assets/img/cloud7.svg',
+  ]
+
+  @ViewChildren('clouds') clouds: QueryList<ElementRef> | undefined;
 
   constructor(
     private renderer2: Renderer2
@@ -185,6 +196,7 @@ export class ViewerComponent implements OnInit{
     let touchStartY = 0;
     // Scroll en PC
     window.addEventListener('wheel', (event) => {
+        this.clearSky();
         this.initializeFlight();
 
     }, { passive: false });
@@ -192,7 +204,6 @@ export class ViewerComponent implements OnInit{
     // Scroll en móviles
     window.addEventListener('touchstart', (event) => {
         touchStartY = event.touches[0].clientY;
-        this.initializeFlight();
 
     }, { passive: true });
 
@@ -213,7 +224,7 @@ export class ViewerComponent implements OnInit{
         x: -10,
         z: -20,
         y: 0,
-        duration: 4,
+        duration: 6,
         ease: "power2.inOut"
       });
 
@@ -225,5 +236,53 @@ export class ViewerComponent implements OnInit{
     }
   }
 
+  // private initializeFlight() {
+  //   const plane = this.scene.getObjectByName('plane');
+
+  //   if (plane) {
+  //     // Movimiento del avión con el scroll
+  //     gsap.to(plane.position, {
+  //       scrollTrigger: {
+  //         trigger: '.flight-trigger', // El trigger que activa el movimiento (puede ser cualquier elemento)
+  //         start: 'top bottom', // Inicia cuando el trigger está en la parte inferior de la pantalla
+  //         end: 'bottom top', // Termina cuando el trigger está en la parte superior de la pantalla
+  //         scrub: true, // Hace que la animación se sincronice con el scroll
+  //         markers: true, // (Opcional) Añade marcadores para ver dónde empieza y termina
+  //       },
+  //       x: -10,
+  //       z: -20,
+  //       y: 0,
+  //       duration: 4,
+  //       ease: "power2.inOut"
+  //     });
+
+  //     gsap.to(plane.rotation, {
+  //       scrollTrigger: {
+  //         trigger: '.flight-trigger',
+  //         start: 'top bottom',
+  //         end: 'bottom top',
+  //         scrub: true,
+  //         markers: true,
+  //       },
+  //       y: Math.PI / 4,
+  //       duration: 2,
+  //       ease: "power2.inOut"
+  //     });
+  //   }
+  // }
+
+  private clearSky(){
+    if(this.clouds && this.clouds.length > 0){
+      this.moveCloud(0, 4, 'move-left');
+      this.moveCloud(4, 8, 'move-right');
+    }
+  }
+
+  private moveCloud(init: number, end: number, classMovement: string){
+    for(let i = init; i < end; i++){
+      const cloud = this.clouds?.get(i)?.nativeElement;
+      this.renderer2.addClass(cloud, classMovement);
+    }
+  }
 
 }

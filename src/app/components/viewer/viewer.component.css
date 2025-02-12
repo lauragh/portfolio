@@ -10,10 +10,6 @@
   width: 100%;
 }
 
-section {
-  background-color: transparent;
-}
-
 .clouds {
   display: grid;
   grid-template-rows: repeat(3, auto);
@@ -22,6 +18,7 @@ section {
   height: 100%;
   width: 100%;
   align-items: center;
+  overflow: hidden;
 }
 
 .clouds img {
@@ -79,6 +76,32 @@ section {
   align-self: end;
 }
 
+.move-right {
+  animation: moveRight 3s ease-in-out;
+}
+
+.move-left {
+  animation: moveLeft 3s ease-in-out;
+}
+
+
+@keyframes moveRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(200%);
+  }
+}
+
+@keyframes moveLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-200%);
+  }
+}
 
 @media (width < 700px) {
   .clouds {
