@@ -22,6 +22,7 @@ body {
     #ff2828,
     #543c35
   );
+  color: var(--letter);
 }
 
 hr {
