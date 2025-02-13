@@ -12,8 +12,11 @@ body {
     #ffBCA4 30%,
     #ff7543,
     #f84d0f,
-    #ff2828
+    #ff2828,
+    #543c35
   );
+}
 
-
+hr {
+  color: lightgray;
 }

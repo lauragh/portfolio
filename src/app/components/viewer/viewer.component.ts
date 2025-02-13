@@ -1,11 +1,14 @@
-import { AfterViewInit, Component, ElementRef, OnInit, QueryList, Renderer2, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnInit, QueryList, Renderer2, ViewChildren, inject } from '@angular/core';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
 import { CommonModule } from '@angular/common';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import * as english from '@en';
+import * as spanish from '@es';
+import { DataService } from '../../services/data.service';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,10 +23,12 @@ export class ViewerComponent implements OnInit, AfterViewInit{
   private scene!: THREE.Scene;
   private camera!: THREE.PerspectiveCamera;
   private renderer!: THREE.WebGLRenderer;
-  private AFID!: number;
-  private raycaster: THREE.Raycaster = new THREE.Raycaster;
-  public divShadow?: HTMLElement;
 
+  private dataService = inject(DataService);
+  private router = inject(Router)
+  private renderer2 = inject(Renderer2)
+
+  public divShadow?: HTMLElement;
   public cargaCompleta: boolean = false;
   public cloudsSrc = [
     'assets/img/cloud1.svg',
@@ -35,12 +40,16 @@ export class ViewerComponent implements OnInit, AfterViewInit{
     'assets/img/cloud8.svg',
     'assets/img/cloud7.svg',
   ]
+  public translate: any = english;
+  public language: string = 'en';
+  public isResumeOptionsOpen: boolean = false;
 
   @ViewChildren('clouds') clouds: QueryList<ElementRef> | undefined;
   @ViewChildren('itemMenu') itemMenu: QueryList<ElementRef> | undefined;
+  @ViewChildren('languageInput') languageInput: ElementRef | undefined;
 
   constructor(
-    private renderer2: Renderer2
+
   ){}
 
   async ngAfterViewInit(): Promise<void> {
@@ -49,7 +58,7 @@ export class ViewerComponent implements OnInit, AfterViewInit{
   }
 
   async ngOnInit(): Promise<void> {
-
+    this.language = this.dataService._language();
   }
 
   private async createScene() {
@@ -177,16 +186,8 @@ export class ViewerComponent implements OnInit, AfterViewInit{
   }
 
   private animate() {
-    const render = () => {
-      this.renderer.render(this.scene, this.camera);
-    }
-
-    const animateLoop = () => {
-      this.AFID = requestAnimationFrame(animateLoop);
-      render();
-    };
-
-    animateLoop();
+    requestAnimationFrame(() => this.animate());
+    this.renderer.render(this.scene, this.camera);
   }
 
   private setupResizeListener() {
@@ -248,7 +249,6 @@ export class ViewerComponent implements OnInit, AfterViewInit{
       // Movimiento del avión con el scroll
       gsap.to(plane.position, {
         scrollTrigger: {
-          trigger: '.flight-trigger',
           start: 'top bottom',
           end: 'bottom top',
           scrub: true,
@@ -262,7 +262,6 @@ export class ViewerComponent implements OnInit, AfterViewInit{
 
       gsap.to(plane.rotation, {
         scrollTrigger: {
-          trigger: '.flight-trigger',
           start: 'top bottom',
           end: 'bottom top',
           scrub: true,
@@ -286,15 +285,45 @@ export class ViewerComponent implements OnInit, AfterViewInit{
       const cloudElement = this.clouds?.toArray()[i]?.nativeElement;
       gsap.to(cloudElement, {
         scrollTrigger: {
-          trigger: '.clouds', // Un contenedor que envuelve todas las nubes
-          start: 'top 0%',   // Empieza cuando el contenedor entra en vista
-          end: 'top -50%',   // Termina cuando el contenedor sale de la vista
-          scrub: 1,          // Sincronización con el scroll
+          trigger: '.clouds',
+          start: 'top 0%',
+          end: 'top -50%',
+          scrub: 1,
         },
         x: movement,
         duration: 4,
         ease: 'power2.inOut',
       });
+    }
+  }
+
+  changeLanguage(input: HTMLSelectElement){
+    this.dataService._language.set(input.value);
+    console.log(this.dataService._language);
+    this.translate = this.dataService._language() === 'en' ? english : spanish;
+  }
+
+  openResumeOptions(){
+    this.isResumeOptionsOpen = true;
+  }
+
+  downloadResume(value: string){
+    if(value === 'es'){
+      window.open('assets/cv_lauragh.pdf', '_blank');
+    }
+    else{
+      window.open('assets/cv_lauragh_en.pdf', '_blank');
+    }
+    this.isResumeOptionsOpen = false;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: Event) {
+    const resumeElement = document.getElementById('resume');
+
+    // Si el clic NO está dentro de #resume, cierra el menú
+    if (resumeElement && !resumeElement.contains(event.target as Node)) {
+      this.isResumeOptionsOpen = false;
     }
   }
 

@@ -16,7 +16,13 @@
     "moduleResolution": "Node",
     "importHelpers": true,
     "target": "ES2022",
-    "module": "ES2022"
+    "module": "ES2022",
+    "resolveJsonModule": true,
+    "baseUrl": "./",
+    "paths": {
+      "@en": ["public/assets/translate/en.json"],
+      "@es": ["public/assets/translate/es.json"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

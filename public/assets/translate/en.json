@@ -1,0 +1,63 @@
+{
+    "sections": {
+        "cv": "Resume",
+        "projects": "Projects",
+        "linkedin": "LinkedIn",
+        "email": "Email",
+        "about": "About me"
+    },
+    "languages": {
+        "en": "EN",
+        "es": "ES"
+    },
+    "resume": {
+      "en": "English",
+      "es": "Spanish"
+    },
+    "about": {
+        "p1": "Hi!",
+        "p2": "I'm Laura",
+        "p3": "A web developer with passion for interactive application development",
+        "p4": "In my free time, I enjoy activities that nourish my creativity and well-being, such as reading, drawing, and staying active at the gym",
+        "p5": "I love combining art and technology, which has led me to become interested in 3D projects. Working on initiatives that merge creativity and technological innovation really motivates me"
+    },
+    "repository": "Repository",
+    "cobli": {
+        "p1": "Cobli is my Degree's Thesis project and it's a web application designed to help colorblind users who are involved in the world of art. The goal of this app is to make processes easier such as color analysis, palette creation, and guidance on color shades, in a more accessible and handy way.",
+        "p2": "This tool is not limited to individuals with color blindness. Any user can utilize this platform to make the most of its features and benefits.",
+        "p3": "Documentation"
+    },
+    "game": {
+        "p1": "2D Metroidvania genre video game developed with SFML, C++.",
+        "p2": "Responsible for:",
+        "p3": "Art design: assets (GIMP) and maps (Tile)",
+        "p4": "HUD design and development",
+        "p5": "Game store design and development",
+        "p6": "Character movement and camera tracking"
+    },
+    "mobbler": {
+        "p1": "Project-based Learning (PBL) project carried out during my 4th year of college.",
+        "p2": "Application based on 3D interior design for companies engaged in furniture sales.",
+        "p3": "Role:",
+        "p4": "Design of high quality mockups (Figma)",
+        "p5": "Interface implementation",
+        "p6": "Development of a chatbot (RASA)",
+        "p7": "3D modeling (Blender)",
+        "p8": "Graphics engine (Three.js/WebGL)",
+        "p9": "Creation of a synthetic data generator script",
+        "p10": "Database and REST API connection",
+        "p11": "Development of dashboards (Power BI)",
+        "p12": "Until minute 12:10"
+    },
+    "projects": {
+        "cobli": "Colorblindness web app",
+        "game": "2D Videogame",
+        "mobbler": "3D Designing room",
+        "tiempo": "Forecast weather web app"
+    },
+    "tiempo": {
+        "p1": "Personal project, web app for checking the weather forecast. Provides detailed information about current weather conditions, as well as hourly and weekly forecasts."
+    },
+    "back": "Go back",
+    "code": "See source code"
+}
