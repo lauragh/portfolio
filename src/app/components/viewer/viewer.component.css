@@ -25,7 +25,7 @@ header div a:hover  {
 
 #three-container {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   overflow-x: hidden;
 }
 
@@ -34,12 +34,17 @@ header div a:hover  {
 	place-content: center;
   height: 100%;
   width: 100%;
-  background-color: #FFBCA4;
   z-index: 2;
+  background-color: #ffBCA4;
 }
 
-.bg-salmon {
-  background-color: #FFBCA4;
+#selfie {
+  width: 400px;
+  min-width: 300px;
+  max-width: 30%;
+  border-radius: 50%;
+  box-shadow: inset 0 0 30px rgb(255 195 195 / 80%);
+  align-self: center;
 }
 
 .clouds {
@@ -108,37 +113,25 @@ header div a:hover  {
   align-self: end;
 }
 
-.move-right {
-  animation: moveRight 3s ease-in-out forwards;
-}
-
-.move-left {
-  animation: moveLeft 3s ease-in-out forwards;
-}
-
 /* .itemMenuShadow {
   background-color: rgb(192, 192, 192) !important;
   position: absolute;
   z-index: -1;
 } */
 
-@keyframes moveRight {
+.show-animation {
+  animation: show 1.2s ease-in-out;
+}
+
+@keyframes show {
   from {
-    transform: translateX(0);
+    opacity: 0;
   }
   to {
-    transform: translateX(200%);
+    opacity: 1;
   }
 }
 
-@keyframes moveLeft {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-200%);
-  }
-}
 
 @media (width < 700px) {
   .clouds {

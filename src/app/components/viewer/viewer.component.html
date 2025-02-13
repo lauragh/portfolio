@@ -1,10 +1,10 @@
-<section class="flex flex-col bg-salmon">
+<section class="flex flex-col bg-salmon items-center">
   @if(!cargaCompleta){
     <div class="absolute center" id="loader">
-      <img src="./assets/img/loader.svg" width="50" alt="loader">
+      <img src="assets/img/loader.svg" width="50" alt="loader">
     </div>
   }
-  <div class="relative">
+  <div class="relative h-screen">
     <header class="fixed top-0 left-0 p-3">
       <div class="flex pr-5 pl-5 pt-2 pb-2 gap-3 items-center">
         <a class="p-2" [routerLink]="['']" routerLinkActive="router-link-active">Lgh</a>
@@ -12,8 +12,7 @@
         <a class="p-2" [routerLink]="['']" routerLinkActive="router-link-active">Sobre mí</a>
       </div>
     </header>
-
-    <div class="absolute clouds justify-between">
+    <div class="absolute clouds justify-between show-animation">
       @for (cloud of cloudsSrc; track cloud; let i = $index) {
         <img #clouds
 
@@ -22,141 +21,11 @@
     </div>
     <div id="three-container"></div>
   </div>
-  <div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
-    </div>
-    <div>
-      hola
+  <div class="h-screen w-full mt-5 flex flex-nowrap p-5 justify-center">
+    <img id="selfie" class="p-5 grow-1 shrink-1 basis-auto" src="assets/img/selfie.jpg">
+    <div class="p-5 grow-1 shrink-1 basis-auto">
+      <h3 class="text-3xl">Sobre mí</h3>
+      <h1 class="text-5xl font-bold">Hola!</h1>
     </div>
   </div>
 </section>

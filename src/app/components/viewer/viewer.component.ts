@@ -128,23 +128,22 @@ export class ViewerComponent implements OnInit, AfterViewInit{
   private async initializeRenderer() {
     this.renderer = new THREE.WebGLRenderer({ antialias: true });
     this.renderer.setSize(window.innerWidth, window.innerHeight);
-    this.renderer.setClearColor('#FFBCA4', 1);
+    this.renderer.setClearColor(0x000000, 0); // El valor '0' significa completamente transparente
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     this.renderer.toneMapping = THREE.CineonToneMapping;
 
     const container = document.getElementById('three-container');
-
     if(container) {
       container.appendChild(this.renderer.domElement);
+      setTimeout(() => {
+        this.cargaCompleta = true;
+      }, 100);
     }
     else {
       console.error("No se encontró el contenedor con id 'three-container'.");
     }
 
-    setTimeout(() => {
-      this.cargaCompleta = true;
-    }, 2000);
   }
 
 
@@ -245,9 +244,7 @@ export class ViewerComponent implements OnInit, AfterViewInit{
   private initializeFlight() {
     const plane = this.scene.getObjectByName('plane');
 
-    console.log(plane);
-
-    if (plane) {
+    if(plane) {
       // Movimiento del avión con el scroll
       gsap.to(plane.position, {
         scrollTrigger: {
@@ -255,7 +252,6 @@ export class ViewerComponent implements OnInit, AfterViewInit{
           start: 'top bottom',
           end: 'bottom top',
           scrub: true,
-          markers: true,
         },
         x: -5,
         z: -5,
@@ -270,7 +266,6 @@ export class ViewerComponent implements OnInit, AfterViewInit{
           start: 'top bottom',
           end: 'bottom top',
           scrub: true,
-          markers: true,
         },
         y: Math.PI / 4,
         duration: 2,
@@ -282,7 +277,7 @@ export class ViewerComponent implements OnInit, AfterViewInit{
   private clearSky(){
     if(this.clouds && this.clouds.length > 0){
       this.moveCloud(0, 4, '-100%');
-      this.moveCloud(5, 8, '100%');
+      this.moveCloud(4, 8, '100%');
     }
   }
 
@@ -291,17 +286,14 @@ export class ViewerComponent implements OnInit, AfterViewInit{
       const cloudElement = this.clouds?.toArray()[i]?.nativeElement;
       gsap.to(cloudElement, {
         scrollTrigger: {
-          trigger: cloudElement, // Si quieres que cada nube sea un trigger individual
-          start: 'top 0%',   // Inicia cuando la nube entra en la vista
-          end: 'bottom top',     // Termina cuando la nube sale de la vista
-          scrub: true,           // Suaviza la animación con el scroll
-          markers: true,         // Marca las posiciones para depuración
+          trigger: '.clouds', // Un contenedor que envuelve todas las nubes
+          start: 'top 0%',   // Empieza cuando el contenedor entra en vista
+          end: 'top -50%',   // Termina cuando el contenedor sale de la vista
+          scrub: 1,          // Sincronización con el scroll
         },
-        x: movement,                  // Movimiento en el eje X
-        z: 0,                  // Movimiento en el eje Z
-        y: 0,                   // Movimiento en el eje Y (puedes ajustar según desees)
-        duration: 2,            // Duración de la animación
-        ease: 'power2.inOut',   // Easing para la animación
+        x: movement,
+        duration: 4,
+        ease: 'power2.inOut',
       });
     }
   }
