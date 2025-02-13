@@ -16,7 +16,7 @@ header > div {
 
 header div a {
   border-radius: 20px;
-  color: #543c35;
+  color: var(--letter);
 }
 
 #selectLanguage > img{
@@ -35,7 +35,7 @@ header div a {
   height: 100%;
   width: 100%;
   z-index: 2;
-  background-color: #ffBCA4;
+  background-color: var(--salmon);
 }
 
 #selfie {
@@ -133,6 +133,7 @@ header div a {
   position: absolute;
   border-radius: 5px;
   top: 45px;
+  color: var(--letter);
 }
 
 .option {
@@ -160,7 +161,7 @@ header div a {
 }
 
 .buttonEffect:hover {
-  box-shadow: inset 0 0 0 2em #543c35a6; /* Sombra interna de 2em */
+  box-shadow: inset 0 0 0 2em var(--buttonHover); /* Sombra interna de 2em */
   border-color: #543c35c4; /* Cambiar el color del borde */
   color: white !important;
 }

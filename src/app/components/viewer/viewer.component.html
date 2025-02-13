@@ -11,13 +11,13 @@
         <a class="p-2 buttonEffect" [routerLink]="['']" routerLinkActive="router-link-active">{{translate.sections.projects}}</a>
         <a class="p-2 buttonEffect" [routerLink]="['']" routerLinkActive="router-link-active">{{translate.sections.about}}</a>
       </div>
-      <!-- <div class="flex p-2" id="selectLanguage">
+      <div class="flex p-2" id="selectLanguage">
         <img src="assets/img/translate.svg">
           <select #languageInput (change)="changeLanguage(languageInput)" class="cursor-pointer">
             <option [selected]="language === 'es'" value="es">{{translate.languages.es}}</option>
             <option [selected]="language === 'en'" value="en">{{translate.languages.en}}</option>
           </select>
-      </div> -->
+      </div>
     </header>
     <div class="absolute clouds justify-between show-animation">
       @for (cloud of cloudsSrc; track cloud; let i = $index) {
