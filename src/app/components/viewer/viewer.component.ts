@@ -1,21 +1,22 @@
-import { AfterViewInit, Component, ElementRef, HostListener, OnInit, QueryList, Renderer2, ViewChildren, inject } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, OnInit, QueryList, Renderer2, ViewChild, ViewChildren, inject } from '@angular/core';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
 import { CommonModule } from '@angular/common';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import * as english from '@en';
 import * as spanish from '@es';
 import { DataService } from '../../services/data.service';
+import { AboutComponent } from "../about/about.component";
+import { ProjectsComponent } from "../projects/projects.component";
 
 gsap.registerPlugin(ScrollTrigger);
 
-
 @Component({
   selector: 'app-viewer',
-  imports: [CommonModule, RouterLink, RouterLinkActive],
+  imports: [CommonModule, AboutComponent, ProjectsComponent],
   templateUrl: './viewer.component.html',
   styleUrl: './viewer.component.css'
 })
@@ -25,8 +26,8 @@ export class ViewerComponent implements OnInit, AfterViewInit{
   private renderer!: THREE.WebGLRenderer;
 
   private dataService = inject(DataService);
-  private router = inject(Router)
-  private renderer2 = inject(Renderer2)
+  private router = inject(Router);
+  private renderer2 = inject(Renderer2);
 
   public divShadow?: HTMLElement;
   public cargaCompleta: boolean = false;
@@ -42,37 +43,35 @@ export class ViewerComponent implements OnInit, AfterViewInit{
   ]
   public translate: any = english;
   public language: string = 'en';
-  public isResumeOptionsOpen: boolean = false;
 
   @ViewChildren('clouds') clouds: QueryList<ElementRef> | undefined;
   @ViewChildren('itemMenu') itemMenu: QueryList<ElementRef> | undefined;
-  @ViewChildren('languageInput') languageInput: ElementRef | undefined;
+  @ViewChild('languageInput') languageInput: ElementRef | undefined;
 
   constructor(
-
   ){}
 
   async ngAfterViewInit(): Promise<void> {
-    await this.createScene();
+    await this.initializeRenderer();
     this.initializeScrollControls();
   }
 
+
   async ngOnInit(): Promise<void> {
     this.language = this.dataService._language();
+    await this.createScene();
   }
 
   private async createScene() {
     const modelName = 'plane.glb';
 
     await this.createBasicScene();
-    await this.initializeRenderer();
     await this.loadModel(modelName);
     this.createLights();
     this.initializeCamera();
     this.animate();
     this.setupResizeListener();
     this.clearSky();
-
   }
 
   private async createBasicScene() {
@@ -137,7 +136,7 @@ export class ViewerComponent implements OnInit, AfterViewInit{
   private async initializeRenderer() {
     this.renderer = new THREE.WebGLRenderer({ antialias: true });
     this.renderer.setSize(window.innerWidth, window.innerHeight);
-    this.renderer.setClearColor(0x000000, 0); // El valor '0' significa completamente transparente
+    this.renderer.setClearColor(0x000000, 0);
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     this.renderer.toneMapping = THREE.CineonToneMapping;
@@ -147,7 +146,7 @@ export class ViewerComponent implements OnInit, AfterViewInit{
       container.appendChild(this.renderer.domElement);
       setTimeout(() => {
         this.cargaCompleta = true;
-      }, 100);
+      }, 500);
     }
     else {
       console.error("No se encontró el contenedor con id 'three-container'.");
@@ -299,33 +298,20 @@ export class ViewerComponent implements OnInit, AfterViewInit{
 
   changeLanguage(input: HTMLSelectElement){
     this.dataService._language.set(input.value);
-    console.log(this.dataService._language);
-    this.translate = this.dataService._language() === 'en' ? english : spanish;
+    const translation = this.dataService._language() === 'en' ? english : spanish;
+    this.dataService._translate.set(translation);
+    this.translate = translation;
   }
 
-  openResumeOptions(){
-    this.isResumeOptionsOpen = true;
-  }
+  scrollToAbout() {
+    const aboutSection = document.getElementById('about');
 
-  downloadResume(value: string){
-    if(value === 'es'){
-      window.open('assets/cv_lauragh.pdf', '_blank');
-    }
-    else{
-      window.open('assets/cv_lauragh_en.pdf', '_blank');
-    }
-    this.isResumeOptionsOpen = false;
-  }
-
-  @HostListener('document:click', ['$event'])
-  onClickOutside(event: Event) {
-    const resumeElement = document.getElementById('resume');
-
-    // Si el clic NO está dentro de #resume, cierra el menú
-    if (resumeElement && !resumeElement.contains(event.target as Node)) {
-      this.isResumeOptionsOpen = false;
+    if(aboutSection){
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
     }
   }
+
+
 
   // private moveClouds(leftMovement: string, rightMovement: string){
   //   const clouds = this.clouds?.toArray()!;

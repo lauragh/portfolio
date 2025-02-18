@@ -7,9 +7,9 @@
   <div class="relative h-screen w-full">
     <header class="fixed top-0 left-0 p-3 flex justify-between">
       <div class="flex pr-5 pl-5 pt-2 pb-2 gap-3 items-center">
-        <a class="p-2 buttonEffect font-bold" [routerLink]="['']" routerLinkActive="router-link-active">Lgh</a>
-        <a class="p-2 buttonEffect font-bold" [routerLink]="['']" routerLinkActive="router-link-active">{{translate.sections.projects}}</a>
-        <a class="p-2 buttonEffect font-bold" [routerLink]="['']" routerLinkActive="router-link-active">{{translate.sections.about}}</a>
+        <a class="p-2 buttonEffect font-bold cursor-pointer">Lgh</a>
+        <a class="p-2 buttonEffect font-bold cursor-pointer">{{translate.sections.projects}}</a>
+        <a class="p-2 buttonEffect font-bold cursor-pointer" (click)="scrollToAbout()">{{translate.sections.about}}</a>
       </div>
       <div class="flex p-2" id="selectLanguage">
         <img src="assets/img/translate.svg">
@@ -28,29 +28,6 @@
     </div>
     <div id="three-container"></div>
   </div>
-  <div class="h-screen w-full mt-5 p-5 flex items-center justify-center">
-    <div class="about gap-6 justify-center">
-      <img id="selfie" class="p-5 grow-1 shrink-1 basis-auto" src="assets/img/selfie.jpg">
-      <div class="p-5 max-w-4xl min-w-3xs grow-1 shrink-1 basis-auto content-center card">
-        <div class="flex justify-end gap-3">
-          <img src="assets/img/linkedin.svg" class="relative rounded-3xl pr-4 pl-4 pt-2 pb-2 buttonEffect bg-white">
-          <div class="relative rounded-3xl pr-4 pl-4 pt-2 pb-2 buttonEffect bg-white">
-            <div (click)="openResumeOptions()" class="cursor-pointer">{{translate.sections.cv}}</div>
-            <div [hidden]="!isResumeOptionsOpen" #resumeOptions id="resumeOptions" class="absolute">
-              <div class="option" (click)="downloadResume('en')">{{translate.resume.en}}</div>
-              <hr>
-              <div class="option" (click)="downloadResume('es')">{{translate.resume.es}}</div>
-            </div>
-          </div>
-        </div>
-        <h1 class="text-5xl font-bold mb-1">{{translate.about.p1}}</h1>
-        <h1 class="text-2xl mb-1">{{translate.about.p2}}</h1>
-        <div class="space-y-3">
-          <p class="text-base">{{translate.about.p3}}</p>
-          <p class="text-base">{{translate.about.p4}}</p>
-          <p class="text-base">{{translate.about.p5}}</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <app-projects class="h-screen w-full mt-5 p-5 flex items-center justify-center"></app-projects>
+  <app-about id="about" class="h-screen w-full mt-5 p-5 flex items-center justify-center"></app-about>
 </section>
