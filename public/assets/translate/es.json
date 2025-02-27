@@ -54,11 +54,38 @@
         "p1": "Proyecto personal, app web para consultar el pronóstico del tiempo. Proporciona información detallada sobre las condiciones climáticas actuales, así como pronósticos horarios y semanales."
     },
     "projects": {
-        "cobli": "Aplicación web para daltónicos",
-        "game": "Videojuego 2D",
-        "mobbler": "Diseño de habitaciones 3D",
-        "tiempo": "Aplicación web del tiempo"
-
+        "configurator": {
+          "title": "Configurador de silos",
+          "description": "Creador de presupuestos"
+        },
+        "digitalTwin": {
+          "title": "Gemelo Digital",
+          "description": "Visor de polígonos 3d"
+        },
+        "teleassistance": {
+          "title": "Teleasistencia",
+          "description": "Videollamadas"
+        },
+        "catalog": {
+          "title": "Catálogo 3D",
+          "description": "Visor de productos en 3D"
+        },
+        "game": {
+          "title": "Rhains of Rhodianur",
+          "description": "Videojuego 2D"
+        },
+        "mobbler": {
+          "title": "Mobbler",
+          "description": "Diseñador 3d"
+        },
+        "weather": {
+          "title": "Tiempo",
+          "description": "Aplicación del tiempo"
+        },
+        "cobli": {
+          "title": "Cobli",
+          "description": "Herramienta de diseño para daltónicos"
+        }
     },
     "back": "Ir atrás",
     "code": "Ver código fuente"

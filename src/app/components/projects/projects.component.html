@@ -1,93 +1,94 @@
-<section class="bento p-5">
-  <div class="relative">
-    <h2 class="absolute">Configurador silos</h2>
-    <div class="flex images">
-    </div>
-    <div class="flex">
-      <p>tag1</p><p>tag2</p>
-    </div>
-  </div>
-  <div class="relative">
-    <h2 class="absolute">Configurador silos</h2>
-    <div class="flex images">
-    </div>
-    <div class="flex">
-      <p>tag1</p><p>tag2</p>
-    </div>
-  </div>
-  <div class="relative">
-    <h2 class="absolute">Configurador silos</h2>
-    <div class="flex images">
-    </div>
-    <div class="flex">
-      <p>tag1</p><p>tag2</p>
-    </div>
-  </div>
-  <div class="relative">
-    <h2 class="absolute">Configurador silos</h2>
-    <div class="flex images">
-    </div>
-    <div class="flex">
-      <p>tag1</p><p>tag2</p>
-    </div>
-  </div>
-  <div class="relative flex p-5 justify-between">
-    <div class="flex flex-col justify-end">
-      <h2 class="text-3xl font-bold mb-3">Rhains of Radianour</h2>
-      <p class="text-2xl">Diseñador 3d</p>
-      <div class="flex">
-        <p>TFG</p><p></p>
+<section class="relative p-5 w-full min-h-vh">
+  <div class="bento">
+    <div (click)="openProject('configurador')" class="cursor-pointer relative p-5 flex flex-col rounded-2xl">
+      <div class="flex flex-col justify-center w-full">
+        <h2 class="text-3xl font-bold mb-1">{{ translate.projects.configurator.title }}</h2>
+        <p class="text-xl">{{ translate.projects.configurator.description }}</p>
+      </div>
+      <div class="relative h-full w-full flex justify-center">
+        <img class="absolute z-2 bottom-5 rounded-xl" src="assets/img/projects/bento/ofc1.png"/>
+        <img class="absolute z-1 bottom-15 rounded-xl" src="assets/img/projects/bento/ofc2.png"/>
+        <img class="absolute z-0 bottom-25 rounded-xl" src="assets/img/projects/bento/ofc3.png"/>
       </div>
     </div>
-    <div class="flex items-center">
-      <img src="assets/img/projects/tiempo.png"/>
-      <img src="assets/img/projects/mobile.png"/>
-    </div>
-  </div>
-  <div class="relative flex p-5 justify-between">
-    <div class="flex flex-col justify-end">
-      <h2 class="text-3xl font-bold mb-3">Mobbler</h2>
-      <p class="text-2xl">Diseñador 3d</p>
-      <div class="flex">
-        <p>TFG</p><p></p>
+    <div (click)="openProject('gemeloDigital')" class="cursor-pointer relative p-5 justify-between flex items-center rounded-2xl">
+      <div class="h-full w-full flex items-center justify-center">
+        <img class="absolute -top-20 left-5 rounded-xl" src="assets/img/projects/bento/gemelodigital.png"/>
+      </div>
+      <div class="justify-end">
+        <h2 class="text-3xl font-bold mb-1">{{ translate.projects.digitalTwin.title }}</h2>
+        <p class="text-xl">{{ translate.projects.digitalTwin.description }}</p>
       </div>
     </div>
-    <div class="flex items-center">
-      <img src="assets/img/projects/tiempo.png"/>
-      <img src="assets/img/projects/mobile.png"/>
-    </div>
-  </div>
-  <div class="relative flex p-5 justify-between">
-    <div class="flex flex-col justify-end">
-      <h2 class="text-3xl font-bold mb-3">Tiempo</h2>
-      <p class="text-2xl">Aplicación de tiempo</p>
-      <div class="flex">
-        <p>TFG</p><p></p>
+    <div (click)="openProject('teleasistencia')" class="cursor-pointer relative p-5 flex flex-col rounded-2xl">
+      <div class="h-full w-full flex items-center justify-center">
+        <img class="absolute -top-5" src="assets/img/projects/bento/vuzix.png"/>
+      </div>
+      <div class="flex flex-col w-full">
+        <h2 class="text-3xl font-bold mb-1">{{ translate.projects.teleassistance.title }}</h2>
+        <p class="text-xl">{{ translate.projects.teleassistance.description }}</p>
       </div>
     </div>
-    <div class="flex items-center">
-      <img src="assets/img/projects/tiempo.png"/>
-      <img src="assets/img/projects/mobile.png"/>
-    </div>
-  </div>
-  <div class="relative flex p-5">
-    <div>
-      <h2 class="text-3xl font-bold mb-3">Cobli</h2>
-      <p class="text-2xl">Herramienta de diseño para daltónicos</p>
-      <div class="flex">
-        <p>TFG</p><p></p>
+    <div (click)="openProject('catalogo')" class="cursor-pointer relative flex p-5 justify-center rounded-2xl">
+      <div class="flex flex-col justify-end">
+        <h2 class="text-3xl font-bold mb-1">{{ translate.projects.catalog.title }}</h2>
+        <p class="text-xl">{{ translate.projects.catalog.description }}</p>
+      </div>
+      <div class="flex items-center">
+        <img src="assets/img/projects/bento/catalogo.png"/>
       </div>
     </div>
-    <div class="flex w-2xl gap-5">
-      <div class="flex flex-col justify-center gap-5 items-center">
-        <img class="shadow" src="assets/img/projects/cobli_page0.png"/>
-        <img class="shadow" src="assets/img/projects/cobli_page1.png"/>
+    <div (click)="openProject('game')" class="cursor-pointer relative p-5 flex gap-3 rounded-2xl">
+      <div class="flex flex-col justify-center">
+        <h2 class="text-3xl font-bold mb-1">{{ translate.projects.game.title }}</h2>
+        <p class="text-xl">{{ translate.projects.game.description }}</p>
       </div>
-      <div class="flex flex-col justify-center gap-5 items-center">
-        <img class="shadow" src="assets/img/projects/cobli_page2.png"/>
-        <img class="shadow" src="assets/img/projects/cobli_page3.png"/>
-        <img class="shadow" src="assets/img/projects/cobli_page4.png"/>
+      <div class="relative h-full w-full flex justify-center items-center">
+        <img class="absolute z-1 rounded-xl" src="assets/img/projects/bento/game0.png"/>
+        <img class="absolute z-0 rounded-xl" src="assets/img/projects/bento/game1.png"/>
+      </div>
+    </div>
+    <div (click)="openProject('designer')" class="cursor-pointer relative flex p-5 justify-between gap-3 rounded-2xl">
+      <div class="flex gap-3">
+        <img class="rounded-xl" src="assets/img/projects/bento/mobbler1.png"/>
+        <img class="rounded-xl" src="assets/img/projects/bento/mobbler2.png"/>
+        <img class="rounded-xl" src="assets/img/projects/bento/mobbler3.png"/>
+      </div>
+      <div class="flex flex-col justify-end">
+        <h2 class="text-3xl font-bold mb-1">{{ translate.projects.mobbler.title }}</h2>
+        <p class="text-xl">{{ translate.projects.mobbler.description }}</p>
+      </div>
+    </div>
+    <div (click)="openProject('weather')" class="cursor-pointer relative flex p-5 justify-between rounded-2xl">
+      <div class="flex flex-col justify-end">
+        <h2 class="text-3xl font-bold mb-1">{{ translate.projects.weather.title }}</h2>
+        <p class="text-xl">{{ translate.projects.weather.description }}</p>
+      </div>
+      <div class="flex items-center">
+        <img class="rounded-xl" src="assets/img/projects/tiempo.png"/>
+        <img class="rounded-xl z-2" src="assets/img/projects/mobile.png"/>
+      </div>
+    </div>
+    <div (click)="openProject('cobli')" class="cursor-pointer relative flex p-5 rounded-2xl">
+      <div class="z-2">
+        <h2 class="text-3xl font-bold mb-1">{{ translate.projects.cobli.title }}</h2>
+        <p class="text-xl">{{ translate.projects.cobli.description }}</p>
+      </div>
+      <div class="flex w-2xl gap-5">
+        <div class="flex flex-col justify-center gap-5 items-center">
+          <img class="shadow rounded-xl" src="assets/img/projects/cobli_page0.png"/>
+          <img class="shadow rounded-xl" src="assets/img/projects/cobli_page1.png"/>
+        </div>
+        <div class="flex flex-col justify-center gap-5 items-center">
+          <img class="shadow rounded-xl" src="assets/img/projects/cobli_page2.png"/>
+          <img class="shadow rounded-xl" src="assets/img/projects/cobli_page3.png"/>
+          <img class="shadow rounded-xl" src="assets/img/projects/cobli_page4.png"/>
+        </div>
       </div>
     </div>
   </div>
+  @if(projectSelected){
+    <app-details class="absolute inset-0 z-3" [project]="projectSelected"></app-details>
+  }
 </section>
+

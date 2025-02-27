@@ -303,52 +303,11 @@ export class ViewerComponent implements OnInit, AfterViewInit{
     this.translate = translation;
   }
 
-  scrollToAbout() {
-    const aboutSection = document.getElementById('about');
+  scrollToSection(section: string) {
+    const aboutSection = document.getElementById(section);
 
     if(aboutSection){
       aboutSection.scrollIntoView({ behavior: 'smooth' });
     }
   }
-
-
-
-  // private moveClouds(leftMovement: string, rightMovement: string){
-  //   const clouds = this.clouds?.toArray()!;
-
-  //   // Aplicar animación a todas las nubes de una vez, diferenciando el movimiento por índice
-  //   gsap.to(clouds, {
-  //     scrollTrigger: {
-  //       trigger: clouds[0]?.nativeElement, // El primer elemento como trigger general
-  //       start: 'top bottom',
-  //       end: 'bottom top',
-  //       scrub: true,
-  //       markers: true,
-  //     },
-  //     x: (index) => index < 4 ? leftMovement : rightMovement,  // Si el índice es menor que 4, mueve a la izquierda, de lo contrario a la derecha
-  //     z: 0,
-  //     y: 0,
-  //     duration: 2,
-  //     ease: 'power2.inOut',
-  //   });
-  // }
-
-  // public selectItem(index: number | 0){
-  //   const width = `${this.itemMenu?.get(index)?.nativeElement.offsetWidth}px`;
-  //   const height = `${this.itemMenu?.get(index)?.nativeElement.offsetHeight}px`;
-
-  //   console.log({width}, {height});
-
-  //   if(this.divShadow){
-  //     this.renderer2.removeChild(this.itemMenu?.get(index)?.nativeElement, this.divShadow);
-  //   }
-
-  //   this.divShadow = this.renderer2.createElement('div');
-  //   this.renderer2.addClass(this.divShadow, 'itemMenuShadow');
-  //   this.itemMenu?.get(index)?.nativeElement.prepend(this.divShadow!);
-  //   this.renderer2.setStyle(this.divShadow, 'width', width);
-  //   this.renderer2.setStyle(this.divShadow, 'height', height);
-
-  // }
-
 }

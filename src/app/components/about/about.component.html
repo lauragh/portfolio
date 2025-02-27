@@ -1,10 +1,12 @@
-  <div class="about gap-6 justify-center">
-    <img id="selfie" class="p-5 grow-1 shrink-1 basis-auto" src="assets/img/selfie.jpg">
-    <div class="p-5 min-w-3xs grow-1 shrink-1 basis-auto content-center h-3/4 card">
+  <section class="about gap-6 justify-center">
+    <img id="selfie" class="p-5 grow-1 shrink-1 basis-auto shadow" src="assets/img/selfie.jpg">
+    <div class="p-5 min-w-3xs grow-1 shrink-1 basis-auto content-center h-full card shadow">
       <div class="flex justify-end gap-3">
-        <img src="assets/img/linkedin.svg" class="relative rounded-full p-2 bg-white">
+        <a href="https://www.linkedin.com/in/laura-garc%C3%ADa-hern%C3%A1ndez-4922251b0/" target="_blank">
+          <img src="assets/img/linkedin.svg" class="relative rounded-full p-2 bg-white">
+        </a>
         <div class="relative rounded-3xl pr-4 pl-4 pt-2 pb-2 bg-white">
-          <div (click)="openResumeOptions()" class="cursor-pointer">{{translate.sections.cv}}</div>
+          <div id="resume" (click)="openResumeOptions()" class="cursor-pointer">{{translate.sections.cv}}</div>
           <div [hidden]="!isResumeOptionsOpen" #resumeOptions id="resumeOptions" class="absolute">
             <div class="option" (click)="downloadResume('en')">{{translate.resume.en}}</div>
             <hr>
@@ -20,4 +22,4 @@
         <p class="text-base">{{translate.about.p5}}</p>
       </div>
     </div>
-  </div>
+  </section>

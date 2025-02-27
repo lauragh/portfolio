@@ -8,14 +8,14 @@
     <header class="fixed top-0 left-0 p-3 flex justify-between">
       <div class="flex pr-5 pl-5 pt-2 pb-2 gap-3 items-center">
         <a class="p-2 buttonEffect font-bold cursor-pointer">Lgh</a>
-        <a class="p-2 buttonEffect font-bold cursor-pointer">{{translate.sections.projects}}</a>
-        <a class="p-2 buttonEffect font-bold cursor-pointer" (click)="scrollToAbout()">{{translate.sections.about}}</a>
+        <a class="p-2 buttonEffect font-bold cursor-pointer" (click)="scrollToSection('projects')">{{translate.sections.projects}}</a>
+        <a class="p-2 buttonEffect font-bold cursor-pointer" (click)="scrollToSection('about')">{{translate.sections.about}}</a>
       </div>
       <div class="flex p-2" id="selectLanguage">
         <img src="assets/img/translate.svg">
           <select #languageInput (change)="changeLanguage(languageInput)" class="cursor-pointer">
-            <option [selected]="language === 'es'" value="es">{{translate.languages.es}}</option>
-            <option [selected]="language === 'en'" value="en">{{translate.languages.en}}</option>
+            <option [selected]="language === 'es'" value="es">{{ translate.languages.es }}</option>
+            <option [selected]="language === 'en'" value="en">{{ translate.languages.en }}</option>
           </select>
       </div>
     </header>
@@ -28,6 +28,6 @@
     </div>
     <div id="three-container"></div>
   </div>
-  <app-projects class="h-screen w-full mt-5 p-5 flex items-center justify-center"></app-projects>
+  <app-projects id="projects" class="min-h-screen w-full mt-5 p-5 flex items-center justify-center"></app-projects>
   <app-about id="about" class="h-screen w-full mt-5 p-5 flex items-center justify-center"></app-about>
 </section>

@@ -49,14 +49,42 @@
         "p11": "Development of dashboards (Power BI)",
         "p12": "Until minute 12:10"
     },
-    "projects": {
-        "cobli": "Colorblindness web app",
-        "game": "2D Videogame",
-        "mobbler": "3D Designing room",
-        "tiempo": "Forecast weather web app"
-    },
     "tiempo": {
-        "p1": "Personal project, web app for checking the weather forecast. Provides detailed information about current weather conditions, as well as hourly and weekly forecasts."
+      "p1": "Personal project, web app for checking the weather forecast. Provides detailed information about current weather conditions, as well as hourly and weekly forecasts."
+    },
+    "projects": {
+      "configurator": {
+        "title": "Silo Configurator",
+        "description": "Budget creator"
+      },
+      "digitalTwin": {
+        "title": "Digital Twin",
+        "description": "3D Polygon viewer"
+      },
+      "teleassistance": {
+        "title": "Teleassistance",
+        "description": "Videocalls"
+      },
+      "catalog": {
+        "title": "3D Catalog",
+        "description": "3D products viewer"
+      },
+      "game": {
+        "title": "Rhains of Rhodianur",
+        "description": "2D videogame"
+      },
+      "mobbler": {
+        "title": "Mobbler",
+        "description": "3D designer"
+      },
+      "weather": {
+        "title": "Weather",
+        "description": "Weather app"
+      },
+      "cobli": {
+        "title": "Cobli",
+        "description": "Design tool for colorblind users"
+      }
     },
     "back": "Go back",
     "code": "See source code"
