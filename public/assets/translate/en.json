@@ -27,7 +27,7 @@
       "The goal of this app is to make processes easier such as color analysis, palette creation, and guidance on color shades, in a more accessible and handy way.",
       "This tool is not limited to individuals with color blindness. Any user can utilize this platform to make the most of its features and benefits."
     ],
-    "videoYoutube": "https://www.youtube.com/embed/LCrOJIfWrko",
+    "videoYoutube": "LCrOJIfWrko",
     "technologies": ["Firebase", "Angular", "Express", "Node.js"],
     "languages": ["Typescript", "Javascript"]
   },
@@ -40,7 +40,7 @@
       "Game store design and development",
       "Character movement and camera tracking"
     ],
-    "videoYoutube": "https://www.youtube.com/embed/v_R6IdPCWVY",
+    "videoYoutube": "v_R6IdPCWVY",
     "technologies": ["GIMP", "Tile"],
     "languages": ["C++", "SFML"]
   },
@@ -58,7 +58,7 @@
       "Database and REST API connection",
       "Development of dashboards"
     ],
-    "videoYoutube": "https://www.youtube.com/embed/JmGcxpHbcwo?si=732wyJ8TZEQVSJiV",
+    "videoYoutube": "JmGcxpHbcwo",
     "videoCaption": "Until minute 12:10",
     "technologies": ["Angular", "Node.js", "MongoDB", "Express", "Three.js", "WebGL", "Power BI", "Blender", "Figma", "RASA"],
     "languages": ["Typescript", "Javascript", "Python"]

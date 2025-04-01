@@ -1,5 +1,5 @@
-<section (click)="closeDetails($event)">
-  <div class="min-w-3xl min-h-96 modal flex flex-col">
+<section>
+  <div #detailsContent class="min-w-3xl min-h-96 modal flex flex-col">
     <h1 class="text-3xl font-bold sticky top-0 z-2 px-5 py-3">{{projectSelected.title}}</h1>
     <div class="p-5 pt-0 flex flex-col gap-5">
       @if (projectSelected.caption) {
@@ -52,6 +52,11 @@
       @if (projectSelected.video) {
         <video [src]="projectSelected.video" controls type="video/mp4"></video>
       }
+
+      @if (projectSelected.videoYoutube) {
+        <lite-youtube [attr.videoid]="projectSelected.videoYoutube"></lite-youtube>
+      }
+
       <div>
         <div class="slideWindow w-full bg-gray-400 px-2 pt-2 relative">
           <button (click)="prevImage()" class="absolute left-2 top-1/2 transform -translate-y-1/2 text-white px-2 py-1 z-1 bg-gray-400 cursor-pointer">◁</button>

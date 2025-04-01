@@ -224,7 +224,7 @@
 
   .bento > div:first-child div:nth-child(2) img {
     width: auto;
-    max-width: 80%;
+    max-width: 75%;
   }
 
   .bento > div:nth-child(2) div:first-child  {
@@ -294,6 +294,10 @@
     flex-direction: column;
   }
 
+  .bento > div:nth-child(4) > div:first-child {
+    width: auto;
+  }
+
   .bento > div:nth-child(4) > div:nth-child(2) {
     justify-content: center;
   }
@@ -322,6 +326,10 @@
 
   .bento div:nth-child(8) {
     flex-direction: column;
+  }
+
+  .bento div:nth-child(8) > div:first-child {
+    width: auto;
   }
 }
 

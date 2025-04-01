@@ -27,7 +27,7 @@
       "El objetivo de esta app es facilitar diversos procesos como el análisis de colores, la creación de paletas y la orientación sobre tonalidades, de una manera más accesible y sencilla.",
       "Esta herramienta, no se limita solo a personas con daltonismo. Cualquier usuario puede utilizar esta plataforma para aprovechar al máximo sus características y beneficios."
     ],
-    "videoYoutube": "https://www.youtube.com/embed/LCrOJIfWrko",
+    "videoYoutube": "LCrOJIfWrko",
     "technologies": ["Firebase", "Angular", "Express", "Node.js"],
     "languages": ["Typescript", "Javascript"]
   },
@@ -40,7 +40,7 @@
       "Diseño y desarrollo de la tienda del juego",
       "Movimiento y seguimiento de la cámara"
     ],
-    "videoYoutube": "https://www.youtube.com/embed/v_R6IdPCWVY",
+    "videoYoutube": "v_R6IdPCWVY",
     "technologies": ["GIMP", "Tile"],
     "languages": ["C++", "SFML"]
   },
@@ -58,7 +58,7 @@
       "Conexión de la base de datos y API REST",
       "Desarrollo de dashboards"
     ],
-    "videoYoutube": "https://www.youtube.com/embed/JmGcxpHbcwo?si=732wyJ8TZEQVSJiV",
+    "videoYoutube": "JmGcxpHbcwo",
     "videoCaption": "Hasta el minuto 12:10",
     "technologies": ["Angular", "Node.js", "MongoDB", "Express", "Three.js", "WebGL", "Power BI", "Blender", "Figma", "RASA"],
     "languages": ["Typescript", "Javascript", "Python"]

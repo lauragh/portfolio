@@ -1,4 +1,4 @@
-import { Component, effect, inject, QueryList, Renderer2, ViewChildren, ElementRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, effect, inject, QueryList, Renderer2, ViewChildren, ElementRef, AfterViewInit, ChangeDetectorRef, CUSTOM_ELEMENTS_SCHEMA, HostListener, ViewChild } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import * as english from '@en';
 import { ProjectDetails, ProjectName } from 'src/app/interfaces/Project';
@@ -8,11 +8,11 @@ import { CommonModule } from '@angular/common';
   selector: 'app-details',
   imports: [CommonModule],
   templateUrl: './details.component.html',
-  styleUrl: './details.component.css'
+  styleUrl: './details.component.css',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class DetailsComponent implements AfterViewInit{
   private dataService = inject(DataService);
-  private renderer2 = inject(Renderer2);
   private cdRef = inject(ChangeDetectorRef)
   public translate: any = english;
   public projectSelected!: ProjectDetails;
@@ -109,7 +109,7 @@ export class DetailsComponent implements AfterViewInit{
         'assets/img/projects/mobbler3.JPG',
         'assets/img/projects/mobbler4.JPG',
       ],
-      videoYoutube: this.translate.game.videoYoutube,
+      videoYoutube: this.translate.mobbler.videoYoutube,
     },
     {
       project: ProjectName.weather,
@@ -141,7 +141,8 @@ export class DetailsComponent implements AfterViewInit{
         'assets/img/projects/cobli_page2.png',
         'assets/img/projects/cobli_page3.png',
         'assets/img/projects/cobli_page4.png',
-      ]
+      ],
+      videoYoutube: this.translate.cobli.videoYoutube,
     },
   ];
 
@@ -150,6 +151,7 @@ export class DetailsComponent implements AfterViewInit{
   public currentIndex: number = 0;
 
   @ViewChildren('images') images: QueryList<ElementRef> | undefined;
+  @ViewChild('detailsContent', { static: false }) detailsContent: ElementRef | undefined;
 
   constructor(
   ){
@@ -166,8 +168,10 @@ export class DetailsComponent implements AfterViewInit{
     this.cdRef.detectChanges();
   }
 
-  closeDetails(event: Event) {
-    if(event.target === event.currentTarget){
+  @HostListener('document:click', ['$event'])
+  onClick(event: Event): void {
+    const target = event.target as HTMLElement;
+    if(this.detailsContent?.nativeElement && !this.detailsContent.nativeElement.contains(target)) {
       this.dataService.isProjectSelected.set('');
     }
   }
@@ -178,6 +182,10 @@ export class DetailsComponent implements AfterViewInit{
       this.imgSrcZoomedIn = image.src;
     }
     this.currentIndex = index;
+  }
+
+  zoomImage(){
+
   }
 
   prevImage() {
@@ -201,16 +209,15 @@ export class DetailsComponent implements AfterViewInit{
       this.imgSrcZoomedIn = this.projectSelected.images[0];
     }
 
-    console.log(this.currentIndex);
     this.scrollToSelectedImage();
   }
 
   scrollToSelectedImage() {
     setTimeout(() => {
       const selectedImg = this.images?.get(this.currentIndex);
-      if (selectedImg) {
+      if(selectedImg){
         selectedImg.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
       }
-    }, 100); // Pequeño delay para asegurar que la vista se actualiza
+    }, 100);
   }
 }
