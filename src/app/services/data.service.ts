@@ -6,8 +6,9 @@ import * as spanish from '@es';
   providedIn: 'root'
 })
 export class DataService {
-  public _language = signal('en');
-  public _translate = signal(english);
+  public language = signal('en');
+  public translate = signal(english);
+  public isProjectSelected = signal('');
 
   constructor() { }
 

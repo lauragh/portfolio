@@ -1,91 +1,152 @@
 {
-    "sections": {
-        "cv": "Resume",
-        "projects": "Projects",
-        "linkedin": "LinkedIn",
-        "email": "Email",
-        "about": "About me"
+  "sections": {
+    "cv": "Resume",
+    "projects": "Projects",
+    "linkedin": "LinkedIn",
+    "email": "Email",
+    "about": "About me"
+  },
+  "languages": {
+    "en": "EN",
+    "es": "ES"
+  },
+  "resume": {
+    "en": "English",
+    "es": "Spanish"
+  },
+  "about": {
+    "p1": "Hi!",
+    "p2": "I'm Laura",
+    "p3": "Over 2 years of experience web developer with passion for interactive application development.",
+    "p4": "In my free time, I enjoy activities that nourish my creativity and well-being, such as reading, drawing, and staying active at the gym.",
+    "p5": "I love combining art and technology, which has led me to become interested in 3D projects. Working on initiatives that merge creativity and technological innovation really motivates me."
+  },
+  "cobli": {
+    "description": [
+      "Cobli is my Degree's Thesis project and it's a web application designed to help colorblind users who are involved in the world of art.",
+      "The goal of this app is to make processes easier such as color analysis, palette creation, and guidance on color shades, in a more accessible and handy way.",
+      "This tool is not limited to individuals with color blindness. Any user can utilize this platform to make the most of its features and benefits."
+    ],
+    "videoYoutube": "https://www.youtube.com/embed/LCrOJIfWrko",
+    "technologies": ["Firebase", "Angular", "Express", "Node.js"],
+    "languages": ["Typescript", "Javascript"]
+  },
+  "game": {
+    "caption": "2D Metroidvania genre videogame",
+    "tasks":
+    [
+      "Art design: assets (GIMP) and maps (Tile)",
+      "HUD design and development",
+      "Game store design and development",
+      "Character movement and camera tracking"
+    ],
+    "videoYoutube": "https://www.youtube.com/embed/v_R6IdPCWVY",
+    "technologies": ["GIMP", "Tile"],
+    "languages": ["C++", "SFML"]
+  },
+  "mobbler": {
+    "caption": "Project-based Learning (PBL) project carried out during my 4th year of college.",
+    "description": ["Application based on 3D interior design for companies engaged in furniture sales."],
+    "tasks":
+    [
+      "Design of high quality mockups",
+      "Interface implementation",
+      "Chatbot development",
+      "3D modeling",
+      "Graphics engine",
+      "Creation of a synthetic data generator script",
+      "Database and REST API connection",
+      "Development of dashboards"
+    ],
+    "videoYoutube": "https://www.youtube.com/embed/JmGcxpHbcwo?si=732wyJ8TZEQVSJiV",
+    "videoCaption": "Until minute 12:10",
+    "technologies": ["Angular", "Node.js", "MongoDB", "Express", "Three.js", "WebGL", "Power BI", "Blender", "Figma", "RASA"],
+    "languages": ["Typescript", "Javascript", "Python"]
+  },
+  "weather": {
+    "description": ["Personal project, web app for checking the weather forecast. Provides detailed information about current weather conditions, as well as hourly and weekly forecasts."],
+    "technologies": ["Angular"],
+    "languages": ["Typescript"]
+  },
+  "configurator": {
+    "description": ["Development of a web tool to optimize the creation of quotes and visualization of storage silos."],
+    "challenge": "Our client, a silo construction company, managed their quotes using Excel, making the process slow and inefficient. They needed a more agile and visual solution to present offers to their customers.",
+    "solution": [
+      "Dynamic forms to configure silos according to customer needs.",
+      "Interactive 3D visualization of components to enhance the user experience.",
+      "Automation of the quoting process, reducing time and errors."
+    ],
+    "technologies": ["Angular", "Node.js", "Three.js", "Express", "MongoDB", "AWS"],
+    "languages": ["Typescript", "Javascript"]
+  },
+  "digitalTwin": {
+    "description": ["Development of an interactive platform through a digital twin to centralize the management and visualization of industrial parks, allowing administrators to analyze data intuitively."],
+    "challenge": "The project started with the need for a digital twin to visualize the industrial park’s buildings, providing company information such as address, contact details, and websites. However, the potential to expand the platform into a monitoring system integrating operational and analytical data was soon identified.",
+    "solution": [
+      "Interactive 3D digital twin visualization for the industrial park.",
+      "Integration of multiple data sources (cameras, IoT sensors, traffic, weather) into a single centralized platform.",
+      "Functionality to add geolocated annotations on the map, allowing users to mark locations with relevant information."
+    ],
+    "technologies": ["Angular", "Node.js", "Three.js", "Express", "MongoDB", "AWS"],
+    "languages": ["Typescript", "Javascript"]
+  },
+  "teleassistance": {
+    "description": ["Development of an application to manage machinery inspections, enabling planning and execution of inspections via video calls."],
+    "challenge": "Machinery inspections required the physical presence of specialized technicians, leading to high travel costs and prolonged waiting times.",
+    "solution": [
+      "Integrated video call system to perform real-time remote inspections.",
+      "Automatic recording of each inspection with PDF report generation, including video call details, photos, and videos taken.",
+      "Interactive calendar to schedule and manage machinery inspections with automatic reminders."
+    ],
+    "technologies": ["Angular", "Node.js", "WebSocket", "MongoDB", "Express", "AgoraSDK", "FullCalendar", "Pdfmake", "AWS"],
+    "languages": ["Typescript", "Javascript"]
+  },
+  "catalog": {
+    "description": ["Development of a platform for the creation and management of 3D catalogs of HVAC equipment."],
+    "challenge": "The client needed a more visual and interactive way to present their models.",
+    "solution": [
+      "Integration with Sketchfab to visualize models on the web and in virtual reality (VR).",
+      "Functionality to customize model information and attach technical documentation."
+    ],
+    "technologies": ["Angular", "Node.js", "Sketchfab API", "MongoDB", "Express", "AWS"],
+    "languages": ["Typescript", "Javascript"]
+  },
+  "projects": {
+    "configurator": {
+      "title": "Silo Configurator",
+      "description": "Budget creator"
     },
-    "languages": {
-        "en": "EN",
-        "es": "ES"
+    "digitalTwin": {
+      "title": "Digital Twin",
+      "description": "3D Polygon viewer"
     },
-    "resume": {
-      "en": "English",
-      "es": "Spanish"
+    "teleassistance": {
+      "title": "Teleassistance",
+      "description": "Videocalls"
     },
-    "about": {
-        "p1": "Hi!",
-        "p2": "I'm Laura",
-        "p3": "Over 2 years of experience web developer with passion for interactive application development.",
-        "p4": "In my free time, I enjoy activities that nourish my creativity and well-being, such as reading, drawing, and staying active at the gym.",
-        "p5": "I love combining art and technology, which has led me to become interested in 3D projects. Working on initiatives that merge creativity and technological innovation really motivates me."
-    },
-    "repository": "Repository",
-    "cobli": {
-        "p1": "Cobli is my Degree's Thesis project and it's a web application designed to help colorblind users who are involved in the world of art. The goal of this app is to make processes easier such as color analysis, palette creation, and guidance on color shades, in a more accessible and handy way.",
-        "p2": "This tool is not limited to individuals with color blindness. Any user can utilize this platform to make the most of its features and benefits.",
-        "p3": "Documentation"
+    "catalog": {
+      "title": "3D Catalog",
+      "description": "3D products viewer"
     },
     "game": {
-        "p1": "2D Metroidvania genre video game developed with SFML, C++.",
-        "p2": "Responsible for:",
-        "p3": "Art design: assets (GIMP) and maps (Tile)",
-        "p4": "HUD design and development",
-        "p5": "Game store design and development",
-        "p6": "Character movement and camera tracking"
+      "title": "Rhains of Rhodianur",
+      "description": "2D videogame"
     },
     "mobbler": {
-        "p1": "Project-based Learning (PBL) project carried out during my 4th year of college.",
-        "p2": "Application based on 3D interior design for companies engaged in furniture sales.",
-        "p3": "Role:",
-        "p4": "Design of high quality mockups (Figma)",
-        "p5": "Interface implementation",
-        "p6": "Development of a chatbot (RASA)",
-        "p7": "3D modeling (Blender)",
-        "p8": "Graphics engine (Three.js/WebGL)",
-        "p9": "Creation of a synthetic data generator script",
-        "p10": "Database and REST API connection",
-        "p11": "Development of dashboards (Power BI)",
-        "p12": "Until minute 12:10"
+      "title": "Mobbler",
+      "description": "3D designer"
     },
-    "tiempo": {
-      "p1": "Personal project, web app for checking the weather forecast. Provides detailed information about current weather conditions, as well as hourly and weekly forecasts."
+    "weather": {
+      "title": "Weather",
+      "description": "Weather app"
     },
-    "projects": {
-      "configurator": {
-        "title": "Silo Configurator",
-        "description": "Budget creator"
-      },
-      "digitalTwin": {
-        "title": "Digital Twin",
-        "description": "3D Polygon viewer"
-      },
-      "teleassistance": {
-        "title": "Teleassistance",
-        "description": "Videocalls"
-      },
-      "catalog": {
-        "title": "3D Catalog",
-        "description": "3D products viewer"
-      },
-      "game": {
-        "title": "Rhains of Rhodianur",
-        "description": "2D videogame"
-      },
-      "mobbler": {
-        "title": "Mobbler",
-        "description": "3D designer"
-      },
-      "weather": {
-        "title": "Weather",
-        "description": "Weather app"
-      },
-      "cobli": {
-        "title": "Cobli",
-        "description": "Design tool for colorblind users"
-      }
-    },
-    "back": "Go back",
-    "code": "See source code"
+    "cobli": {
+      "title": "Cobli",
+      "description": "Design tool for colorblind users"
+    }
+  },
+  "challenge": "Challege",
+  "solution": "Solution",
+  "repository": "Repository",
+  "responsible": "Responsible for"
 }

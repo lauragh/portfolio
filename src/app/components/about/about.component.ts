@@ -16,7 +16,7 @@ export class AboutComponent {
 
   constructor(){
     effect(() => {
-      this.translate = this.dataService._translate();
+      this.translate = this.dataService.translate();
     });
   }
 

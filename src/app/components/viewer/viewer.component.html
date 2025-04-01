@@ -1,11 +1,11 @@
 <section class="bg-salmon items-center">
   @if(!cargaCompleta){
-    <div class="absolute center" id="loader">
+    <div class="absolute center z-2" id="loader">
       <img src="assets/img/loader.svg" width="50" alt="loader">
     </div>
   }
   <div class="relative h-screen w-full">
-    <header class="fixed top-0 left-0 p-3 flex justify-between">
+    <header class="fixed top-0 left-0 p-3 flex justify-between z-4">
       <div class="flex pr-5 pl-5 pt-2 pb-2 gap-3 items-center">
         <a class="p-2 buttonEffect font-bold cursor-pointer">Lgh</a>
         <a class="p-2 buttonEffect font-bold cursor-pointer" (click)="scrollToSection('projects')">{{translate.sections.projects}}</a>

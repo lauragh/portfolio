@@ -11,59 +11,20 @@ import * as english from '@en';
   styleUrl: './projects.component.css'
 })
 export class ProjectsComponent {
-  public listProjects: Project[] = [
-    {
-      title: 'Configurador Silos',
-      tags: ['forms', 'threejs'],
-      imgSrc: ['assets/img/projects/tiempo.png']
-    },
-    {
-      title: 'Bexflow',
-      tags: ['Teleasistencia', 'threejs'],
-      imgSrc: ['assets/img/projects/tiempo.png']
-    },
-    {
-      title: 'Polígonos industriales',
-      tags: ['forms', 'threejs'],
-      imgSrc: ['assets/img/projects/tiempo.png']
-    },
-    {
-      title: 'Catálogo 3d',
-      tags: ['forms', 'threejs'],
-      imgSrc: ['assets/img/projects/tiempo.png']
-    },
-    {
-      title: 'El tiempo',
-      tags: ['forms', 'threejs'],
-      imgSrc: ['assets/img/projects/tiempo.png']
-    },
-    {
-      title: 'Cobli',
-      tags: ['forms', 'threejs'],
-      imgSrc: ['assets/img/projects/cobli_bento0.png', 'assets/img/projects/cobli_bento1.png']
-    },
-    {
-      title: 'Mobbler',
-      tags: ['forms', 'threejs'],
-      imgSrc: ['assets/img/projects/cobli_bento0.png', 'assets/img/projects/cobli_bento1.png']
-    },
-    {
-      title: 'Videojuegos',
-      tags: ['forms', 'threejs'],
-      imgSrc: ['assets/img/projects/cobli_bento0.png', 'assets/img/projects/cobli_bento1.png']
-    },
-  ];
   public projectSelected: string = '';
-  private dataService = inject(DataService);
   public translate: any = english;
+  private dataService = inject(DataService);
 
   constructor(){
     effect(() => {
-      this.translate = this.dataService._translate();
+      this.translate = this.dataService.translate();
+      this.projectSelected = this.dataService.isProjectSelected();
     });
   }
 
   openProject(project: string){
     this.projectSelected = project;
+    this.dataService.isProjectSelected.set(project);
   }
+
 }

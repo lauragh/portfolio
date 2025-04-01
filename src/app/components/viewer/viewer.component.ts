@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, OnInit, QueryList, Renderer2, ViewChild, ViewChildren, inject } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, Renderer2, ViewChild, ViewChildren, inject } from '@angular/core';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
@@ -58,7 +58,7 @@ export class ViewerComponent implements OnInit, AfterViewInit{
 
 
   async ngOnInit(): Promise<void> {
-    this.language = this.dataService._language();
+    this.language = this.dataService.language();
     await this.createScene();
   }
 
@@ -297,9 +297,9 @@ export class ViewerComponent implements OnInit, AfterViewInit{
   }
 
   changeLanguage(input: HTMLSelectElement){
-    this.dataService._language.set(input.value);
-    const translation = this.dataService._language() === 'en' ? english : spanish;
-    this.dataService._translate.set(translation);
+    this.dataService.language.set(input.value);
+    const translation = this.dataService.language() === 'en' ? english : spanish;
+    this.dataService.translate.set(translation);
     this.translate = translation;
   }
 
