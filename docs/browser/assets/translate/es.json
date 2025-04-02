@@ -1,0 +1,158 @@
+{
+  "sections": {
+    "cv": "Currículum",
+    "projects": "Proyectos",
+    "linkedin": "LinkedIn",
+    "email": "Email",
+    "about": "Sobre mí"
+  },
+  "languages": {
+      "en": "EN",
+      "es": "ES"
+  },
+  "resume": {
+    "en": "Inglés",
+    "es": "Español"
+  },
+  "about": {
+    "p1": "Hola!",
+    "p2": "Soy Laura",
+    "p3": "Desarrolladora especializada en web, apasionada por crear aplicaciones interactivas",
+    "p4": "En mi tiempo libre, disfruto de actividades que alimentan mi creatividad y bienestar, como leer, dibujar y mantenerme activa en el gimnasio",
+    "p5": "Me encanta combinar arte y tecnología, lo que me ha llevado a interesarme por proyectos 3D. Trabajar en iniciativas que fusionan creatividad e innovación tecnológica me motiva mucho"
+  },
+  "cobli": {
+    "description": [
+      "Cobli, es mi Trabajo de Fin de Grado, se trata de una aplicación web diseñada para para ayudar a usuarios con daltonismo que se dedican al mundo del arte.",
+      "El objetivo de esta app es facilitar diversos procesos como el análisis de colores, la creación de paletas y la orientación sobre tonalidades, de una manera más accesible y sencilla.",
+      "Esta herramienta, no se limita solo a personas con daltonismo. Cualquier usuario puede utilizar esta plataforma para aprovechar al máximo sus características y beneficios."
+    ],
+    "videoYoutube": "LCrOJIfWrko",
+    "technologies": ["Firebase", "Angular", "Express", "Node.js"],
+    "languages": ["Typescript", "Javascript"],
+    "repository": "https://github.com/lauragh/cobli",
+    "memory": "https://rua.ua.es/dspace/handle/10045/135515"
+  },
+  "game": {
+    "caption": "Videojuego 2D de género metroidvania",
+    "tasks":
+    [
+      "Diseño del arte: assets (GIMP) y mapas (Tile)",
+      "Diseño y desarrollo del HUD",
+      "Diseño y desarrollo de la tienda del juego",
+      "Movimiento y seguimiento de la cámara"
+    ],
+    "videoYoutube": "v_R6IdPCWVY",
+    "technologies": ["GIMP", "Tile"],
+    "languages": ["C++", "SFML"],
+    "repository": "https://github.com/lauragh/Rains-of-Rhodianur"
+  },
+  "mobbler": {
+    "caption": "Proyecto ABP (aprendizaje basado en proyectos) realizado en 4º de carrera.",
+    "description": ["Aplicación basada en diseño de interiores 3D para empresas dedicadas a la venta de mobiliario."],
+    "tasks":
+    [
+      "Diseño de interfaces de alta fidelidad",
+      "Implementación de interfaces",
+      "Desarrollo de un chatbot",
+      "Modelado 3D",
+      "Motor gráfico",
+      "Creación de script generador de datos sintéticos",
+      "Conexión de la base de datos y API REST",
+      "Desarrollo de dashboards"
+    ],
+    "videoYoutube": "JmGcxpHbcwo",
+    "videoCaption": "Hasta el minuto 12:10",
+    "technologies": ["Angular", "Node.js", "MongoDB", "Express", "Three.js", "WebGL", "Power BI", "Blender", "Figma", "RASA"],
+    "languages": ["Typescript", "Javascript", "Python"],
+    "repository": "https://github.com/lauragh/mobbler_abp"
+  },
+  "weather": {
+    "description": ["Proyecto personal, app web para consultar el pronóstico del tiempo. Proporciona información detallada sobre las condiciones climáticas actuales, así como pronósticos horarios y semanales."],
+    "technologies": ["Angular", "Bootstrap"],
+    "languages": ["Typescript"],
+    "repository": "https://github.com/lauragh/WeatherApp"
+  },
+  "configurator": {
+    "description": ["Desarrollo de una herramienta web para optimizar la creación de presupuestos y visualización de silos de almacenamiento."],
+    "challenge": "Nuestro cliente, una empresa constructora de silos, gestionaba sus presupuestos con Excel, lo que hacía el proceso lento e ineficiente. Necesitaban una solución más ágil y visual para presentar ofertas a sus clientes.",
+    "solution": [
+      "Formularios dinámicos para configurar silos según las necesidades del cliente.",
+      "Visualización 3D interactiva de las piezas para mejorar la experiencia del usuario.",
+      "Automatización del proceso de presupuestado, reduciendo tiempos y errores."
+    ],
+    "technologies": ["Angular", "Node.js", "Three.js", "Express", "Mongodb", "AWS"],
+    "languages": ["Typescript", "Javascript"]
+  },
+  "digitalTwin": {
+    "description": ["Desarrollo de una plataforma interactiva a través de un gemelo digital para centralizar la gestión y visualización de polígonos industriales, permitiendo así a los administradores analizar datos de manera intuitiva."],
+    "challenge": "El proyecto comenzó con la necesidad de un gemelo digital para visualizar los pabellones del polígono, proporcionando información de las empresas como dirección, datos de contacto y páginas web. Sin embargo, se consideró el potencial de ampliar la plataforma hacia un sistema de monitorización, integrando datos operativos y analíticos de su infraestructura.",
+    "solution": [
+      "Visualización de gemelo digital interactivo en 3D para visualizar el polígono industrial",
+      "Integración de múltiples fuentes de datos (cámaras, sensores IoT, tráfico, clima) en una única plataforma centralizada.",
+      "Funcionalidad para agregar anotaciones geolocalizadas en el mapa, permitiendo marcar ubicaciones con información relevante."
+    ],
+    "technologies": ["Angular", "Node.js", "Three.js", "Express", "MongoDB", "AWS"],
+    "languages": ["Typescript", "Javascript"]
+  },
+  "teleassistance": {
+    "description": ["Desarrollo de una aplicación para gestionar revisiones de maquinaria, permitiendo la planificación y ejecución de las revisiones a través de videollamadas."],
+    "challenge": "Las revisiones de maquinaria requerían la presencia física de técnicos especializados, lo que generaba altos costes de desplazamiento y tiempos de espera prolongados.",
+    "solution": [
+      "Sistema de videollamadas integrado para realizar revisiones remotas en tiempo real",
+      "Registro automático de cada revisión con generación de informes en PDF, incluyendo detalles de la videollamada como fotos y víedos realizados",
+      "Calendario interactivo para programar y gestionar revisiones de maquinaria, con recordatorios automáticos."
+    ],
+    "technologies": ["Angular", "Node.js", "Websocket", "MongoDB", "Express", "AgoraSDK", "FullCalendar", "Pdfmake", "AWS"],
+    "languages": ["Typescript", "Javascript"]
+  },
+  "catalog": {
+    "description": ["Desarrollo de una plataforma para la creación y gestión de catálogos 3D de equipos de climatización."],
+    "challenge": "El cliente necesitaba una forma más visual e interactiva de presentar sus modelos.",
+    "solution": [
+      "Integración con Sketchfab para visualizar modelos en la web y en realidad virtual (RV).",
+      "Funcionalidad para personalizar la información del modelo y adjuntar documentación técnica."
+    ],
+    "technologies": ["Angular", "Node.js", "Sketchfab API", "MongoDB", "Express", "AWS"],
+    "languages": ["Typescript", "Javascript"]
+  },
+  "projects": {
+    "configurator": {
+      "title": "Configurador de silos",
+      "description": "Creador de presupuestos"
+    },
+    "digitalTwin": {
+      "title": "Gemelo Digital",
+      "description": "Visor de polígonos 3d"
+    },
+    "teleassistance": {
+      "title": "Teleasistencia",
+      "description": "Videollamadas"
+    },
+    "catalog": {
+      "title": "Catálogo 3D",
+      "description": "Visor de productos en 3D"
+    },
+    "game": {
+      "title": "Rhains of Rhodianur",
+      "description": "Videojuego 2D"
+    },
+    "mobbler": {
+      "title": "Mobbler",
+      "description": "Diseñador 3d"
+    },
+    "weather": {
+      "title": "Tiempo",
+      "description": "Aplicación del tiempo"
+    },
+    "cobli": {
+      "title": "Cobli",
+      "description": "Herramienta de diseño para daltónicos"
+    }
+  },
+  "challenge": "Reto",
+  "solution": "Solución",
+  "repository": "Repositorio",
+  "memory": "Tesis",
+  "responsible": "Responsable de"
+}
