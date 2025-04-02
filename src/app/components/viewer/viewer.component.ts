@@ -21,14 +21,6 @@ gsap.registerPlugin(ScrollTrigger);
   styleUrl: './viewer.component.css'
 })
 export class ViewerComponent implements OnInit, AfterViewInit{
-  private scene!: THREE.Scene;
-  private camera!: THREE.PerspectiveCamera;
-  private renderer!: THREE.WebGLRenderer;
-
-  private dataService = inject(DataService);
-  private router = inject(Router);
-  private renderer2 = inject(Renderer2);
-
   public divShadow?: HTMLElement;
   public cargaCompleta: boolean = false;
   public cloudsSrc = [
@@ -44,16 +36,24 @@ export class ViewerComponent implements OnInit, AfterViewInit{
   public translate: any = english;
   public language: string = 'en';
 
+  private scene!: THREE.Scene;
+  private camera!: THREE.PerspectiveCamera;
+  private renderer!: THREE.WebGLRenderer;
+  private dataService = inject(DataService);
+  private floatingEffectEnabled: boolean = true;
+  private floatingTime: number = 0;
+  private renderer2 = inject(Renderer2);
+
   @ViewChildren('clouds') clouds: QueryList<ElementRef> | undefined;
   @ViewChildren('itemMenu') itemMenu: QueryList<ElementRef> | undefined;
   @ViewChild('languageInput') languageInput: ElementRef | undefined;
+  @ViewChild('main') main: ElementRef | undefined;
 
   constructor(
   ){}
 
   async ngAfterViewInit(): Promise<void> {
     await this.initializeRenderer();
-    this.initializeScrollControls();
   }
 
 
@@ -111,9 +111,6 @@ export class ViewerComponent implements OnInit, AfterViewInit{
 
   private async loadModel(modelName: string): Promise<void> {
     const manager = new THREE.LoadingManager();
-    manager.onLoad = () => {
-        console.log('modelo cargado')
-    };
 
     const loader = new GLTFLoader(manager);
     loader.load('assets/models/' + modelName, async (gltf: { scene: THREE.Object3D<THREE.Object3DEventMap>; }) => {
@@ -125,11 +122,15 @@ export class ViewerComponent implements OnInit, AfterViewInit{
         }
       });
 
-      gltf.scene.scale.set(1.5, 1.5, 1.5);
-      gltf.scene.position.set(0, 0, 0);
+      gltf.scene.position.set(0, 1, 0);
+      gltf.scene.rotation.y = Math.PI / 4;
 
       this.scene.add(gltf.scene);
+      this.addFloatingEffect(gltf.scene);
+
       this.initializeFlight();
+      this.initializeScrollDetection();
+
     });
   }
 
@@ -151,9 +152,7 @@ export class ViewerComponent implements OnInit, AfterViewInit{
     else {
       console.error("No se encontró el contenedor con id 'three-container'.");
     }
-
   }
-
 
   private initializeCamera() {
     this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -166,7 +165,6 @@ export class ViewerComponent implements OnInit, AfterViewInit{
   }
 
   async createLights(){
-    //Luz ambiental
     const ambientLight = new THREE.AmbientLight(0xffffff);
     ambientLight.name = 'AmbientLight';
     this.scene.add(ambientLight);
@@ -184,6 +182,22 @@ export class ViewerComponent implements OnInit, AfterViewInit{
     this.scene.add(directionalLight);
   }
 
+  private addFloatingEffect(scene: THREE.Object3D): void {
+    const floatSpeed = 0.02;
+    const floatAmount = 0.1;
+
+    const animateFloat = () => {
+        if (this.floatingEffectEnabled) {
+            scene.position.y = 1 + Math.sin(this.floatingTime) * floatAmount;
+            this.floatingTime += floatSpeed;
+
+            requestAnimationFrame(animateFloat);
+        }
+    };
+
+    animateFloat();
+}
+
   private animate() {
     requestAnimationFrame(() => this.animate());
     this.renderer.render(this.scene, this.camera);
@@ -199,77 +213,58 @@ export class ViewerComponent implements OnInit, AfterViewInit{
     window.addEventListener('resize', onWindowResize, false);
   }
 
-  private initializeScrollControls() {
-    let touchStartY = 0;
-    // Scroll en PC
-    window.addEventListener('wheel', (event) => {
-        // this.clearSky();
-    }, { passive: false });
-
-    // Scroll en móviles
-    window.addEventListener('touchstart', (event) => {
-        touchStartY = event.touches[0].clientY;
-
-    }, { passive: true });
-
-    window.addEventListener('touchmove', (event) => {
-        event.preventDefault();
-        const touchEndY = event.touches[0].clientY;
-        const deltaY = touchStartY - touchEndY;
-        touchStartY = touchEndY;
-    }, { passive: false });
-  }
-
-  // private initializeFlight(){
-  //   const plane = this.scene.getObjectByName('plane');
-
-  //   console.log(this.scene);
-  //   if(plane){
-  //     gsap.to(plane.position, {
-  //       x: -10,
-  //       z: -20,
-  //       y: 0,
-  //       duration: 6,
-  //       ease: "power2.inOut"
-  //     });
-
-  //     gsap.to(plane.rotation, {
-  //       y: Math.PI / 4,
-  //       duration: 2,
-  //       ease: "power2.inOut"
-  //     });
-  //   }
-  // }
-
   private initializeFlight() {
     const plane = this.scene.getObjectByName('plane');
 
-    if(plane) {
-      // Movimiento del avión con el scroll
+    if(plane){
       gsap.to(plane.position, {
         scrollTrigger: {
-          start: 'top bottom',
-          end: 'bottom top',
+          id: 'planeAnimation',
+          start: 'top top',
+          end: 'center top',
           scrub: true,
+          onUpdate: (self) => {
+            if(self.progress > 0.5){
+              ScrollTrigger.getById('planeAnimation')?.kill();
+              const parent = plane.parent;
+              if(parent){
+                parent.remove(plane);
+              }
+              this.createDynamicH1();
+            }
+          }
         },
         x: -5,
         z: -5,
         y: 0,
-        duration: 8,
-        ease: "power2.inOut"
       });
 
       gsap.to(plane.rotation, {
         scrollTrigger: {
-          start: 'top bottom',
-          end: 'bottom top',
+          start: 'top top',
+          end: 'center top',
           scrub: true,
         },
         y: Math.PI / 4,
-        duration: 2,
+        duration: 0.5,
         ease: "power2.inOut"
       });
     }
+  }
+
+  private createDynamicH1() {
+    const img = this.renderer2.createElement('img');
+    this.renderer2.setAttribute(img, 'src', 'assets/img/title.png');
+    this.renderer2.setAttribute(img, 'alt', 'Imagen de Portfolio Laura García');
+
+    this.renderer2.setStyle(img, 'position', 'absolute');
+    this.renderer2.setStyle(img, 'top', '50%');
+    this.renderer2.setStyle(img, 'left', '50%');
+    this.renderer2.setStyle(img, 'transform', 'translate(-50%, -50%)');
+    this.renderer2.setStyle(img, 'width', 'auto');
+    this.renderer2.setStyle(img, 'height', 'auto');
+
+    this.renderer2.appendChild(this.main?.nativeElement, img);
   }
 
   private clearSky(){
@@ -286,28 +281,34 @@ export class ViewerComponent implements OnInit, AfterViewInit{
         scrollTrigger: {
           trigger: '.clouds',
           start: 'top 0%',
-          end: 'top -50%',
+          end: 'center',
           scrub: 1,
         },
         x: movement,
-        duration: 4,
+        duration: 6,
         ease: 'power2.inOut',
       });
     }
   }
 
-  changeLanguage(input: HTMLSelectElement){
+  public changeLanguage(input: HTMLSelectElement){
     this.dataService.language.set(input.value);
     const translation = this.dataService.language() === 'en' ? english : spanish;
     this.dataService.translate.set(translation);
     this.translate = translation;
   }
 
-  scrollToSection(section: string) {
+  public scrollToSection(section: string) {
     const aboutSection = document.getElementById(section);
 
     if(aboutSection){
       aboutSection.scrollIntoView({ behavior: 'smooth' });
     }
+  }
+
+  private initializeScrollDetection(): void {
+    window.addEventListener('scroll', () => {
+      this.floatingEffectEnabled = false;
+    });
   }
 }
