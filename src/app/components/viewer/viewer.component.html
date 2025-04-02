@@ -7,7 +7,7 @@
   <div #main class="relative h-screen w-full">
     <header class="fixed top-0 left-0 p-3 flex justify-between z-4">
       <div class="flex pr-5 pl-5 pt-2 pb-2 gap-3 items-center">
-        <a class="p-2 buttonEffect font-bold cursor-pointer">Lgh</a>
+        <a class="p-2 buttonEffect font-bold cursor-pointer" (click)="scrollToSection('clouds')">Lgh</a>
         <a class="p-2 buttonEffect font-bold cursor-pointer" (click)="scrollToSection('projects')">{{translate.sections.projects}}</a>
         <a class="p-2 buttonEffect font-bold cursor-pointer" (click)="scrollToSection('about')">{{translate.sections.about}}</a>
       </div>
@@ -19,7 +19,7 @@
           </select>
       </div>
     </header>
-    <div class="absolute clouds justify-between show-animation">
+    <div id="clouds" class="absolute clouds justify-between show-animation">
       @for (cloud of cloudsSrc; track cloud; let i = $index) {
         <img #clouds
         alt="cloud" [src]="cloud">
@@ -29,4 +29,5 @@
   </div>
   <app-projects id="projects" class="min-h-screen w-full mt-5 p-5 flex items-center justify-center"></app-projects>
   <app-about id="about" class="h-screen w-full mt-5 p-5 flex items-center justify-center"></app-about>
+  <footer class="justify-center flex"> © 2025. Todos los derechos reservados</footer>
 </section>

@@ -29,7 +29,9 @@
     ],
     "videoYoutube": "LCrOJIfWrko",
     "technologies": ["Firebase", "Angular", "Express", "Node.js"],
-    "languages": ["Typescript", "Javascript"]
+    "languages": ["Typescript", "Javascript"],
+    "repository": "https://github.com/lauragh/cobli",
+    "memory": "https://rua.ua.es/dspace/handle/10045/135515"
   },
   "game": {
     "caption": "Videojuego 2D de género metroidvania",
@@ -42,7 +44,8 @@
     ],
     "videoYoutube": "v_R6IdPCWVY",
     "technologies": ["GIMP", "Tile"],
-    "languages": ["C++", "SFML"]
+    "languages": ["C++", "SFML"],
+    "repository": "https://github.com/lauragh/Rains-of-Rhodianur"
   },
   "mobbler": {
     "caption": "Proyecto ABP (aprendizaje basado en proyectos) realizado en 4º de carrera.",
@@ -61,12 +64,14 @@
     "videoYoutube": "JmGcxpHbcwo",
     "videoCaption": "Hasta el minuto 12:10",
     "technologies": ["Angular", "Node.js", "MongoDB", "Express", "Three.js", "WebGL", "Power BI", "Blender", "Figma", "RASA"],
-    "languages": ["Typescript", "Javascript", "Python"]
+    "languages": ["Typescript", "Javascript", "Python"],
+    "repository": "https://github.com/lauragh/mobbler_abp"
   },
   "weather": {
     "description": ["Proyecto personal, app web para consultar el pronóstico del tiempo. Proporciona información detallada sobre las condiciones climáticas actuales, así como pronósticos horarios y semanales."],
     "technologies": ["Angular", "Bootstrap"],
-    "languages": ["Typescript"]
+    "languages": ["Typescript"],
+    "repository": "https://github.com/lauragh/WeatherApp"
   },
   "configurator": {
     "description": ["Desarrollo de una herramienta web para optimizar la creación de presupuestos y visualización de silos de almacenamiento."],
@@ -148,5 +153,6 @@
   "challenge": "Reto",
   "solution": "Solución",
   "repository": "Repositorio",
+  "memory": "Tesis",
   "responsible": "Responsable de"
 }

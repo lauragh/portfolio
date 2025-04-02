@@ -29,7 +29,9 @@
     ],
     "videoYoutube": "LCrOJIfWrko",
     "technologies": ["Firebase", "Angular", "Express", "Node.js"],
-    "languages": ["Typescript", "Javascript"]
+    "languages": ["Typescript", "Javascript"],
+    "repository": "https://github.com/lauragh/cobli",
+    "memory": "https://rua.ua.es/dspace/handle/10045/135515"
   },
   "game": {
     "caption": "2D Metroidvania genre videogame",
@@ -42,7 +44,8 @@
     ],
     "videoYoutube": "v_R6IdPCWVY",
     "technologies": ["GIMP", "Tile"],
-    "languages": ["C++", "SFML"]
+    "languages": ["C++", "SFML"],
+    "repository": "https://github.com/lauragh/Rains-of-Rhodianur"
   },
   "mobbler": {
     "caption": "Project-based Learning (PBL) project carried out during my 4th year of college.",
@@ -61,12 +64,14 @@
     "videoYoutube": "JmGcxpHbcwo",
     "videoCaption": "Until minute 12:10",
     "technologies": ["Angular", "Node.js", "MongoDB", "Express", "Three.js", "WebGL", "Power BI", "Blender", "Figma", "RASA"],
-    "languages": ["Typescript", "Javascript", "Python"]
+    "languages": ["Typescript", "Javascript", "Python"],
+    "repository": "https://github.com/lauragh/mobbler_abp"
   },
   "weather": {
     "description": ["Personal project, web app for checking the weather forecast. Provides detailed information about current weather conditions, as well as hourly and weekly forecasts."],
     "technologies": ["Angular"],
-    "languages": ["Typescript"]
+    "languages": ["Typescript"],
+    "repository": "https://github.com/lauragh/WeatherApp"
   },
   "configurator": {
     "description": ["Development of a web tool to optimize the creation of quotes and visualization of storage silos."],
@@ -148,5 +153,6 @@
   "challenge": "Challege",
   "solution": "Solution",
   "repository": "Repository",
+  "memory": "Thesis",
   "responsible": "Responsible for"
 }

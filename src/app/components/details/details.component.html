@@ -1,6 +1,20 @@
 <section>
   <div #detailsContent class="min-w-3xl min-h-96 modal flex flex-col">
-    <h1 class="text-3xl font-bold sticky top-0 z-2 px-5 py-3">{{projectSelected.title}}</h1>
+    <div class="header sticky top-0 z-2 px-5 py-3 flex justify-between">
+      <h1 class="text-3xl font-bold ">{{projectSelected.title}}</h1>
+      <div class="flex gap-2">
+        @if (projectSelected.memory) {
+          <a [href]="projectSelected.memory" target="_blank">
+            <img [title]="translate.memory" width="32" class="cursor-pointer" src="assets/img/docs.svg">
+          </a>
+        }
+        @if (projectSelected.repository) {
+          <a [href]="projectSelected.repository" target="_blank">
+            <img [title]="translate.repository" width="32" class="cursor-pointer" src="assets/img/github-dark.svg">
+          </a>
+        }
+      </div>
+    </div>
     <div class="p-5 pt-0 flex flex-col gap-5">
       @if (projectSelected.caption) {
         <p>{{projectSelected.caption}}</p>
@@ -48,7 +62,6 @@
           }
         </div>
       </div>
-
       @if (projectSelected.video) {
         <video [src]="projectSelected.video" controls type="video/mp4"></video>
       }

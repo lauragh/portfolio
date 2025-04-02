@@ -18,6 +18,8 @@ export interface ProjectDetails {
   tasks?: string[],
   videoYoutube?: string,
   videoCaption?: string,
+  repository?: string,
+  memory?: string
 }
 
 export enum ProjectName {

@@ -27,7 +27,7 @@ section::before {
   border-radius: 10px;
 }
 
-h1 {
+.header {
   background-clip: padding-box;
   background-color: white;
   width: 100%;
