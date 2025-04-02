@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --configuration=production --output-path docs --base-href /portfolio/ && mv docs/browser/* docs/ && rmdir docs/browser",
+    "build": "ng build --configuration=production --output-path docs --base-href https://lauragh.github.io/portfolio/ && mv docs/browser/* docs/ && rmdir docs/browser",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
