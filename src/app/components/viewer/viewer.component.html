@@ -29,5 +29,11 @@
   </div>
   <app-projects id="projects" class="min-h-screen w-full mt-5 p-5 flex items-center justify-center"></app-projects>
   <app-about id="about" class="h-screen w-full mt-5 p-5 flex items-center justify-center"></app-about>
-  <footer class="justify-center flex"> © 2025. Todos los derechos reservados</footer>
+  <footer class="flex justify-between items-center w-full p-4 text-sm text-gray-500">
+    <p class="mx-auto">© 2025. {{translate.copyright}}</p>
+    <div class="flex gap-2 items-center">
+      <img width="25" src="assets/img/angular.svg">
+      <img width="25" src="assets/img/tailwind.svg">
+    </div>
+  </footer>
 </section>

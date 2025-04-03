@@ -57,7 +57,7 @@ ul {
 
 @keyframes enhance-header {
   to {
-    background: rgba(44, 44, 44, 0.808);
+    background:#bf8470;
     font-size: 20px;
     color: white;
   }

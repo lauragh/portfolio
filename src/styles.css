@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+p {
+  font-family: "Helvetica", Arial, sans-serif;
+}
+
 :root {
   --letter: #543c35;
   --salmon: #ffBCA4;
