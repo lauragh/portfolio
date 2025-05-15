@@ -23,6 +23,7 @@ export class DetailsComponent implements AfterViewInit{
 
   @ViewChildren('images') images: QueryList<ElementRef> | undefined;
   @ViewChild('detailsContent', { static: false }) detailsContent: ElementRef | undefined;
+  @ViewChild('title') title: ElementRef | undefined ;
 
   constructor() {
     effect(() => {
@@ -36,6 +37,7 @@ export class DetailsComponent implements AfterViewInit{
   ngAfterViewInit(){
     this.selectImage(0);
     this.cdRef.detectChanges();
+    this.scrollToSection("title");
   }
 
   private getProjectDetails(): ProjectDetails[] {
@@ -227,5 +229,22 @@ export class DetailsComponent implements AfterViewInit{
         selectedImg.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
       }
     }, 100);
+  }
+
+  public scrollToSection(section: string) {
+    const target = document.getElementById(section);
+
+    if(target){
+      const isMobile = window.innerWidth <= 768;
+
+      if(isMobile){
+        const yOffset = -80;
+        const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+      else {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
   }
 }

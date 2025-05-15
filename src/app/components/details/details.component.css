@@ -33,7 +33,7 @@ section::before {
   width: 100%;
   animation: enhance-header linear both;
   animation-timeline: scroll(nearest);
-  animation-range: 0 50px;
+  animation-range: 0 80px;
 }
 
 img {
@@ -73,6 +73,6 @@ ul {
   .modal {
     min-width: 100% !important;
     width: 100%;
-
+    overflow: hidden;
   }
 }
